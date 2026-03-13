@@ -1,0 +1,90 @@
+[
+  {
+    "id": "test-001",
+    "authorName": "Marcus Chen",
+    "authorTitle": "Software Engineer & Calisthenics Athlete",
+    "authorAvatar": "/images/avatars/marcus-chen.jpg",
+    "content": "ZdravLife changed my approach to fitness. The systems-based thinking resonated with me as an engineer. I've gone from struggling with 5 pullups to repping out muscle-ups. More importantly, I've built habits that stick.",
+    "rating": 5,
+    "source": "community",
+    "featured": true,
+    "createdAt": "2024-05-15T00:00:00Z"
+  },
+  {
+    "id": "test-002",
+    "authorName": "Elena Rodriguez",
+    "authorTitle": "Motorcycle Enthusiast",
+    "authorAvatar": "/images/avatars/elena-rodriguez.jpg",
+    "content": "The Balkan trip blog post inspired me to plan my own motorcycle adventure. The attention to detail in the route descriptions and the genuine passion for the road comes through in every word. This isn't just content—it's a call to action.",
+    "rating": 5,
+    "source": "community",
+    "featured": true,
+    "createdAt": "2024-04-20T00:00:00Z"
+  },
+  {
+    "id": "test-003",
+    "authorName": "David Park",
+    "authorTitle": "Calisthenics Mastery Guide Customer",
+    "authorAvatar": "/images/avatars/david-park.jpg",
+    "content": "I've purchased dozens of fitness programs over the years. The Calisthenics Mastery Guide is the first one that felt like it was designed by someone who actually understands programming—not just exercise programming, but the mindset of building systems. Worth every penny.",
+    "rating": 5,
+    "source": "product",
+    "featured": true,
+    "createdAt": "2024-05-25T00:00:00Z"
+  },
+  {
+    "id": "test-004",
+    "authorName": "Sarah Mitchell",
+    "authorTitle": "20/4 Fasting Protocol Customer",
+    "authorAvatar": "/images/avatars/sarah-mitchell.jpg",
+    "content": "As a developer, I was skeptical about fasting affecting my cognitive performance. This guide showed me exactly how to implement it without sacrificing productivity. My energy is more stable, my focus is sharper, and I've lost 15 pounds without counting a single calorie.",
+    "rating": 5,
+    "source": "product",
+    "featured": true,
+    "createdAt": "2024-05-10T00:00:00Z"
+  },
+  {
+    "id": "test-005",
+    "authorName": "James Wilson",
+    "authorTitle": "Premium Hoodie Owner",
+    "authorAvatar": "/images/avatars/james-wilson.jpg",
+    "content": "The quality of the ZdravLife hoodie is unreal. You can feel the difference the moment you put it on. It's become my go-to for everything from morning training to late-night coding sessions. The hidden phone pocket is genius.",
+    "rating": 5,
+    "source": "product",
+    "featured": false,
+    "createdAt": "2024-04-15T00:00:00Z"
+  },
+  {
+    "id": "test-006",
+    "authorName": "Ana Kowalski",
+    "authorTitle": "One-Arm Pullup Roadmap Customer",
+    "authorAvatar": "/images/avatars/ana-kowalski.jpg",
+    "content": "After 16 months following the OAP roadmap, I finally got my first clean one-arm pullup. The progressions are logical, the programming is clear, and the troubleshooting section helped me push through multiple plateaus. If you're serious about the OAP, this is the guide you need.",
+    "rating": 5,
+    "source": "product",
+    "featured": true,
+    "createdAt": "2024-06-01T00:00:00Z"
+  },
+  {
+    "id": "test-007",
+    "authorName": "Thomas Berg",
+    "authorTitle": "Long-time Follower",
+    "authorAvatar": "/images/avatars/thomas-berg.jpg",
+    "content": "What sets ZdravLife apart is the authenticity. This isn't some influencer selling a fantasy. It's a real software engineer sharing real systems that work in the real world. The discipline-over-motivation message changed how I approach everything.",
+    "rating": 5,
+    "source": "community",
+    "featured": false,
+    "createdAt": "2024-03-20T00:00:00Z"
+  },
+  {
+    "id": "test-008",
+    "authorName": "Lisa Chang",
+    "authorTitle": "Training Journal Owner",
+    "authorAvatar": "/images/avatars/lisa-chang.jpg",
+    "content": "The training journal has been a game-changer for my consistency. Having a dedicated place to track my workouts and reflect on my progress keeps me accountable. The quality is excellent too—fountain pen friendly paper is a nice touch.",
+    "rating": 5,
+    "source": "product",
+    "featured": false,
+    "createdAt": "2024-04-28T00:00:00Z"
+  }
+]

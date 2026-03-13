@@ -1,0 +1,288 @@
+[
+  {
+    "id": "post-001",
+    "slug": "20-4-fasting-protocol-software-engineer",
+    "title": "The 20/4 Fasting Protocol: How I Optimized My Mind and Body as a Software Engineer",
+    "subtitle": "A systematic approach to intermittent fasting that transformed my energy, focus, and physique without sacrificing productivity.",
+    "excerpt": "After three years of experimenting with various fasting protocols, I've settled on 20/4 as my daily rhythm. Here's the complete system I built for sustainable high-performance living.",
+    "content": "<p>The intersection of software engineering and body optimization is where I've found my most productive self. As someone who spends 8-12 hours daily in deep cognitive work, I needed a nutrition system that supported mental clarity without the constant interruption of meal planning.</p><h2>Why 20/4?</h2><p>The 20-hour fasting window with a 4-hour eating window isn't arbitrary. It's the result of 18 months of experimentation with 16/8, OMAD, and alternate-day fasting protocols. What I discovered was that my cognitive peak performance occurred between hours 14-18 of fasting.</p><h2>The System</h2><p>My fasting window runs from 8 PM to 4 PM the following day. This means:</p><ul><li>Morning: Black coffee, water, electrolytes</li><li>Midday: Continued fasting through lunch</li><li>4 PM: First meal (high protein, moderate fat)</li><li>6 PM: Training session</li><li>7:30 PM: Second meal (carb refeed)</li><li>8 PM: Begin fasting window</li></ul><h2>The Results</h2><p>After 18 months of consistent practice:</p><ul><li>Body fat reduced from 18% to 12%</li><li>Morning cognitive clarity significantly improved</li><li>Energy levels stabilized throughout the day</li><li>Meal prep time reduced by 70%</li><li>Training performance maintained and improved</li></ul><h2>Implementation Tips</h2><p>Start with 16/8 for two weeks. Gradually extend your fasting window by 30 minutes every few days. Listen to your body—some days you'll need to break early, and that's okay. The goal is consistency over perfection.</p><p>Electrolytes are crucial. I use a simple mix of sodium, potassium, and magnesium during the fasting window. This prevents the common headaches and fatigue that cause people to abandon fasting protocols.</p><h2>The Engineering Mindset</h2><p>Approach your body like you would a complex system. Measure inputs, observe outputs, iterate. Your body is the most sophisticated machine you'll ever work with—treat it with the respect and systematic approach it deserves.</p>",
+    "coverImage": "/images/blog/fasting-protocol.jpg",
+    "gallery": [],
+    "author": {
+      "id": "author-001",
+      "name": "Zdrav",
+      "slug": "zdrav",
+      "bio": "Software engineer, problem solver, and vitality architect.",
+      "avatar": "/images/author-avatar.jpg",
+      "socialLinks": [
+        { "platform": "twitter", "url": "https://twitter.com/zdravlife", "label": "Twitter" },
+        { "platform": "instagram", "url": "https://instagram.com/zdravlife", "label": "Instagram" }
+      ],
+      "postCount": 42
+    },
+    "category": {
+      "id": "cat-nutrition",
+      "slug": "nutrition",
+      "name": "Nutrition",
+      "description": "Fasting protocols, meal systems, and nutritional optimization for high performance.",
+      "postCount": 15
+    },
+    "tags": [
+      { "id": "tag-fasting", "slug": "fasting", "name": "Fasting", "postCount": 8 },
+      { "id": "tag-productivity", "slug": "productivity", "name": "Productivity", "postCount": 12 },
+      { "id": "tag-biohacking", "slug": "biohacking", "name": "Biohacking", "postCount": 6 }
+    ],
+    "seo": {
+      "title": "20/4 Fasting Protocol for Software Engineers | ZdravLife",
+      "description": "A systematic approach to intermittent fasting that optimizes energy, focus, and physique for knowledge workers.",
+      "keywords": ["intermittent fasting", "20/4 protocol", "software engineer fitness", "cognitive performance", "biohacking"]
+    },
+    "featured": true,
+    "publishedAt": "2024-06-15T08:00:00Z",
+    "updatedAt": "2024-06-15T08:00:00Z",
+    "readingTime": 12,
+    "relatedPostIds": ["post-002", "post-005", "post-008"],
+    "commentCount": 34,
+    "viewCount": 2847,
+    "status": "published"
+  },
+  {
+    "id": "post-002",
+    "slug": "balkan-motorcycle-journey-freedom-road",
+    "title": "Through the Balkan Mountains: 2,000 Kilometers of Freedom",
+    "subtitle": "A solo motorcycle journey through Serbia, Montenegro, and Bosnia that redefined my relationship with the open road.",
+    "excerpt": "There's a particular kind of silence that exists at 2,000 meters above sea level, with nothing but your motorcycle, the wind, and endless switchbacks carved into ancient mountains.",
+    "content": "<p>The Honda Hornet 600 purred beneath me as I crested the final switchback before the Durmitor plateau. Below, a sea of clouds filled the valleys, turning the mountain peaks into islands in a white ocean. This was day four of my Balkan journey, and I was exactly where I needed to be.</p><h2>The Route</h2><p>Belgrade to Kotor, via Tara Canyon and Durmitor National Park. Then north through Bosnia's Sutjeska National Park, ending in Sarajevo. 2,000 kilometers of some of Europe's most dramatic riding.</p><h2>Why the Balkans?</h2><p>I've ridden through the Alps, the Pyrenees, the Dolomites. They're beautiful, yes, but polished. The Balkans are raw. The roads are less perfect, the infrastructure less predictable, the hospitality more genuine. It's riding as adventure, not tourism.</p><h2>Day One: Belgrade to Zlatibor</h2><p>Leaving Belgrade at dawn, the city still sleeping, I headed southwest into the Šumadija region. The roads were empty, the air cool and smelling of pine. By midday, I was climbing into the Zlatibor mountains, the temperature dropping with every hundred meters of elevation.</p><h2>The Philosophy of the Road</h2><p>Motorcycle travel strips away the unnecessary. You can't check emails at 80 km/h on a mountain road. You can't worry about tomorrow's meeting when you're focused on the next corner. The road demands presence. It rewards it with moments of pure, unfiltered experience.</p><h2>Gear That Matters</h2><p>After years of trial and error, my setup is minimal: Alpinestars jacket, Shoei helmet, Kriega US-30 tail pack. Everything I need for a week fits in 30 liters. The lesson: carry less, experience more.</p><h2>The Return</h2><p>Two weeks later, rolling back into Belgrade, I was different. The person who left was preoccupied, scattered, anxious. The person who returned was focused, present, grateful. This is why I ride. Not to escape life, but to remember how to live it.</p>",
+    "coverImage": "/images/blog/balkan-journey.jpg",
+    "gallery": [
+      "/images/blog/balkan-1.jpg",
+      "/images/blog/balkan-2.jpg",
+      "/images/blog/balkan-3.jpg"
+    ],
+    "author": {
+      "id": "author-001",
+      "name": "Zdrav",
+      "slug": "zdrav",
+      "bio": "Software engineer, problem solver, and vitality architect.",
+      "avatar": "/images/author-avatar.jpg",
+      "socialLinks": [
+        { "platform": "twitter", "url": "https://twitter.com/zdravlife", "label": "Twitter" },
+        { "platform": "instagram", "url": "https://instagram.com/zdravlife", "label": "Instagram" }
+      ],
+      "postCount": 42
+    },
+    "category": {
+      "id": "cat-adventure",
+      "slug": "adventure",
+      "name": "Adventure",
+      "description": "Motorcycle journeys, travel stories, and the pursuit of freedom on two wheels.",
+      "postCount": 18
+    },
+    "tags": [
+      { "id": "tag-motorcycle", "slug": "motorcycle", "name": "Motorcycle", "postCount": 14 },
+      { "id": "tag-balkans", "slug": "balkans", "name": "Balkans", "postCount": 5 },
+      { "id": "tag-travel", "slug": "travel", "name": "Travel", "postCount": 12 }
+    ],
+    "seo": {
+      "title": "Balkan Motorcycle Journey: 2,000km of Freedom | ZdravLife",
+      "description": "A solo motorcycle adventure through Serbia, Montenegro, and Bosnia. Raw roads, genuine hospitality, and the transformative power of the open road.",
+      "keywords": ["motorcycle travel", "Balkans", "Honda Hornet", "adventure riding", "solo travel"]
+    },
+    "featured": true,
+    "publishedAt": "2024-05-28T10:00:00Z",
+    "updatedAt": "2024-05-28T10:00:00Z",
+    "readingTime": 15,
+    "relatedPostIds": ["post-003", "post-007", "post-012"],
+    "commentCount": 52,
+    "viewCount": 4532,
+    "status": "published"
+  },
+  {
+    "id": "post-003",
+    "slug": "calisthenics-hypertrophy-system",
+    "title": "The Bodyweight Hypertrophy System: Building Muscle Without a Gym",
+    "subtitle": "A comprehensive training protocol for building serious strength and size using only your bodyweight and progressive overload principles.",
+    "excerpt": "You don't need a gym membership to build an impressive physique. What you need is a systematic approach to progressive overload, proper programming, and relentless consistency.",
+    "content": "<p>Three years ago, I cancelled my gym membership. Not because I was giving up on fitness, but because I wanted to prove a point: that the most sophisticated piece of equipment you'll ever own is your own body.</p><h2>The Foundation</h2><p>Calisthenics has a reputation for being the domain of endurance athletes and skinny guys doing endless pushups. But when approached with the same systematic rigor as barbell training, bodyweight exercise can build impressive muscle mass.</p><h2>The Principles</h2><p><strong>Progressive Overload:</strong> Just like adding weight to the bar, you progress by making exercises harder. More leverage, less stability, slower tempo, more volume.</p><p><strong>Time Under Tension:</strong> Bodyweight training excels at controlling the eccentric phase. A 4-second negative on a one-arm pushup creates massive mechanical tension.</p><p><strong>Exercise Selection:</strong> Focus on movements that can be progressively loaded: pullups, dips, pushups, rows, squats, hinges.</p><h2>The Split</h2><p>I train 4 days per week:</p><ul><li>Day 1: Horizontal Push/Pull (pushups, rows)</li><li>Day 2: Legs (pistol squats, nordic curls, calf raises)</li><li>Day 3: Rest</li><li>Day 4: Vertical Push/Pull (pullups, dips, handstand work)</li><li>Day 5: Full Body Circuit</li><li>Days 6-7: Rest or active recovery</li></ul><h2>Sample Workout: Horizontal Day</h2><p><strong>One-Arm Pushup Progression:</strong> 5 sets of 3-5 reps per arm, 3-second eccentric</p><p><strong>Archer Rows:</strong> 4 sets of 6-8 reps per arm</p><p><strong>Weighted Pushups:</strong> 4 sets of 8-12 reps (with 20kg plate)</p><p><strong>Front Lever Progression:</strong> 5 sets of 10-second holds</p><h2>The Results</h2><p>In three years of consistent bodyweight training:</p><ul><li>Bodyweight: 72kg to 78kg (lean mass gain)</li><li>Pullups: 8 reps to 20 reps</li><li>One-arm pushup: impossible to 5 reps per arm</li><li>Pistol squat: impossible to 10 reps per leg</li></ul><h2>The Mindset</h2><p>Your body doesn't know if you're lifting iron or lifting yourself. It only knows tension, fatigue, and progressive overload. Master these principles, and you can build an impressive physique anywhere—your living room, a hotel room, a park.</p>",
+    "coverImage": "/images/blog/calisthenics-system.jpg",
+    "gallery": [],
+    "author": {
+      "id": "author-001",
+      "name": "Zdrav",
+      "slug": "zdrav",
+      "bio": "Software engineer, problem solver, and vitality architect.",
+      "avatar": "/images/author-avatar.jpg",
+      "socialLinks": [
+        { "platform": "twitter", "url": "https://twitter.com/zdravlife", "label": "Twitter" },
+        { "platform": "instagram", "url": "https://instagram.com/zdravlife", "label": "Instagram" }
+      ],
+      "postCount": 42
+    },
+    "category": {
+      "id": "cat-training",
+      "slug": "training",
+      "name": "Training",
+      "description": "Workout protocols, exercise systems, and the science of physical transformation.",
+      "postCount": 22
+    },
+    "tags": [
+      { "id": "tag-calisthenics", "slug": "calisthenics", "name": "Calisthenics", "postCount": 10 },
+      { "id": "tag-hypertrophy", "slug": "hypertrophy", "name": "Hypertrophy", "postCount": 8 },
+      { "id": "tag-strength", "slug": "strength", "name": "Strength", "postCount": 14 }
+    ],
+    "seo": {
+      "title": "Bodyweight Hypertrophy System | Calisthenics Training | ZdravLife",
+      "description": "Build muscle and strength without a gym. A complete calisthenics system for serious hypertrophy using progressive overload principles.",
+      "keywords": ["calisthenics", "bodyweight training", "hypertrophy", "muscle building", "home workout"]
+    },
+    "featured": true,
+    "publishedAt": "2024-05-10T09:00:00Z",
+    "updatedAt": "2024-05-10T09:00:00Z",
+    "readingTime": 18,
+    "relatedPostIds": ["post-004", "post-006", "post-009"],
+    "commentCount": 67,
+    "viewCount": 8921,
+    "status": "published"
+  },
+  {
+    "id": "post-004",
+    "slug": "discipline-over-motivation",
+    "title": "Discipline Over Motivation: The Systems Approach to Consistency",
+    "subtitle": "Why waiting to feel motivated is a trap, and how to build systems that ensure execution regardless of your emotional state.",
+    "excerpt": "Motivation is a feeling. Discipline is a practice. One is unreliable; the other is trainable. Here's how I built systems that keep me consistent when motivation inevitably fails.",
+    "content": "<p>I've never felt motivated to write code at 6 AM. I've never felt motivated to do my 100th pullup session. I've never felt motivated to break my fast when everyone else is eating lunch.</p><p>But I do these things anyway. Not because I'm special, but because I've built systems that make execution the path of least resistance.</p><h2>The Motivation Trap</h2><p>We wait to feel inspired before we act. We wait for the perfect moment, the right energy, the optimal conditions. And while we wait, life passes by.</p><p>Motivation is a chemical state—dopamine, primarily. It's influenced by sleep, nutrition, stress, novelty, and a hundred other variables. Relying on it is like relying on good weather: sometimes you get lucky, often you don't.</p><h2>Discipline as Architecture</h2><p>Discipline isn't willpower. Willpower is a finite resource that depletes throughout the day. Discipline is environment design. It's removing friction from good behaviors and adding friction to bad ones.</p><h2>My Systems</h2><p><strong>Morning Training:</strong> My workout clothes are laid out the night before. My program is written in my notebook. I train at the same time every day. The decision is made before I wake up.</p><p><strong>Fasting Window:</strong> I don't keep food in my office. My first meal is prepped and waiting in the fridge. The path of least resistance is to continue fasting until 4 PM.</p><p><strong>Deep Work:</strong> My phone stays in another room during work blocks. Distraction-blocker software runs automatically. My environment is designed for focus.</p><h2>The 2-Minute Rule</h2><p>Any new habit must start with a 2-minute version. Want to start meditating? Sit for 2 minutes. Want to write more? Write one sentence. The goal is to establish the behavior pattern, then expand.</p><h2>Identity-Based Habits</h2><p>The most powerful habits are those that reinforce your identity. I don't 'try to work out.' I am someone who trains every day. I don't 'attempt to fast.' I am someone who doesn't eat before 4 PM. The behavior flows from the identity.</p><h2>When Systems Fail</h2><p>Systems aren't perfect. Life happens. The key is to have recovery protocols. Miss a workout? The next one is non-negotiable. Break your fast early? The next day starts fresh. No guilt, just return to the system.</p><h2>The Long Game</h2><p>Consistency beats intensity. A mediocre program followed for years outperforms a perfect program followed for weeks. Build systems that you can maintain for decades, not days.</p>",
+    "coverImage": "/images/blog/discipline-systems.jpg",
+    "gallery": [],
+    "author": {
+      "id": "author-001",
+      "name": "Zdrav",
+      "slug": "zdrav",
+      "bio": "Software engineer, problem solver, and vitality architect.",
+      "avatar": "/images/author-avatar.jpg",
+      "socialLinks": [
+        { "platform": "twitter", "url": "https://twitter.com/zdravlife", "label": "Twitter" },
+        { "platform": "instagram", "url": "https://instagram.com/zdravlife", "label": "Instagram" }
+      ],
+      "postCount": 42
+    },
+    "category": {
+      "id": "cat-philosophy",
+      "slug": "philosophy",
+      "name": "Philosophy",
+      "description": "Thoughts on discipline, mindset, systems thinking, and the pursuit of excellence.",
+      "postCount": 16
+    },
+    "tags": [
+      { "id": "tag-discipline", "slug": "discipline", "name": "Discipline", "postCount": 9 },
+      { "id": "tag-systems", "slug": "systems", "name": "Systems", "postCount": 7 },
+      { "id": "tag-mindset", "slug": "mindset", "name": "Mindset", "postCount": 11 }
+    ],
+    "seo": {
+      "title": "Discipline Over Motivation: Building Systems for Consistency | ZdravLife",
+      "description": "Stop waiting to feel motivated. Learn how to build systems and environments that ensure consistent execution regardless of your emotional state.",
+      "keywords": ["discipline", "motivation", "habit building", "systems thinking", "consistency"]
+    },
+    "featured": true,
+    "publishedAt": "2024-04-22T11:00:00Z",
+    "updatedAt": "2024-04-22T11:00:00Z",
+    "readingTime": 10,
+    "relatedPostIds": ["post-001", "post-005", "post-010"],
+    "commentCount": 89,
+    "viewCount": 12453,
+    "status": "published"
+  },
+  {
+    "id": "post-005",
+    "slug": "supplement-stack-longevity",
+    "title": "My Evidence-Based Supplement Stack for Longevity and Performance",
+    "subtitle": "A software engineer's approach to supplementation: minimal, targeted, and backed by research.",
+    "excerpt": "After years of experimentation and research, I've settled on a core supplement stack that supports cognitive function, physical performance, and long-term health.",
+    "content": "<p>The supplement industry is a minefield of marketing hype and underdosed formulas. As someone who approaches health with the same rigor I apply to software architecture, I've developed a minimalist stack based on evidence, not advertising.</p><h2>The Philosophy</h2><p>Supplements should fill gaps, not replace fundamentals. No pill can compensate for poor sleep, bad nutrition, or chronic stress. My stack addresses specific needs that are difficult to meet through diet alone.</p><h2>The Core Stack</h2><p><strong>Omega-3 (EPA/DHA):</strong> 2g daily. Essential for brain health, inflammation control, and cardiovascular function. I use a high-concentration fish oil with third-party testing.</p><p><strong>Vitamin D3 + K2:</strong> 4000 IU D3 with 200mcg K2. Critical for immune function, bone health, and testosterone production. The K2 ensures proper calcium routing.</p><p><strong>Magnesium Glycinate:</strong> 400mg before bed. Supports sleep quality, muscle recovery, and stress management. Glycinate form for optimal absorption and minimal digestive impact.</p><p><strong>Creatine Monohydrate:</strong> 5g daily. The most researched supplement in existence. Supports strength, cognitive function, and cellular energy.</p><p><strong>NMN:</strong> 500mg morning. NAD+ precursor with promising research on cellular health and longevity. The science is emerging but compelling.</p><h2>Situational Additions</h2><p><strong>Caffeine + L-Theanine:</strong> 100mg caffeine with 200mg L-theanine for focused work sessions. The theanine smooths the caffeine jitters.</p><p><strong>Electrolytes:</strong> During fasting windows and heavy training days. Sodium, potassium, magnesium in balanced ratios.</p><h2>What I Don't Take</h2><p>Multivitamins (underdosed and poorly absorbed), BCAAs (unnecessary with adequate protein), pre-workouts (prefer caffeine alone), fat burners (snake oil).</p><h2>Tracking and Adjustment</h2><p>I track subjective energy, sleep quality, training performance, and get quarterly blood work. The stack evolves based on data, not trends.</p><h2>The Bottom Line</h2><p>Supplements are the final 5% of the health equation. Master sleep, nutrition, training, and stress management first. Then, and only then, optimize with targeted supplementation.</p>",
+    "coverImage": "/images/blog/supplement-stack.jpg",
+    "gallery": [],
+    "author": {
+      "id": "author-001",
+      "name": "Zdrav",
+      "slug": "zdrav",
+      "bio": "Software engineer, problem solver, and vitality architect.",
+      "avatar": "/images/author-avatar.jpg",
+      "socialLinks": [
+        { "platform": "twitter", "url": "https://twitter.com/zdravlife", "label": "Twitter" },
+        { "platform": "instagram", "url": "https://instagram.com/zdravlife", "label": "Instagram" }
+      ],
+      "postCount": 42
+    },
+    "category": {
+      "id": "cat-nutrition",
+      "slug": "nutrition",
+      "name": "Nutrition",
+      "description": "Fasting protocols, meal systems, and nutritional optimization for high performance.",
+      "postCount": 15
+    },
+    "tags": [
+      { "id": "tag-supplements", "slug": "supplements", "name": "Supplements", "postCount": 6 },
+      { "id": "tag-longevity", "slug": "longevity", "name": "Longevity", "postCount": 5 },
+      { "id": "tag-biohacking", "slug": "biohacking", "name": "Biohacking", "postCount": 6 }
+    ],
+    "seo": {
+      "title": "Evidence-Based Supplement Stack for Longevity | ZdravLife",
+      "description": "A minimalist, research-backed supplement protocol for cognitive function, physical performance, and long-term health optimization.",
+      "keywords": ["supplements", "longevity", "nmn", "creatine", "omega-3", "biohacking"]
+    },
+    "featured": false,
+    "publishedAt": "2024-04-05T08:30:00Z",
+    "updatedAt": "2024-04-05T08:30:00Z",
+    "readingTime": 14,
+    "relatedPostIds": ["post-001", "post-008", "post-011"],
+    "commentCount": 43,
+    "viewCount": 5621,
+    "status": "published"
+  },
+  {
+    "id": "post-006",
+    "slug": "one-arm-pullup-roadmap",
+    "title": "The One-Arm Pullup Roadmap: From Zero to One",
+    "subtitle": "A progressive training protocol for achieving the ultimate bodyweight pulling strength feat.",
+    "excerpt": "The one-arm pullup is the gold standard of bodyweight pulling strength. Here's the complete roadmap I used to achieve it after two years of dedicated training.",
+    "content": "<p>The one-arm pullup represents something beyond mere strength. It's the culmination of years of consistent training, a testament to patience and progressive overload. When I finally locked out my first clean rep, it was two years in the making.</p><h2>Why the One-Arm Pullup?</h2><p>Beyond the obvious display of strength, training for the one-arm pullup develops:</p><ul><li>Elite-level relative strength</li><li>Superior grip endurance</li><li>Core stability under load</li><li>Mental toughness and patience</li></ul><h2>Prerequisites</h2><p>Before beginning specialized training, you should be able to:</p><ul><li>Perform 15+ strict pullups</li><li>Hold a dead hang for 60+ seconds</li><li>Complete 5+ chest-to-bar pullups</li><li>Have no shoulder or elbow injuries</li></ul><h2>Phase 1: Foundation (Months 1-3)</h2><p><strong>Weighted Pullups:</strong> Build base strength with 3-5 rep sets. Work up to adding 50% of bodyweight.</p><p><strong>Archer Pullups:</strong> Begin asymmetric loading. 3-5 reps per arm, focusing on the straight arm.</p><p><strong>Typewriter Pullups:</strong> Hold at top, move side to side. Builds lockoff strength.</p><h2>Phase 2: Asymmetric Loading (Months 4-8)</h2><p><strong>One-Arm Assisted:</strong> Use a resistance band or assist machine. Focus on the pulling arm doing 80%+ of the work.</p><p><strong>One-Arm Negatives:</strong> Jump or assist to top position, lower under control. 5-second eccentric target.</p><p><strong>Mixed Grip Pullups:</strong> One hand on bar, one hand gripping the wrist of the pulling arm.</p><h2>Phase 3: Specificity (Months 9-18)</h2><p><strong>One-Arm Scapular Pulls:</strong> Initiate the pull from the scapula, building the initial engagement strength.</p><p><strong>One-Arm Flex Hang:</strong> Hold at 90 degrees, building mid-range strength.</p><p><strong>Full One-Arm Attempts:</strong> Weekly testing, focusing on the weaker arm first.</p><h2>Programming Notes</h2><p>Train pull strength 2-3x per week with 48 hours between sessions. Prioritize recovery—tendons adapt slower than muscles. Be patient with plateaus; they're part of the process.</p><h2>The Mental Game</h2><p>The one-arm pullup will test your patience. Progress is measured in months, not weeks. Trust the process, celebrate small victories, and remember: every elite calisthenics athlete started exactly where you are now.</p>",
+    "coverImage": "/images/blog/one-arm-pullup.jpg",
+    "gallery": [],
+    "author": {
+      "id": "author-001",
+      "name": "Zdrav",
+      "slug": "zdrav",
+      "bio": "Software engineer, problem solver, and vitality architect.",
+      "avatar": "/images/author-avatar.jpg",
+      "socialLinks": [
+        { "platform": "twitter", "url": "https://twitter.com/zdravlife", "label": "Twitter" },
+        { "platform": "instagram", "url": "https://instagram.com/zdravlife", "label": "Instagram" }
+      ],
+      "postCount": 42
+    },
+    "category": {
+      "id": "cat-training",
+      "slug": "training",
+      "name": "Training",
+      "description": "Workout protocols, exercise systems, and the science of physical transformation.",
+      "postCount": 22
+    },
+    "tags": [
+      { "id": "tag-calisthenics", "slug": "calisthenics", "name": "Calisthenics", "postCount": 10 },
+      { "id": "tag-strength", "slug": "strength", "name": "Strength", "postCount": 14 },
+      { "id": "tag-pullup", "slug": "pullup", "name": "Pullup", "postCount": 4 }
+    ],
+    "seo": {
+      "title": "One-Arm Pullup Training Roadmap | ZdravLife",
+      "description": "Complete progressive training protocol for achieving the one-arm pullup. From prerequisites to execution, the full roadmap to elite pulling strength.",
+      "keywords": ["one arm pullup", "calisthenics strength", "pullup progression", "bodyweight training"]
+    },
+    "featured": false,
+    "publishedAt": "2024-03-18T09:00:00Z",
+    "updatedAt": "2024-03-18T09:00:00Z",
+    "readingTime": 16,
+    "relatedPostIds": ["post-003", "post-009", "post-013"],
+    "commentCount": 78,
+    "viewCount": 9876,
+    "status": "published"
+  }
+]

@@ -1,0 +1,413 @@
+[
+  {
+    "id": "prod-001",
+    "slug": "zdravlife-premium-hoodie",
+    "title": "ZdravLife Premium Hoodie",
+    "subtitle": "Engineered comfort for the pursuit of vitality",
+    "description": "<p>The ZdravLife Premium Hoodie is designed for those who refuse to compromise. Crafted from a heavyweight 400gsm cotton-poly blend, it provides the perfect balance of warmth, durability, and comfort.</p><p>Whether you're warming up for a training session, coding through a late-night sprint, or exploring mountain roads at dawn, this hoodie moves with you.</p><h3>Features</h3><ul><li>Heavyweight 400gsm fabric</li><li>Reinforced seams for durability</li><li>Kangaroo pocket with hidden phone sleeve</li><li>Adjustable hood with premium drawcords</li><li>Ribbed cuffs and hem</li><li>Subtle embroidered logo</li></ul><h3>Fit</h3><p>Athletic fit with room to move. Size up for a relaxed fit, down for a more fitted look.</p>",
+    "shortDescription": "Heavyweight premium hoodie with reinforced seams, hidden phone pocket, and subtle embroidered branding. Built for training, travel, and everything in between.",
+    "images": [
+      { "id": "img-001", "url": "/images/products/hoodie-black-1.jpg", "alt": "ZdravLife Premium Hoodie - Black Front", "isPrimary": true },
+      { "id": "img-002", "url": "/images/products/hoodie-black-2.jpg", "alt": "ZdravLife Premium Hoodie - Black Back", "isPrimary": false },
+      { "id": "img-003", "url": "/images/products/hoodie-navy-1.jpg", "alt": "ZdravLife Premium Hoodie - Navy Front", "isPrimary": false }
+    ],
+    "category": {
+      "id": "cat-apparel",
+      "slug": "apparel",
+      "name": "Apparel",
+      "description": "Premium clothing built for movement and durability.",
+      "productCount": 8
+    },
+    "tags": ["hoodie", "apparel", "training", "premium"],
+    "price": 89.00,
+    "compareAtPrice": 110.00,
+    "currency": "USD",
+    "ratingAverage": 4.9,
+    "reviewCount": 127,
+    "featured": true,
+    "stockStatus": "in_stock",
+    "stockQuantity": 45,
+    "sku": "ZL-HOOD-001",
+    "seo": {
+      "title": "ZdravLife Premium Hoodie | Engineered Comfort",
+      "description": "Heavyweight premium hoodie with reinforced seams and hidden phone pocket. Built for training, travel, and the pursuit of vitality.",
+      "keywords": ["premium hoodie", "training apparel", "athletic wear", "zdravlife merch"]
+    },
+    "details": [
+      { "label": "Material", "value": "80% Cotton, 20% Polyester (400gsm)" },
+      { "label": "Fit", "value": "Athletic fit" },
+      { "label": "Care", "value": "Machine wash cold, hang dry" },
+      { "label": "Origin", "value": "Ethically manufactured in Portugal" }
+    ],
+    "shippingInfo": {
+      "weight": "800g",
+      "shippingTime": "3-5 business days (EU), 5-10 business days (International)",
+      "freeShippingThreshold": 100,
+      "returnsPolicy": "30-day hassle-free returns. Items must be unworn with tags attached."
+    },
+    "faqIds": ["faq-001", "faq-002", "faq-003"],
+    "relatedProductIds": ["prod-002", "prod-003", "prod-007"],
+    "variants": [
+      { "id": "var-001", "title": "Black / S", "sku": "ZL-HOOD-001-BLK-S", "price": 89.00, "stockStatus": "in_stock", "stockQuantity": 12, "options": { "color": "Black", "size": "S" } },
+      { "id": "var-002", "title": "Black / M", "sku": "ZL-HOOD-001-BLK-M", "price": 89.00, "stockStatus": "in_stock", "stockQuantity": 15, "options": { "color": "Black", "size": "M" } },
+      { "id": "var-003", "title": "Black / L", "sku": "ZL-HOOD-001-BLK-L", "price": 89.00, "stockStatus": "in_stock", "stockQuantity": 10, "options": { "color": "Black", "size": "L" } },
+      { "id": "var-004", "title": "Black / XL", "sku": "ZL-HOOD-001-BLK-XL", "price": 89.00, "stockStatus": "in_stock", "stockQuantity": 8, "options": { "color": "Black", "size": "XL" } },
+      { "id": "var-005", "title": "Navy / M", "sku": "ZL-HOOD-001-NVY-M", "price": 89.00, "stockStatus": "low_stock", "stockQuantity": 3, "options": { "color": "Navy", "size": "M" } },
+      { "id": "var-006", "title": "Navy / L", "sku": "ZL-HOOD-001-NVY-L", "price": 89.00, "stockStatus": "in_stock", "stockQuantity": 7, "options": { "color": "Navy", "size": "L" } }
+    ],
+    "attributes": [
+      { "name": "Color", "values": ["Black", "Navy"] },
+      { "name": "Size", "values": ["S", "M", "L", "XL", "XXL"] }
+    ],
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": "2024-06-10T00:00:00Z"
+  },
+  {
+    "id": "prod-002",
+    "slug": "vitality-tee",
+    "title": "Vitality Tee",
+    "subtitle": "Minimal design. Maximum performance.",
+    "description": "<p>The Vitality Tee is our daily driver. The shirt you'll reach for whether you're training, traveling, or building something that matters.</p><p>Made from a premium blend of organic cotton and performance polyester, it wicks moisture, resists odor, and maintains its shape through hundreds of washes.</p><h3>Features</h3><ul><li>160gsm lightweight fabric</li><li>Moisture-wicking technology</li><li>Anti-odor treatment</li><li>Pre-shrunk for consistent fit</li><li>Minimal chest print</li><li>Tagless for comfort</li></ul>",
+    "shortDescription": "Lightweight performance tee with moisture-wicking fabric and anti-odor treatment. Your daily driver for training and life.",
+    "images": [
+      { "id": "img-004", "url": "/images/products/tee-white-1.jpg", "alt": "Vitality Tee - White", "isPrimary": true },
+      { "id": "img-005", "url": "/images/products/tee-black-1.jpg", "alt": "Vitality Tee - Black", "isPrimary": false }
+    ],
+    "category": {
+      "id": "cat-apparel",
+      "slug": "apparel",
+      "name": "Apparel",
+      "description": "Premium clothing built for movement and durability.",
+      "productCount": 8
+    },
+    "tags": ["t-shirt", "apparel", "training", "essential"],
+    "price": 39.00,
+    "currency": "USD",
+    "ratingAverage": 4.8,
+    "reviewCount": 203,
+    "featured": true,
+    "stockStatus": "in_stock",
+    "stockQuantity": 120,
+    "sku": "ZL-TEE-001",
+    "seo": {
+      "title": "Vitality Tee | Performance T-Shirt | ZdravLife",
+      "description": "Lightweight performance tee with moisture-wicking technology. Built for training, travel, and everyday excellence.",
+      "keywords": ["performance tee", "training shirt", "athletic apparel", "moisture wicking"]
+    },
+    "details": [
+      { "label": "Material", "value": "60% Organic Cotton, 40% Polyester" },
+      { "label": "Weight", "value": "160gsm" },
+      { "label": "Fit", "value": "Athletic fit" },
+      { "label": "Care", "value": "Machine wash cold, tumble dry low" }
+    ],
+    "shippingInfo": {
+      "weight": "200g",
+      "shippingTime": "3-5 business days (EU), 5-10 business days (International)",
+      "freeShippingThreshold": 100,
+      "returnsPolicy": "30-day hassle-free returns. Items must be unworn with tags attached."
+    },
+    "faqIds": ["faq-001", "faq-002"],
+    "relatedProductIds": ["prod-001", "prod-003", "prod-008"],
+    "variants": [
+      { "id": "var-007", "title": "White / S", "sku": "ZL-TEE-001-WHT-S", "price": 39.00, "stockStatus": "in_stock", "stockQuantity": 25 },
+      { "id": "var-008", "title": "White / M", "sku": "ZL-TEE-001-WHT-M", "price": 39.00, "stockStatus": "in_stock", "stockQuantity": 30 },
+      { "id": "var-009", "title": "White / L", "sku": "ZL-TEE-001-WHT-L", "price": 39.00, "stockStatus": "in_stock", "stockQuantity": 20 },
+      { "id": "var-010", "title": "Black / S", "sku": "ZL-TEE-001-BLK-S", "price": 39.00, "stockStatus": "in_stock", "stockQuantity": 15 },
+      { "id": "var-011", "title": "Black / M", "sku": "ZL-TEE-001-BLK-M", "price": 39.00, "stockStatus": "in_stock", "stockQuantity": 20 },
+      { "id": "var-012", "title": "Black / L", "sku": "ZL-TEE-001-BLK-L", "price": 39.00, "stockStatus": "in_stock", "stockQuantity": 10 }
+    ],
+    "attributes": [
+      { "name": "Color", "values": ["White", "Black", "Heather Grey"] },
+      { "name": "Size", "values": ["S", "M", "L", "XL", "XXL"] }
+    ],
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": "2024-05-20T00:00:00Z"
+  },
+  {
+    "id": "prod-003",
+    "slug": "engineer-vitality-sticker-pack",
+    "title": "Engineer Your Vitality Sticker Pack",
+    "subtitle": "Decorate your gear. Declare your mindset.",
+    "description": "<p>A collection of premium vinyl stickers designed to represent the ZdravLife philosophy. Weatherproof, fade-resistant, and built to last.</p><p>Perfect for laptops, water bottles, motorcycle helmets, and anywhere else you want to make a statement.</p><h3>The Pack Includes</h3><ul><li>1x Large 'Engineer Your Vitality' sticker (15cm)</li><li>1x ZdravLife Logo sticker (8cm)</li><li>1x Fist & Mountains sticker (8cm)</li><li>1x 'Discipline Over Motivation' sticker (10cm)</li><li>1x 'Ride Further' sticker (8cm)</li><li>1x Small logo sticker (4cm)</li></ul>",
+    "shortDescription": "Premium vinyl sticker pack with 6 designs. Weatherproof, fade-resistant, and built to last. Perfect for laptops, helmets, and water bottles.",
+    "images": [
+      { "id": "img-006", "url": "/images/products/sticker-pack-1.jpg", "alt": "Engineer Your Vitality Sticker Pack", "isPrimary": true },
+      { "id": "img-007", "url": "/images/products/sticker-pack-2.jpg", "alt": "Sticker Pack Layout", "isPrimary": false }
+    ],
+    "category": {
+      "id": "cat-accessories",
+      "slug": "accessories",
+      "name": "Accessories",
+      "description": "Stickers, patches, and lifestyle accessories.",
+      "productCount": 12
+    },
+    "tags": ["stickers", "accessories", "lifestyle", "gear"],
+    "price": 14.00,
+    "currency": "USD",
+    "ratingAverage": 4.9,
+    "reviewCount": 89,
+    "featured": false,
+    "stockStatus": "in_stock",
+    "stockQuantity": 200,
+    "sku": "ZL-STICKER-001",
+    "seo": {
+      "title": "Engineer Your Vitality Sticker Pack | ZdravLife",
+      "description": "Premium vinyl sticker pack with 6 designs. Weatherproof and fade-resistant for laptops, helmets, and gear.",
+      "keywords": ["stickers", "vinyl stickers", "laptop stickers", "motivational stickers"]
+    },
+    "details": [
+      { "label": "Material", "value": "Premium vinyl with UV coating" },
+      { "label": "Durability", "value": "Weatherproof, fade-resistant" },
+      { "label": "Quantity", "value": "6 stickers per pack" },
+      { "label": "Sizes", "value": "4cm to 15cm" }
+    ],
+    "shippingInfo": {
+      "weight": "50g",
+      "shippingTime": "3-5 business days (EU), 5-10 business days (International)",
+      "freeShippingThreshold": 100,
+      "returnsPolicy": "Due to the nature of this product, returns are not accepted unless defective."
+    },
+    "faqIds": ["faq-004"],
+    "relatedProductIds": ["prod-001", "prod-002", "prod-009"],
+    "createdAt": "2024-02-01T00:00:00Z",
+    "updatedAt": "2024-04-15T00:00:00Z"
+  },
+  {
+    "id": "prod-004",
+    "slug": "calisthenics-mastery-guide",
+    "title": "Calisthenics Mastery: The Complete Guide",
+    "subtitle": "Digital training guide for bodyweight strength",
+    "description": "<p>A comprehensive 200-page digital guide to building serious strength and muscle using only your bodyweight. Based on three years of training, research, and experimentation.</p><h3>What's Inside</h3><ul><li>Complete exercise library with 80+ movements</li><li>Progressive overload strategies for bodyweight training</li><li>6-month training programs for all levels</li><li>Nutrition guidelines for muscle building</li><li>Recovery and mobility protocols</li><li>Video demonstrations for every exercise</li></ul><h3>Programs Included</h3><ul><li>Foundation Program (Beginner)</li><li>Strength Builder (Intermediate)</li><li>Elite Strength (Advanced)</li><li>Skill Acquisition (Planche, Front Lever, Handstand)</li></ul>",
+    "shortDescription": "200-page digital guide with 80+ exercises, 6-month training programs, and video demonstrations. Build serious strength with bodyweight training.",
+    "images": [
+      { "id": "img-008", "url": "/images/products/guide-cover.jpg", "alt": "Calisthenics Mastery Guide Cover", "isPrimary": true },
+      { "id": "img-009", "url": "/images/products/guide-preview.jpg", "alt": "Guide Preview Pages", "isPrimary": false }
+    ],
+    "category": {
+      "id": "cat-digital",
+      "slug": "digital-guides",
+      "name": "Digital Guides",
+      "description": "Training programs, protocols, and digital resources.",
+      "productCount": 4
+    },
+    "tags": ["digital", "training", "calisthenics", "guide"],
+    "price": 49.00,
+    "compareAtPrice": 79.00,
+    "currency": "USD",
+    "ratingAverage": 4.9,
+    "reviewCount": 156,
+    "featured": true,
+    "stockStatus": "in_stock",
+    "sku": "ZL-GUIDE-001",
+    "seo": {
+      "title": "Calisthenics Mastery Guide | Digital Training Program | ZdravLife",
+      "description": "Complete bodyweight training guide with 80+ exercises, progressive programs, and video demonstrations. Build strength anywhere.",
+      "keywords": ["calisthenics guide", "bodyweight training", "workout program", "digital download"]
+    },
+    "details": [
+      { "label": "Format", "value": "PDF + Video Access" },
+      { "label": "Pages", "value": "200+" },
+      { "label": "Videos", "value": "80+ exercise demonstrations" },
+      { "label": "Access", "value": "Lifetime, instant download" }
+    ],
+    "shippingInfo": {
+      "weight": "Digital product",
+      "shippingTime": "Instant download after purchase",
+      "returnsPolicy": "30-day satisfaction guarantee. Full refund if not satisfied."
+    },
+    "faqIds": ["faq-005", "faq-006"],
+    "relatedProductIds": ["prod-005", "prod-006"],
+    "createdAt": "2024-03-01T00:00:00Z",
+    "updatedAt": "2024-05-15T00:00:00Z"
+  },
+  {
+    "id": "prod-005",
+    "slug": "20-4-fasting-protocol-guide",
+    "title": "The 20/4 Fasting Protocol Guide",
+    "subtitle": "Optimize energy, focus, and body composition",
+    "description": "<p>A comprehensive guide to implementing the 20/4 intermittent fasting protocol for high-performers. Based on 3+ years of personal experimentation and research.</p><h3>What's Inside</h3><ul><li>The science behind time-restricted eating</li><li>Step-by-step implementation guide</li><li>Meal timing and macronutrient strategies</li><li>Training around your fasting window</li><li>Supplement recommendations</li><li>Troubleshooting common issues</li><li>Sample meal plans and recipes</li></ul><p>Perfect for software engineers, knowledge workers, and anyone seeking to optimize their cognitive and physical performance.</p>",
+    "shortDescription": "Complete guide to the 20/4 fasting protocol. Meal plans, training strategies, and optimization tips for high-performers.",
+    "images": [
+      { "id": "img-010", "url": "/images/products/fasting-guide-cover.jpg", "alt": "20/4 Fasting Protocol Guide", "isPrimary": true }
+    ],
+    "category": {
+      "id": "cat-digital",
+      "slug": "digital-guides",
+      "name": "Digital Guides",
+      "description": "Training programs, protocols, and digital resources.",
+      "productCount": 4
+    },
+    "tags": ["digital", "nutrition", "fasting", "guide"],
+    "price": 29.00,
+    "currency": "USD",
+    "ratingAverage": 4.8,
+    "reviewCount": 94,
+    "featured": false,
+    "stockStatus": "in_stock",
+    "sku": "ZL-GUIDE-002",
+    "seo": {
+      "title": "20/4 Fasting Protocol Guide | Intermittent Fasting | ZdravLife",
+      "description": "Complete fasting protocol guide with meal plans, training strategies, and optimization for high-performers.",
+      "keywords": ["intermittent fasting", "20/4 protocol", "fasting guide", "nutrition optimization"]
+    },
+    "details": [
+      { "label": "Format", "value": "PDF" },
+      { "label": "Pages", "value": "85" },
+      { "label": "Recipes", "value": "15 optimized meal plans" },
+      { "label": "Access", "value": "Lifetime, instant download" }
+    ],
+    "shippingInfo": {
+      "weight": "Digital product",
+      "shippingTime": "Instant download after purchase",
+      "returnsPolicy": "30-day satisfaction guarantee."
+    },
+    "faqIds": ["faq-005", "faq-006"],
+    "relatedProductIds": ["prod-004", "prod-006"],
+    "createdAt": "2024-03-15T00:00:00Z",
+    "updatedAt": "2024-04-20T00:00:00Z"
+  },
+  {
+    "id": "prod-006",
+    "slug": "one-arm-pullup-roadmap-guide",
+    "title": "One-Arm Pullup Roadmap",
+    "subtitle": "From zero to one: the complete training system",
+    "description": "<p>The definitive guide to achieving the one-arm pullup. A progressive, phase-based training system developed over two years of dedicated practice.</p><h3>What's Inside</h3><ul><li>Complete 18-month training roadmap</li><li>Phase-based progression system</li><li>60+ specific exercises and variations</li><li>Video demonstrations of every movement</li><li>Programming templates for all levels</li><li>Injury prevention and recovery protocols</li><li>Mental training strategies</li></ul><p>Whether you're working toward your first one-arm pullup or looking to refine your technique, this guide provides the systematic approach you need.</p>",
+    "shortDescription": "Complete 18-month training roadmap for the one-arm pullup. 60+ exercises, video demonstrations, and phase-based programming.",
+    "images": [
+      { "id": "img-011", "url": "/images/products/oap-guide-cover.jpg", "alt": "One-Arm Pullup Roadmap Guide", "isPrimary": true }
+    ],
+    "category": {
+      "id": "cat-digital",
+      "slug": "digital-guides",
+      "name": "Digital Guides",
+      "description": "Training programs, protocols, and digital resources.",
+      "productCount": 4
+    },
+    "tags": ["digital", "training", "calisthenics", "strength"],
+    "price": 39.00,
+    "currency": "USD",
+    "ratingAverage": 4.9,
+    "reviewCount": 67,
+    "featured": true,
+    "stockStatus": "in_stock",
+    "sku": "ZL-GUIDE-003",
+    "seo": {
+      "title": "One-Arm Pullup Roadmap | Training Guide | ZdravLife",
+      "description": "Complete training system for achieving the one-arm pullup. Progressive phases, 60+ exercises, and video demonstrations.",
+      "keywords": ["one arm pullup", "pullup training", "calisthenics strength", "bodyweight training"]
+    },
+    "details": [
+      { "label": "Format", "value": "PDF + Video Access" },
+      { "label": "Pages", "value": "120" },
+      { "label": "Videos", "value": "60+ demonstrations" },
+      { "label": "Access", "value": "Lifetime, instant download" }
+    ],
+    "shippingInfo": {
+      "weight": "Digital product",
+      "shippingTime": "Instant download after purchase",
+      "returnsPolicy": "30-day satisfaction guarantee."
+    },
+    "faqIds": ["faq-005", "faq-006"],
+    "relatedProductIds": ["prod-004", "prod-005"],
+    "createdAt": "2024-04-01T00:00:00Z",
+    "updatedAt": "2024-05-10T00:00:00Z"
+  },
+  {
+    "id": "prod-007",
+    "slug": "zdravlife-training-journal",
+    "title": "ZdravLife Training Journal",
+    "subtitle": "Track progress. Build consistency. Achieve goals.",
+    "description": "<p>A premium training journal designed for serious athletes. Track workouts, monitor progress, and build the consistency that leads to results.</p><h3>Features</h3><ul><li>12 months of daily tracking</li><li>Workout logging templates</li><li>Progress photo pages</li><li>Goal setting and review sections</li><li>Body measurement tracking</li><li>Notes and reflection space</li><li>Durable hardcover binding</li><li>Ribbon bookmark</li></ul>",
+    "shortDescription": "Premium 12-month training journal with workout tracking, progress monitoring, and goal setting. Hardcover with durable binding.",
+    "images": [
+      { "id": "img-012", "url": "/images/products/journal-1.jpg", "alt": "ZdravLife Training Journal", "isPrimary": true },
+      { "id": "img-013", "url": "/images/products/journal-2.jpg", "alt": "Journal Interior Pages", "isPrimary": false }
+    ],
+    "category": {
+      "id": "cat-accessories",
+      "slug": "accessories",
+      "name": "Accessories",
+      "description": "Stickers, patches, and lifestyle accessories.",
+      "productCount": 12
+    },
+    "tags": ["journal", "accessories", "training", "tracking"],
+    "price": 34.00,
+    "currency": "USD",
+    "ratingAverage": 4.7,
+    "reviewCount": 45,
+    "featured": false,
+    "stockStatus": "in_stock",
+    "stockQuantity": 80,
+    "sku": "ZL-JOURNAL-001",
+    "seo": {
+      "title": "ZdravLife Training Journal | Workout Tracker | ZdravLife",
+      "description": "Premium 12-month training journal for tracking workouts, monitoring progress, and building consistency.",
+      "keywords": ["training journal", "workout log", "fitness tracker", "exercise journal"]
+    },
+    "details": [
+      { "label": "Format", "value": "Hardcover, A5 size" },
+      { "label": "Pages", "value": "200 pages" },
+      { "label": "Duration", "value": "12 months" },
+      { "label": "Paper", "value": "90gsm, fountain pen friendly" }
+    ],
+    "shippingInfo": {
+      "weight": "400g",
+      "shippingTime": "3-5 business days (EU), 5-10 business days (International)",
+      "freeShippingThreshold": 100,
+      "returnsPolicy": "30-day hassle-free returns."
+    },
+    "faqIds": ["faq-001", "faq-002"],
+    "relatedProductIds": ["prod-001", "prod-004"],
+    "createdAt": "2024-02-15T00:00:00Z",
+    "updatedAt": "2024-04-10T00:00:00Z"
+  },
+  {
+    "id": "prod-008",
+    "slug": "discipline-over-motivation-tee",
+    "title": "Discipline Over Motivation Tee",
+    "subtitle": "Wear the mindset. Live the principle.",
+    "description": "<p>A bold statement piece for those who understand that success comes from systems, not feelings. Premium quality with a powerful message.</p><p>Made from the same performance fabric as our Vitality Tee, with a striking back print that reminds you (and everyone behind you) what really drives results.</p>",
+    "shortDescription": "Premium performance tee with 'Discipline Over Motivation' back print. Moisture-wicking fabric for training and everyday wear.",
+    "images": [
+      { "id": "img-014", "url": "/images/products/discipline-tee-1.jpg", "alt": "Discipline Over Motivation Tee - Front", "isPrimary": true },
+      { "id": "img-015", "url": "/images/products/discipline-tee-2.jpg", "alt": "Discipline Over Motivation Tee - Back", "isPrimary": false }
+    ],
+    "category": {
+      "id": "cat-apparel",
+      "slug": "apparel",
+      "name": "Apparel",
+      "description": "Premium clothing built for movement and durability.",
+      "productCount": 8
+    },
+    "tags": ["t-shirt", "apparel", "mindset", "statement"],
+    "price": 42.00,
+    "currency": "USD",
+    "ratingAverage": 4.8,
+    "reviewCount": 78,
+    "featured": false,
+    "stockStatus": "in_stock",
+    "stockQuantity": 65,
+    "sku": "ZL-TEE-002",
+    "seo": {
+      "title": "Discipline Over Motivation Tee | ZdravLife",
+      "description": "Premium performance tee with bold back print. Moisture-wicking fabric for training and everyday excellence.",
+      "keywords": ["motivational tee", "discipline shirt", "training apparel", "mindset clothing"]
+    },
+    "details": [
+      { "label": "Material", "value": "60% Organic Cotton, 40% Polyester" },
+      { "label": "Weight", "value": "160gsm" },
+      { "label": "Print", "value": "High-quality screen print" },
+      { "label": "Care", "value": "Machine wash cold, inside out" }
+    ],
+    "shippingInfo": {
+      "weight": "200g",
+      "shippingTime": "3-5 business days (EU), 5-10 business days (International)",
+      "freeShippingThreshold": 100,
+      "returnsPolicy": "30-day hassle-free returns. Items must be unworn with tags attached."
+    },
+    "faqIds": ["faq-001", "faq-002"],
+    "relatedProductIds": ["prod-002", "prod-003"],
+    "createdAt": "2024-03-01T00:00:00Z",
+    "updatedAt": "2024-05-01T00:00:00Z"
+  }
+]

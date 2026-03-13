@@ -1,0 +1,118 @@
+[
+  {
+    "id": "rev-001",
+    "productId": "prod-001",
+    "authorName": "Marcus T.",
+    "authorAvatar": "/images/avatars/marcus.jpg",
+    "rating": 5,
+    "title": "Best hoodie I've ever owned",
+    "content": "The quality of this hoodie is exceptional. The fabric is heavyweight but not bulky, and the fit is perfect. The hidden phone pocket is a genius touch—keeps my phone secure when I'm riding. Worth every penny.",
+    "createdAt": "2024-05-20T14:30:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 24
+  },
+  {
+    "id": "rev-002",
+    "productId": "prod-001",
+    "authorName": "Sarah K.",
+    "authorAvatar": "/images/avatars/sarah.jpg",
+    "rating": 5,
+    "title": "Premium quality, worth the investment",
+    "content": "You can feel the quality as soon as you put it on. The stitching is solid, the fabric is soft but durable. I've washed it multiple times and it still looks brand new. Highly recommend.",
+    "createdAt": "2024-05-15T09:15:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 18
+  },
+  {
+    "id": "rev-003",
+    "productId": "prod-001",
+    "authorName": "David R.",
+    "rating": 4,
+    "title": "Great hoodie, runs slightly small",
+    "content": "Love the quality and design. Only reason for 4 stars is that it runs a bit small. I'd recommend sizing up if you want a relaxed fit. Otherwise, excellent product.",
+    "createdAt": "2024-05-10T16:45:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 12
+  },
+  {
+    "id": "rev-004",
+    "productId": "prod-002",
+    "authorName": "Alex M.",
+    "authorAvatar": "/images/avatars/alex.jpg",
+    "rating": 5,
+    "title": "Perfect training shirt",
+    "content": "I've tried dozens of training tees and this is by far the best. The fabric breathes well, doesn't hold odor, and keeps its shape. I now own 4 of these and they're all I wear to the gym.",
+    "createdAt": "2024-05-25T11:20:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 31
+  },
+  {
+    "id": "rev-005",
+    "productId": "prod-002",
+    "authorName": "Jennifer L.",
+    "rating": 5,
+    "title": "My new favorite tee",
+    "content": "Bought one to try it out, immediately ordered two more. The fit is athletic without being tight, and the material is incredibly soft. Perfect for both workouts and casual wear.",
+    "createdAt": "2024-05-18T13:00:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 15
+  },
+  {
+    "id": "rev-006",
+    "productId": "prod-003",
+    "authorName": "Chris P.",
+    "authorAvatar": "/images/avatars/chris.jpg",
+    "rating": 5,
+    "title": "High quality stickers",
+    "content": "These stickers are legit. Thick vinyl, great adhesion, and the designs are clean. Put them on my helmet and they've held up through rain, sun, and highway speeds. Already ordered another pack.",
+    "createdAt": "2024-04-28T10:30:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 22
+  },
+  {
+    "id": "rev-007",
+    "productId": "prod-004",
+    "authorName": "Michael B.",
+    "authorAvatar": "/images/avatars/michael.jpg",
+    "rating": 5,
+    "title": "Comprehensive and practical",
+    "content": "This guide is worth 10x the price. The progressions are logical, the programming is clear, and the video demonstrations are incredibly helpful. I've already seen significant strength gains after 2 months following the intermediate program.",
+    "createdAt": "2024-05-22T15:45:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 45
+  },
+  {
+    "id": "rev-008",
+    "productId": "prod-004",
+    "authorName": "Emma S.",
+    "rating": 5,
+    "title": "Finally, a guide that makes sense",
+    "content": "I've tried so many calisthenics programs that were either too basic or assumed you could already do muscle-ups. This guide hits the sweet spot with clear progressions for every level. The section on programming is especially valuable.",
+    "createdAt": "2024-05-12T08:20:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 28
+  },
+  {
+    "id": "rev-009",
+    "productId": "prod-005",
+    "authorName": "Thomas H.",
+    "authorAvatar": "/images/avatars/thomas.jpg",
+    "rating": 5,
+    "title": "Game changer for my productivity",
+    "content": "As a developer, I was skeptical about fasting affecting my cognitive performance. This guide showed me how to do it right. My morning focus has never been better, and I've lost 8kg in 3 months without counting calories.",
+    "createdAt": "2024-05-08T14:00:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 33
+  },
+  {
+    "id": "rev-010",
+    "productId": "prod-006",
+    "authorName": "Ryan K.",
+    "rating": 5,
+    "title": "Achieved my first OAP!",
+    "content": "After 14 months following this roadmap, I finally got my first clean one-arm pullup. The progressions are spot-on and the troubleshooting section helped me push through multiple plateaus. If you're serious about the OAP, get this guide.",
+    "createdAt": "2024-05-30T09:30:00Z",
+    "verifiedPurchase": true,
+    "helpfulCount": 52
+  }
+]

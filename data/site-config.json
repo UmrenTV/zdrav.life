@@ -1,0 +1,26 @@
+{
+  "name": "ZdravLife",
+  "tagline": "Engineer Your Vitality",
+  "description": "A premium personal lifestyle brand at the intersection of high-performance living, calisthenics, motorcycle travel, and software engineering. Build strength. Master discipline. Ride further. Live deeper.",
+  "url": "https://zdrav.life",
+  "ogImage": "/images/og-default.jpg",
+  "links": {
+    "youtube": "https://youtube.com/@zdravlife",
+    "instagram": "https://instagram.com/zdravlife",
+    "twitter": "https://twitter.com/zdravlife",
+    "github": "https://github.com/zdravlife",
+    "discord": "https://discord.gg/zdravlife"
+  },
+  "author": {
+    "name": "Zdrav",
+    "email": "hello@zdrav.life",
+    "bio": "Software engineer, problem solver, and vitality architect. Building systems for strength, discipline, and freedom.",
+    "avatar": "/images/author-avatar.jpg"
+  },
+  "seo": {
+    "titleTemplate": "%s | ZdravLife",
+    "defaultTitle": "ZdravLife - Engineer Your Vitality",
+    "defaultDescription": "Build strength. Master discipline. Ride further. Live deeper. A software engineer's journey into high-performance living.",
+    "twitterHandle": "@zdravlife"
+  }
+}

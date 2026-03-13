@@ -1,0 +1,188 @@
+[
+  {
+    "id": "com-001",
+    "entityType": "post",
+    "entityId": "post-001",
+    "authorName": "Daniel F.",
+    "authorEmail": "daniel@example.com",
+    "authorAvatar": "/images/avatars/daniel.jpg",
+    "content": "Been doing 16/8 for a while but never considered extending to 20/4. Your point about cognitive peak at 14-18 hours is interesting. Going to give this a try starting next week.",
+    "createdAt": "2024-06-16T10:30:00Z",
+    "status": "approved",
+    "likes": 12,
+    "replies": [
+      {
+        "id": "com-001-r1",
+        "entityType": "post",
+        "entityId": "post-001",
+        "parentId": "com-001",
+        "authorName": "Zdrav",
+        "authorAvatar": "/images/author-avatar.jpg",
+        "content": "Good luck! Take it slow—extend by 30 minutes every few days. Your body will adapt faster than you think.",
+        "createdAt": "2024-06-16T14:00:00Z",
+        "status": "approved",
+        "likes": 8,
+        "replies": [],
+        "repliesCount": 0
+      }
+    ],
+    "repliesCount": 1
+  },
+  {
+    "id": "com-002",
+    "entityType": "post",
+    "entityId": "post-001",
+    "authorName": "Lisa M.",
+    "content": "How do you handle social situations where everyone is eating during your fasting window? This is my biggest struggle with longer fasts.",
+    "createdAt": "2024-06-17T09:15:00Z",
+    "status": "approved",
+    "likes": 7,
+    "replies": [],
+    "repliesCount": 0
+  },
+  {
+    "id": "com-003",
+    "entityType": "post",
+    "entityId": "post-002",
+    "authorName": "Robert P.",
+    "authorAvatar": "/images/avatars/robert.jpg",
+    "content": "Rode a similar route last summer. The Tara Canyon section is absolutely incredible—some of the best roads in Europe. Did you stop at the Đurđevića Tara Bridge?",
+    "createdAt": "2024-05-29T16:45:00Z",
+    "status": "approved",
+    "likes": 15,
+    "replies": [
+      {
+        "id": "com-003-r1",
+        "entityType": "post",
+        "entityId": "post-002",
+        "parentId": "com-003",
+        "authorName": "Zdrav",
+        "authorAvatar": "/images/author-avatar.jpg",
+        "content": "Absolutely! Spent an hour there just taking it in. The view from the bridge is unreal—definitely a highlight of the trip.",
+        "createdAt": "2024-05-29T18:00:00Z",
+        "status": "approved",
+        "likes": 9,
+        "replies": [],
+        "repliesCount": 0
+      }
+    ],
+    "repliesCount": 1
+  },
+  {
+    "id": "com-004",
+    "entityType": "post",
+    "entityId": "post-002",
+    "authorName": "Nina K.",
+    "content": "This is exactly the kind of content I needed. Planning a similar trip next month. What was your daily budget like for accommodation and food?",
+    "createdAt": "2024-05-30T11:20:00Z",
+    "status": "approved",
+    "likes": 5,
+    "replies": [],
+    "repliesCount": 0
+  },
+  {
+    "id": "com-005",
+    "entityType": "post",
+    "entityId": "post-003",
+    "authorName": "Jason W.",
+    "authorAvatar": "/images/avatars/jason.jpg",
+    "content": "Been following your training for a while. The progress you've made on one-arm pushups is inspiring. Quick question: how do you progress from archer pushups to full one-arm?",
+    "createdAt": "2024-05-11T14:30:00Z",
+    "status": "approved",
+    "likes": 18,
+    "replies": [
+      {
+        "id": "com-005-r1",
+        "entityType": "post",
+        "entityId": "post-003",
+        "parentId": "com-005",
+        "authorName": "Zdrav",
+        "authorAvatar": "/images/author-avatar.jpg",
+        "content": "Great question! The key is gradually reducing the assistance from your supporting arm. Start with fingertips, then just one finger, then just a knuckle touch for balance. Also, negatives are huge—jump up and lower under control. Check out my One-Arm Pullup Roadmap guide for the full progression system—it applies to pushups too!",
+        "createdAt": "2024-05-11T16:00:00Z",
+        "status": "approved",
+        "likes": 22,
+        "replies": [],
+        "repliesCount": 0
+      }
+    ],
+    "repliesCount": 1
+  },
+  {
+    "id": "com-006",
+    "entityType": "post",
+    "entityId": "post-003",
+    "authorName": "Amanda L.",
+    "content": "Do you ever incorporate weights into your training, or is it 100% bodyweight?",
+    "createdAt": "2024-05-12T10:00:00Z",
+    "status": "approved",
+    "likes": 4,
+    "replies": [],
+    "repliesCount": 0
+  },
+  {
+    "id": "com-007",
+    "entityType": "post",
+    "entityId": "post-004",
+    "authorName": "Kevin R.",
+    "authorAvatar": "/images/avatars/kevin.jpg",
+    "content": "This article hit me at the right time. I've been struggling with consistency, always waiting to 'feel like it.' Going to implement the 2-minute rule starting today.",
+    "createdAt": "2024-04-23T08:45:00Z",
+    "status": "approved",
+    "likes": 28,
+    "replies": [],
+    "repliesCount": 0
+  },
+  {
+    "id": "com-008",
+    "entityType": "post",
+    "entityId": "post-004",
+    "authorName": "Sophie T.",
+    "content": "The identity-based habits concept is powerful. Instead of 'I'm trying to work out more,' I've started saying 'I'm an athlete.' The shift in mindset is real.",
+    "createdAt": "2024-04-24T13:20:00Z",
+    "status": "approved",
+    "likes": 19,
+    "replies": [],
+    "repliesCount": 0
+  },
+  {
+    "id": "com-009",
+    "entityType": "post",
+    "entityId": "post-006",
+    "authorName": "Brian H.",
+    "authorAvatar": "/images/avatars/brian.jpg",
+    "content": "Currently at 12 strict pullups. This roadmap gives me hope that the OAP is achievable. Starting Phase 1 next week!",
+    "createdAt": "2024-03-19T15:30:00Z",
+    "status": "approved",
+    "likes": 14,
+    "replies": [],
+    "repliesCount": 0
+  },
+  {
+    "id": "com-010",
+    "entityType": "post",
+    "entityId": "post-006",
+    "authorName": "Rachel G.",
+    "content": "How important is grip strength for the one-arm pullup? Should I be doing specific grip work alongside this program?",
+    "createdAt": "2024-03-20T11:00:00Z",
+    "status": "approved",
+    "likes": 8,
+    "replies": [
+      {
+        "id": "com-010-r1",
+        "entityType": "post",
+        "entityId": "post-006",
+        "parentId": "com-010",
+        "authorName": "Zdrav",
+        "authorAvatar": "/images/author-avatar.jpg",
+        "content": "Grip is crucial but often develops naturally through the training. The weighted pullups and one-arm hangs will build plenty of grip strength. If you want extra work, add dead hangs after your sessions and farmer's walks on off days.",
+        "createdAt": "2024-03-20T14:00:00Z",
+        "status": "approved",
+        "likes": 11,
+        "replies": [],
+        "repliesCount": 0
+      }
+    ],
+    "repliesCount": 1
+  }
+]

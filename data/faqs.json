@@ -1,0 +1,72 @@
+[
+  {
+    "id": "faq-001",
+    "question": "What are your shipping times and costs?",
+    "answer": "We ship worldwide from our EU warehouse. EU orders typically arrive within 3-5 business days. International orders take 5-10 business days. Shipping is free on orders over $100. For orders under $100, shipping costs are calculated at checkout based on your location.",
+    "category": "shipping",
+    "order": 1
+  },
+  {
+    "id": "faq-002",
+    "question": "What is your return policy?",
+    "answer": "We offer a 30-day hassle-free return policy on all physical products. Items must be unworn with original tags attached. Digital products can be returned within 30 days if you're not satisfied—just contact us for a full refund. To initiate a return, email us at hello@zdrav.life with your order number.",
+    "category": "returns",
+    "order": 2
+  },
+  {
+    "id": "faq-003",
+    "question": "How do I find my correct size?",
+    "answer": "Each product page includes a detailed size guide with measurements. Our apparel tends to fit true to size with an athletic cut. If you're between sizes or prefer a relaxed fit, we recommend sizing up. If you have specific sizing questions, feel free to reach out and we'll help you find the perfect fit.",
+    "category": "products",
+    "order": 3
+  },
+  {
+    "id": "faq-004",
+    "question": "Are your stickers waterproof and durable?",
+    "answer": "Yes! All our stickers are made from premium vinyl with a UV-resistant coating. They're waterproof, fade-resistant, and built to withstand outdoor conditions. They're perfect for helmets, water bottles, laptops, and anywhere else you want to show your commitment to the ZdravLife philosophy.",
+    "category": "products",
+    "order": 4
+  },
+  {
+    "id": "faq-005",
+    "question": "How do I access my digital guide after purchase?",
+    "answer": "After completing your purchase, you'll receive an email with a download link within minutes. The link provides lifetime access to your digital product. If you don't see the email, check your spam folder or contact us at hello@zdrav.life and we'll resend it immediately.",
+    "category": "digital",
+    "order": 5
+  },
+  {
+    "id": "faq-006",
+    "question": "Can I get a refund on digital products?",
+    "answer": "Yes, we offer a 30-day satisfaction guarantee on all digital products. If the guide doesn't meet your expectations for any reason, simply email us within 30 days of purchase for a full refund. No questions asked.",
+    "category": "digital",
+    "order": 6
+  },
+  {
+    "id": "faq-007",
+    "question": "Do you offer wholesale or bulk pricing?",
+    "answer": "Yes, we offer wholesale pricing for gyms, coaches, and retailers interested in carrying ZdravLife products. We also provide bulk discounts on orders of 10+ items. Contact us at wholesale@zdrav.life with your requirements and we'll provide a custom quote.",
+    "category": "business",
+    "order": 7
+  },
+  {
+    "id": "faq-008",
+    "question": "How can I collaborate with ZdravLife?",
+    "answer": "We're always open to collaborations with aligned creators, athletes, and brands. Whether you're interested in sponsored content, affiliate partnerships, or product collaborations, send us a proposal at partnerships@zdrav.life. Tell us about your audience, your values, and how you see us working together.",
+    "category": "business",
+    "order": 8
+  },
+  {
+    "id": "faq-009",
+    "question": "What is the ZdravLife philosophy?",
+    "answer": "ZdravLife is built on the principle of engineering your vitality—approaching health, fitness, and life with the same systematic rigor that software engineers apply to code. We believe in discipline over motivation, consistency over intensity, and the pursuit of excellence in all areas of life. It's about building systems that support high performance, whether that's in the gym, on the road, or in your work.",
+    "category": "general",
+    "order": 9
+  },
+  {
+    "id": "faq-010",
+    "question": "Do you offer coaching or personalized training programs?",
+    "answer": "At this time, I don't offer one-on-one coaching. However, my digital guides provide comprehensive programming for all levels. I also share regular training content on my YouTube channel and blog. For specific questions, the community on Discord is a great place to get advice and feedback.",
+    "category": "training",
+    "order": 10
+  }
+]
