@@ -95,17 +95,14 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
-  /* Selection styling */
   ::selection {
     @apply bg-primary/30 text-foreground;
   }
   
-  /* Focus visible styling */
   :focus-visible {
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
   
-  /* Reduced motion support */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -119,7 +116,6 @@
 }
 
 @layer components {
-  /* Container utilities */
   .container-narrow {
     @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
   }
@@ -128,7 +124,6 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-  /* Section spacing */
   .section-padding {
     @apply py-16 md:py-24 lg:py-32;
   }
@@ -137,7 +132,6 @@
     @apply py-12 md:py-16 lg:py-20;
   }
   
-  /* Typography utilities */
   .text-balance {
     text-wrap: balance;
   }
@@ -146,7 +140,6 @@
     @apply bg-gradient-to-r from-primary to-vitality bg-clip-text text-transparent;
   }
   
-  /* Glass effect */
   .glass {
     @apply bg-white/80 dark:bg-navy-950/80 backdrop-blur-xl border border-white/20 dark:border-white/10;
   }
@@ -155,12 +148,10 @@
     @apply bg-white/95 dark:bg-navy-950/95 backdrop-blur-2xl border border-white/30 dark:border-white/10;
   }
   
-  /* Card hover effect */
   .card-hover {
     @apply transition-all duration-300 ease-smooth hover:shadow-soft-lg hover:-translate-y-1;
   }
   
-  /* Image hover zoom */
   .img-zoom {
     @apply overflow-hidden;
   }
@@ -173,7 +164,6 @@
     @apply scale-105;
   }
   
-  /* Button shine effect */
   .btn-shine {
     @apply relative overflow-hidden;
   }
@@ -187,7 +177,6 @@
     @apply translate-x-full;
   }
   
-  /* Link underline animation */
   .link-underline {
     @apply relative;
   }
@@ -201,7 +190,6 @@
     @apply w-full;
   }
   
-  /* Prose styling for articles */
   .prose-custom {
     @apply prose prose-lg dark:prose-invert max-w-none;
     @apply prose-headings:font-heading prose-headings:font-semibold prose-headings:tracking-tight;
@@ -216,7 +204,6 @@
     @apply prose-li:marker:text-primary;
   }
   
-  /* Scrollbar styling */
   .scrollbar-thin {
     scrollbar-width: thin;
     scrollbar-color: hsl(var(--muted-foreground) / 0.3) transparent;
@@ -238,7 +225,6 @@
     @apply bg-muted-foreground/50;
   }
   
-  /* Hide scrollbar but keep functionality */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -248,7 +234,6 @@
     display: none;
   }
   
-  /* Gradient backgrounds */
   .bg-gradient-hero {
     @apply bg-gradient-to-br from-background via-background to-primary/5;
   }
@@ -257,12 +242,10 @@
     @apply bg-gradient-to-br from-background via-background to-primary/10;
   }
   
-  /* Glow effects */
   .glow-primary {
     box-shadow: var(--shadow-glow);
   }
   
-  /* Noise texture overlay */
   .noise-overlay {
     @apply relative;
   }
@@ -275,7 +258,6 @@
 }
 
 @layer utilities {
-  /* Animation delay utilities */
   .animation-delay-100 {
     animation-delay: 100ms;
   }
@@ -292,7 +274,6 @@
     animation-delay: 500ms;
   }
   
-  /* Line clamp utilities */
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -314,7 +295,6 @@
     overflow: hidden;
   }
   
-  /* Aspect ratio utilities */
   .aspect-video {
     aspect-ratio: 16 / 9;
   }
@@ -327,7 +307,6 @@
     aspect-ratio: 3 / 4;
   }
   
-  /* Safe area utilities for mobile */
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom);
   }
