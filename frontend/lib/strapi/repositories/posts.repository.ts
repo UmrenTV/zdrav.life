@@ -77,8 +77,8 @@ export async function getPaginatedPosts(
   });
 
   const posts = list.map((d) => mapStrapiPostToPost(d)).filter(Boolean) as Post[];
-  const totalItems = meta?.total ?? posts.length;
-  const totalPages = meta?.pageCount ?? (Math.ceil(totalItems / limit) || 1);
+  const totalItems = meta?.pagination?.total ?? posts.length;
+  const totalPages = meta?.pagination?.pageCount ?? (Math.ceil(totalItems / limit) || 1);
 
   return {
     posts,

@@ -60,8 +60,8 @@ export async function getPaginatedProducts(
     products = products.sort((a, b) => (b.reviewCount ?? 0) - (a.reviewCount ?? 0));
   }
 
-  const totalItems = meta?.total ?? products.length;
-  const totalPages = meta?.pageCount ?? (Math.ceil(totalItems / limit) || 1);
+  const totalItems = meta?.pagination?.total ?? products.length;
+  const totalPages = meta?.pagination?.pageCount ?? (Math.ceil(totalItems / limit) || 1);
 
   return {
     products,

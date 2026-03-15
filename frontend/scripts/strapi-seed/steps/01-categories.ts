@@ -15,7 +15,7 @@ function slugFromName(name: string): string {
   return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 }
 
-export async function seedCategories(): Promise<Map<string, string>> {
+export async function seedCategories(): Promise<{ idMap: Map<string, string>; slugToDocId: Map<string, string> }> {
   const posts = await loadJson<PostJson[]>('posts.json');
   const videos = await loadJson<VideoJson[]>('videos.json').catch(() => []);
   const gallery = await loadJson<GalleryJson[]>('gallery.json').catch(() => []);
@@ -47,7 +47,7 @@ export async function seedCategories(): Promise<Map<string, string>> {
 
   const idMap = new Map<string, string>(); // old id -> documentId
   const slugToDocId = new Map<string, string>();
-  for (const [oldId, cat] of seen) {
+  for (const [oldId, cat] of Array.from(seen.entries())) {
     const existing = await getCollection<{ slug: string }>('categories', {
       filters: { slug: cat.slug },
       publicationState: 'preview', // include draft so we find just-created entries

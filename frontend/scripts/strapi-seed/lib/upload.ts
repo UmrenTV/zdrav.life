@@ -41,7 +41,7 @@ export async function uploadFile(
 
   const filename = path.basename(filePath);
   const form = new FormData();
-  form.append('files', new Blob([buffer]), filename);
+  form.append('files', new Blob([new Uint8Array(buffer)]), filename);
 
   if (options?.alternativeText) {
     form.append(
