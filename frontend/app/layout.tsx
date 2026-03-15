@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { Providers } from '@/app/providers';
 import { SiteConfigProvider } from '@/lib/context/site-config';
 import { LayoutChrome } from '@/components/layout/layout-chrome';
+import { GoogleAnalytics } from '@/components/analytics/google-analytics';
 import { getSiteConfig } from '@/lib/data/data-source';
 import './globals.css';
 
@@ -88,6 +89,7 @@ export default async function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
       <body className="min-h-screen w-full max-w-full bg-background font-sans antialiased overflow-x-hidden">
+        <GoogleAnalytics />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
