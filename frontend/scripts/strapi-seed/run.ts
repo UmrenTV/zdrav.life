@@ -1,10 +1,9 @@
 /**
- * Strapi schema seed: bootstrap Site Setting and Home Page only (no dummy content).
- * Use this after copying schema from strapi-schema-export to cms and building Strapi.
- * For full dummy content (posts, products, etc.), run: npm run strapi-dummy-data
+ * Strapi content seed: bootstrap Site Setting and Home Page only (no dummy content).
+ * Use after Strapi (cms) is running with the schema applied. For full dummy content, run: npm run strapi-dummy-data
  *
- * Usage: npx tsx scripts/strapi-seed/run.ts
- * Requires: STRAPI_URL and STRAPI_API_TOKEN. Run from project root.
+ * Usage (from frontend root): npm run strapi-seed   OR   npx tsx scripts/strapi-seed/run.ts
+ * Requires: STRAPI_URL and STRAPI_API_TOKEN. Loads data from frontend/data/site-config.json.
  */
 import 'dotenv/config';
 

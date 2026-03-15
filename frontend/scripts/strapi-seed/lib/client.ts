@@ -44,7 +44,7 @@ async function strapiFetch<T>(
     const code = cause && typeof cause === 'object' && 'code' in cause ? (cause as { code: string }).code : '';
     if (code === 'ECONNREFUSED') {
       throw new Error(
-        `Cannot connect to Strapi at ${STRAPI_URL}. Is Strapi running? Start it with: cd cms && npm run develop`
+        `Cannot connect to Strapi at ${STRAPI_URL}. Is Strapi running? Start it from the cms directory (e.g. cd ../cms && npm run develop).`
       );
     }
     throw err;

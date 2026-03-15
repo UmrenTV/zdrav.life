@@ -1,6 +1,6 @@
 /**
  * Load JSON data files from the frontend data directory.
- * Run scripts from project root so process.cwd() is the repo root.
+ * Run scripts from the frontend root (e.g. npm run strapi-seed) so process.cwd() is frontend/ and data/ resolves to frontend/data/.
  */
 
 import { readFile } from 'fs/promises';

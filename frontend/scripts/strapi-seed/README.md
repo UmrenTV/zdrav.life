@@ -1,36 +1,45 @@
 # Strapi Seed Scripts
 
+Scripts run from the **frontend** directory. They call the Strapi REST API to create/update **content** (they do not apply schema; schema lives in the **cms** codebase).
+
 Two entry points:
 
-1. **Schema seed (bootstrap only)** — `npm run strapi-seed`  
-   Seeds **Site Setting** and **Home Page** only (no dummy content). Use after copying schema from `strapi-schema-export/` to your Strapi project. If `data/site-config.json` is missing, minimal defaults are used.
+1. **Content bootstrap only** — `npm run strapi-seed`  
+   Seeds **Site Setting** and **Home Page** only (no dummy content). Reads `data/site-config.json` from the frontend folder. If missing, minimal defaults are used.
 
 2. **Dummy data (full content)** — `npm run strapi-dummy-data`  
-   Seeds all content from `data/*.json` (categories, tags, authors, posts, products, videos, gallery, reviews, comments, FAQs, testimonials, legal pages, site-setting, home-page). Run after the schema seed when you want sample content.
+   Seeds all content from `data/*.json` (categories, tags, authors, posts, products, videos, gallery, reviews, comments, FAQs, testimonials, legal pages, site-setting, home-page). Run after the bootstrap when you want sample content.
 
 ## Prerequisites
 
-1. Strapi project running with the ZdravLife schema applied (see `strapi-schema-export/` and `docs/STRAPI_APPLY_SCHEMA.md`).
-2. Environment variables:
+1. **Strapi (cms)** running with the ZdravLife schema. Schema is in the cms codebase; for first-time setup see `strapi-schema-export/` and `docs/STRAPI_APPLY_SCHEMA.md`.
+2. Environment variables (e.g. in `frontend/.env`):
    - `STRAPI_URL` — e.g. `http://localhost:1337`
    - `STRAPI_API_TOKEN` — API token with create/update permission for the content types being seeded
 
-## Run from project root
+## Run from frontend root
 
 ```powershell
-# Schema bootstrap only (Site Setting + Home Page)
+cd frontend
+
+# Content bootstrap only (Site Setting + Home Page)
 npm run strapi-seed
 
 # Full dummy content (all steps, requires data/*.json)
 npm run strapi-dummy-data
 ```
 
-Or with tsx directly:
+Or with tsx directly (from frontend):
 
 ```powershell
 npx tsx scripts/strapi-seed/run.ts
 npx tsx scripts/strapi-seed/run-dummy-data.ts
 ```
+
+## Production
+
+- **Schema:** Deploy the **cms** app. Strapi loads schema from the cms codebase; there is no separate “seed schema” step.
+- **Content:** After Strapi is deployed, run the frontend seed from a machine that can reach your Strapi URL: set `STRAPI_URL` and `STRAPI_API_TOKEN` to your production values, then `npm run strapi-seed` (and optionally `npm run strapi-dummy-data`) from the frontend directory.
 
 ## Order of steps
 
