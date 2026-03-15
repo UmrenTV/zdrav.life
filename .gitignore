@@ -5,6 +5,8 @@
 */node_modules
 */.next
 frontend/.next
+frontend\.next
+*.next
 
 
 # Testing
@@ -45,3 +47,6 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+frontend/.next/*
+frontend/.next*
+*/.next/*

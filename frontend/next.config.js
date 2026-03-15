@@ -19,9 +19,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '**.cdninstagram.com',
       },
-      // Strapi media (dev: localhost:1337; production: add your Strapi host)
+      // Strapi media (dev: localhost:1337; production: your Strapi host)
       { protocol: 'http', hostname: 'localhost', port: '1337', pathname: '/uploads/**' },
       { protocol: 'https', hostname: 'localhost', port: '1337', pathname: '/uploads/**' },
+      { protocol: 'https', hostname: 'zdravlife-production.up.railway.app', pathname: '/uploads/**' },
     ],
   },
   async headers() {
