@@ -1,0 +1,50 @@
+feat: build fixes, full route set, PLAN alignment, and image placeholder script
+
+Build & type fixes:
+- Fix client/server split: GalleryStripSection and TestimonialsSection (and
+  FeaturedContent, FeaturedVideos, FeaturedBlog, FeaturedShop) now fetch data
+  in server components and pass to client components for motion to avoid
+  bundling Node fs in client.
+- Fix CommentSection entityType to use Comment['entityType'] for type safety.
+- Disable experimental typedRoutes so config-driven hrefs (footer, nav) work.
+- Add missing Badge import in review-section.tsx.
+- Fix ThemeProvider props type (next-themes): use ComponentProps<typeof NextThemesProvider>.
+- Fix Open Graph type: map product to 'website' for Next Metadata compatibility.
+- Add optional stockStatus to generateProductSchema and product param type.
+- Mark API routes that use request.url as dynamic (force-dynamic) to avoid
+  static generation errors.
+- Make not-found.tsx a client component so Button onClick (history.back) works.
+- Replace dynamic trust-badge icon array with explicit JSX on shop product page
+  to avoid serialization issues during SSG.
+- Add optional chaining for variant.options in product-info (options may be missing).
+
+New routes (PLAN + sitemap):
+- /contact (form + contact info)
+- /search (full-site search with URL query state)
+- /categories/[slug] and /tags/[slug] (category/tag landing pages with BlogGrid)
+- /media (videos + gallery hub)
+- Pillar pages: /adventures, /nutrition, /training, /philosophy, /lifestyle, /journal
+- Legal/support: /privacy-policy, /terms, /shipping-returns
+
+Data & services:
+- data/youtube.json (mirror of videos.json for future API)
+- data/instagram.json (Instagram-style feed for future API/CMS)
+- getCategoryBySlug, getTagBySlug in data layer
+- getPaginatedPosts accepts optional category and tag filters
+
+Blog:
+- Blog index respects ?category= and ?tag=; pagination preserves query params.
+
+SEO & nav:
+- Sitemap: /media, /search, /journal, /lifestyle, /shipping-returns; dynamic
+  entries for /categories/[slug] and /tags/[slug].
+- Navbar search icon links to /search.
+
+Docs:
+- CHANGELOG.md (1.1.0 and 1.0.0)
+- README.md updated with brand summary, full route/data list, and changelog link.
+
+Images:
+- Add IMAGES_NEEDED.md listing all referenced image paths.
+- Add scripts/ensure-placeholder-images.js to copy placeholder into required
+  paths so the app runs without 404s until real assets are added.

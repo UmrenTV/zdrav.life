@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_footer_link_groups",
+  "info": {
+    "displayName": "Footer link group",
+    "description": "One box/column in the footer with a title and multiple links (e.g. Content, Training, Shop, Support)."
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "links": { "type": "component", "component": "shared.footer-link", "repeatable": true }
+  }
+}

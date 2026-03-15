@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "home_pages",
+  "info": {
+    "singularName": "home-page",
+    "pluralName": "home-pages",
+    "displayName": "Home page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hero": { "type": "component", "component": "layout.hero", "repeatable": false },
+    "featuredPosts": { "type": "relation", "relation": "manyToMany", "target": "api::post.post", "description": "Featured blog posts" },
+    "featuredProducts": { "type": "relation", "relation": "manyToMany", "target": "api::product.product" },
+    "featuredVideos": { "type": "relation", "relation": "manyToMany", "target": "api::video.video" },
+    "featuredGalleryItems": { "type": "relation", "relation": "manyToMany", "target": "api::gallery-item.gallery-item" },
+    "featuredTestimonials": { "type": "relation", "relation": "manyToMany", "target": "api::testimonial.testimonial" },
+    "homepageSeo": { "type": "component", "component": "shared.seo", "repeatable": false }
+  }
+}

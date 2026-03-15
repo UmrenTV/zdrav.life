@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_footer_links",
+  "info": {
+    "displayName": "Footer link",
+    "description": "Single link inside a footer link group (label + URL)."
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string", "required": true },
+    "link": { "type": "string", "required": true }
+  }
+}

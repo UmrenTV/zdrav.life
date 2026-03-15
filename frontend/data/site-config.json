@@ -1,0 +1,65 @@
+{
+  "name": "ZdravLife",
+  "tagline": "Engineer Your Vitality",
+  "logo": "",
+  "maintenanceMode": false,
+  "description": "A premium personal lifestyle brand at the intersection of high-performance living, calisthenics, motorcycle travel, and software engineering. Build strength. Master discipline. Ride further. Live deeper.",
+  "url": "https://zdrav.life",
+  "ogImage": "/images/og-default.jpg",
+  "links": {
+    "youtube": "https://youtube.com/@zdravlife",
+    "instagram": "https://instagram.com/zdravlife",
+    "twitter": "https://twitter.com/zdravlife",
+    "github": "https://github.com/zdravlife",
+    "discord": "https://discord.gg/zdravlife"
+  },
+  "author": {
+    "name": "Zdrav",
+    "email": "hello@zdrav.life",
+    "bio": "Software engineer, problem solver, and vitality architect. Building systems for strength, discipline, and freedom.",
+    "avatar": "/images/author-avatar.jpg"
+  },
+  "seo": {
+    "titleTemplate": "%s | ZdravLife",
+    "defaultTitle": "ZdravLife - Engineer Your Vitality",
+    "defaultDescription": "Build strength. Master discipline. Ride further. Live deeper. A software engineer's journey into high-performance living.",
+    "twitterHandle": "@zdravlife",
+    "keywords": [
+      "calisthenics",
+      "hypertrophy",
+      "fasting",
+      "nutrition",
+      "longevity",
+      "motorcycle travel",
+      "personal development",
+      "discipline",
+      "lifestyle systems",
+      "high-performance living",
+      "software engineer fitness",
+      "adventure blog",
+      "health optimization"
+    ]
+  },
+  "newsletterHeading": "Join the System",
+  "newsletterText": "Get weekly insights on training, nutrition, and the pursuit of vitality. No spam, just value.",
+  "footerText": "Engineer your vitality. Build strength. Master discipline. Ride further. Live deeper.",
+  "nameAccent": { "useAccent": true, "position": "last", "letterCount": 4 },
+  "footerLinkGroups": [
+    { "title": "Content", "links": [{ "label": "Blog", "href": "/blog" }, { "label": "Videos", "href": "/videos" }, { "label": "Gallery", "href": "/gallery" }, { "label": "Adventures", "href": "/adventures" }] },
+    { "title": "Training", "links": [{ "label": "Training", "href": "/training" }, { "label": "Nutrition", "href": "/nutrition" }, { "label": "Philosophy", "href": "/philosophy" }, { "label": "Journal", "href": "/journal" }] },
+    { "title": "Shop", "links": [{ "label": "Shop", "href": "/shop" }] },
+    { "title": "Support", "links": [{ "label": "About", "href": "/about" }, { "label": "Contact", "href": "/contact" }, { "label": "FAQ", "href": "/faq" }, { "label": "Shipping & Returns", "href": "/shipping" }] }
+  ],
+  "menu": [
+    { "name": "Blog", "href": "/blog", "icon": "book-open", "openInNewTab": false },
+    { "name": "Shop", "href": "/shop", "icon": "shopping-bag", "openInNewTab": false },
+    { "name": "Videos", "href": "/videos", "icon": "youtube", "openInNewTab": false },
+    { "name": "Gallery", "href": "/gallery", "icon": "image", "openInNewTab": false },
+    { "name": "About", "href": "/about", "icon": "user", "openInNewTab": false }
+  ],
+  "footerLegalLinks": [
+    { "label": "Privacy Policy", "href": "/privacy-policy" },
+    { "label": "Terms of Service", "href": "/terms" }
+  ],
+  "features": { "shop": true, "blog": true, "gallery": true, "videos": true }
+}

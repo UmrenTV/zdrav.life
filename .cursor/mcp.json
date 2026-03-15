@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "strapi": {
+      "type": "streamable-http",
+      "url": "http://localhost:1337/api/mcp/streamable"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    }
+  }
+}

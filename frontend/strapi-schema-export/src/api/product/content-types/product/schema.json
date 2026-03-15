@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "subtitle": { "type": "string" },
+    "shortDescription": { "type": "text" },
+    "description": { "type": "richtext" },
+    "gallery": { "type": "media", "multiple": true, "required": false, "allowedTypes": ["images"] },
+    "featuredImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "category": { "type": "relation", "relation": "manyToOne", "target": "api::product-category.product-category" },
+    "tags": { "type": "relation", "relation": "manyToMany", "target": "api::tag.tag" },
+    "price": { "type": "decimal" },
+    "compareAtPrice": { "type": "decimal" },
+    "currency": { "type": "string", "default": "USD" },
+    "stockStatus": { "type": "enumeration", "enum": ["in_stock", "low_stock", "out_of_stock", "pre_order"] },
+    "sku": { "type": "string" },
+    "featured": { "type": "boolean", "default": false },
+    "specs": { "type": "component", "component": "product.spec-item", "repeatable": true },
+    "shippingInfo": { "type": "json" },
+    "faqItems": { "type": "component", "component": "layout.faq-item", "repeatable": true },
+    "relatedProducts": { "type": "relation", "relation": "manyToMany", "target": "api::product.product" },
+    "seo": { "type": "component", "component": "shared.seo", "repeatable": false },
+    "reviewsEnabled": { "type": "boolean", "default": true }
+  }
+}

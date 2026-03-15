@@ -1,0 +1,1437 @@
+Act as a world-class senior software architect, senior Next.js engineer, senior UI/UX designer, senior SEO strategist, senior technical product manager, and senior frontend systems engineer.
+
+Your task is to DESIGN AND BUILD a full-fledged, production-grade, highly polished, SEO-optimized, scalable website for the personal lifestyle brand:
+
+BRAND NAME:
+ZdravLife
+
+DOMAIN:
+zdrav.life
+
+CORE BRAND IDEA:
+“Engineer your vitality.”
+A premium personal lifestyle brand at the intersection of:
+- high-performance living
+- calisthenics and hypertrophy
+- nutrition, fasting, longevity, and bio-optimization
+- motorcycle travel and adventure
+- nature and remote landscapes
+- philosophy, discipline, mindset, and self-mastery
+- software engineering, systems thinking, creativity, and modern digital craftsmanship
+- media, storytelling, interviews, life blogs, and premium products/merch
+
+IMPORTANT:
+This is NOT a generic influencer website.
+This is NOT a generic fitness website.
+This is NOT a generic ecommerce site.
+
+This must feel like a premium, custom-crafted, ambitious, expensive personal brand ecosystem for a software engineer / creator / athlete / rider / thinker / explorer.
+
+The brand personality must feel:
+- disciplined
+- strong
+- intelligent
+- adventurous
+- calm but powerful
+- masculine but refined
+- technical but human
+- premium, modern, animated, fast, and SEO-first
+
+==================================================
+1. BUSINESS / PERSONAL CONTEXT TO UNDERSTAND
+==================================================
+
+The person behind this brand is:
+- a software engineer and problem solver
+- deeply into systems, optimization, performance, structure, discipline
+- focused on body and mind mastery
+- interested in calisthenics, hypertrophy, nutrition, fasting, supplements, longevity
+- into motorcycle riding, especially freedom, travel, scenic routes, open road energy
+- into creativity, design, music, art, media, storytelling, and premium digital experiences
+- wants to document life, build community, sell products/merch, share blog posts, publish videos, and grow a lifestyle brand
+
+The website must support:
+- personal brand authority
+- content publishing
+- product selling
+- storytelling
+- media aggregation
+- audience engagement
+- future growth into a larger platform
+
+YOUTUBE CHANNEL POSITIONING:
+“Software Engineer & Problem Solver on a mission to solve the most complex code of all: the human body and the drive for adventure.
+This channel is the intersection of high-performance living and the freedom of the open road.
+Moto-travel, calisthenics, hypertrophy, fasting, longevity, life talks, discipline, philosophy, and the future.”
+
+Translate this into a website that feels like:
+- a premium lifestyle magazine
+- a creator storefront
+- a performance blog
+- an adventure journal
+- a media hub
+- a future-ready digital brand HQ
+
+==================================================
+2. VISUAL BRAND DIRECTION
+==================================================
+
+Use the uploaded logo as visual inspiration.
+The logo direction is:
+- bold blue primary
+- white / icy / alpine tones
+- strong outline-driven branding
+- fist / strength symbolism
+- mountains / vitality / pulse / movement themes
+- sporty, bold, punchy identity
+
+Create a polished visual system inspired by the logo but upgraded into a premium website design system.
+
+COLOR SYSTEM:
+Base the palette around:
+- primary brand blue
+- deep navy / midnight blue for dark mode foundations
+- white / off-white / ice gray backgrounds
+- cool light gray surfaces
+- subtle steel / slate accents
+- optional energetic accent for CTAs used very sparingly
+
+Suggested palette direction:
+- Primary Blue: #1D4ED8 or close to logo-inspired royal/electric blue
+- Deep Blue/Navy: #0B1220 / #0F172A range
+- Ice Gray: #F4F8FC
+- Soft Gray: #E5EDF5
+- Slate: #64748B
+- White: #FFFFFF
+- Dark Surfaces: #0A0F1A / #111827
+- Accent (subtle): cyan/electric highlight or a soft vitality glow
+
+DO NOT make it childish or over-saturated.
+Keep it premium, balanced, strong.
+
+THEME SUPPORT:
+Implement BOTH:
+- Light Theme
+- Dark Theme
+
+Theme must not feel like an afterthought.
+Both themes must be first-class.
+Include:
+- theme toggle
+- system preference detection
+- persistent theme storage
+- design tokens for both themes
+- all components styled for both modes
+
+FONTS:
+Choose a premium, modern font pairing with excellent readability and personality.
+
+Suggested direction:
+- Heading font: something bold, modern, memorable, slightly athletic/tech/luxury
+- Body font: clean, highly legible, neutral sans-serif
+- Optional monospace usage only for tiny system/technical accents, stats, timestamps, metadata
+
+Example direction:
+- Headings: Space Grotesk / Sora / Manrope / Outfit
+- Body: Inter / Manrope / Plus Jakarta Sans
+- Tiny technical accents: JetBrains Mono or Geist Mono sparingly
+
+TYPOGRAPHY FEEL:
+- sharp
+- modern
+- expensive
+- clean
+- editorial
+- not overly corporate
+- not generic gym branding
+
+==================================================
+3. EXPERIENCE PRINCIPLES
+==================================================
+
+The website must feel:
+- extremely polished
+- smooth and animated
+- responsive
+- premium on desktop and mobile
+- clear and fast
+- content-rich but not cluttered
+- SEO-optimized
+- modular and scalable
+- easy to connect to APIs later
+
+UX PRINCIPLES:
+- strong storytelling above the fold
+- clear content hierarchy
+- clear CTAs without being spammy
+- editorial + commerce balance
+- visually immersive media sections
+- high perceived quality
+- modern motion design
+- subtle parallax / reveal effects / hover microinteractions
+- sticky navigation
+- excellent mobile experience
+- accessible
+- high contrast
+- keyboard friendly
+- reduced motion support
+
+ANIMATION DIRECTION:
+Use tasteful premium motion, not random flashy motion.
+Include:
+- staggered reveals
+- section fade/slide entrances
+- image hover depth
+- CTA hover states
+- subtle floating/glow effects
+- marquee or slider sections where relevant
+- animated stat counters where relevant
+- smooth theme transitions
+- subtle page transitions if architecture permits
+- Framer Motion or equivalent modern animation approach
+
+IMPORTANT:
+Motion should support brand identity of vitality, energy, and craftsmanship.
+Never make it feel bloated or slow.
+
+==================================================
+4. TECH STACK & ARCHITECTURE
+==================================================
+
+Build in:
+- Next.js latest stable App Router
+- TypeScript
+- Tailwind CSS
+- shadcn/ui or equivalent high-quality component system
+- Framer Motion
+- next/image
+- next/font
+- strong SEO metadata setup
+- JSON data layer for now
+- route handlers / mini-server architecture inside Next.js for future API-ready evolution
+
+The site must start with local JSON files and local image assets.
+Later it should be easy to swap those data providers with remote API calls without major rewrites.
+
+ARCHITECTURAL REQUIREMENTS:
+- clean folder structure
+- domain-driven organization where reasonable
+- component-based architecture
+- reusable UI primitives
+- reusable section components
+- reusable card systems
+- strongly typed data models
+- server/client boundary discipline
+- no spaghetti code
+- no mock junk architecture
+- code should look like a senior engineer planned it
+
+REQUIRED APPROACH:
+Create a “mini backend” inside Next.js with route handlers that serve JSON-based content for now.
+
+Example architecture:
+- /app/api/posts/route.ts
+- /app/api/posts/[slug]/route.ts
+- /app/api/products/route.ts
+- /app/api/products/[slug]/route.ts
+- /app/api/comments/route.ts
+- /app/api/comments/[entityType]/[entityId]/route.ts
+- /app/api/reviews/route.ts
+- /app/api/reviews/[productId]/route.ts
+- /app/api/categories/route.ts
+- /app/api/tags/route.ts
+- /app/api/media/youtube/route.ts
+- /app/api/media/instagram/route.ts
+
+For now:
+- read data from local JSON files
+- simulate GET/POST/PUT-ready patterns
+- document exactly how future API replacement should happen
+
+DATA LAYER:
+Use local JSON files such as:
+- /data/posts.json
+- /data/products.json
+- /data/comments.json
+- /data/reviews.json
+- /data/categories.json
+- /data/tags.json
+- /data/youtube.json
+- /data/instagram.json
+- /data/testimonials.json
+- /data/faqs.json
+- /data/site-settings.json
+
+Create TypeScript interfaces/types for all entities.
+
+==================================================
+5. PAGE / ROUTE STRUCTURE
+==================================================
+
+Build a full site map with all key pages.
+
+REQUIRED ROUTES:
+
+GLOBAL
+- /
+- /about
+- /contact
+- /shop
+- /shop/[slug]
+- /blog
+- /blog/[slug]
+- /categories/[slug]
+- /tags/[slug]
+- /media
+- /videos
+- /gallery
+- /adventures
+- /nutrition
+- /training
+- /lifestyle
+- /philosophy
+- /journal
+- /search
+- /faq
+- /privacy-policy
+- /terms
+- /shipping-returns
+- /404
+
+OPTIONAL BUT HIGHLY RECOMMENDED
+- /collections/[slug]
+- /newsletter-confirmation
+- /community
+- /press
+- /uses
+- /gear
+- /supplements
+- /resources
+
+You may group some sections under content taxonomies if the UX is better, but the site should clearly support the following content pillars:
+- moto travel & adventures
+- training / calisthenics / hypertrophy
+- nutrition / fasting / longevity
+- life philosophy / discipline / mindset
+- software / systems / behind-the-scenes creative projects
+- products / merch / gear
+- videos / social media feed / media content
+
+==================================================
+6. HOMEPAGE REQUIREMENTS
+==================================================
+
+The homepage must be a world-class premium landing + portal page.
+
+It should feel like the HQ of the brand.
+
+SECTIONS TO INCLUDE:
+
+1. HEADER / NAVBAR
+- sticky transparent-to-solid header
+- logo left
+- desktop nav
+- mobile nav drawer
+- CTA buttons
+- theme toggle
+- search trigger
+- optional cart icon placeholder
+- social icons
+- subtle scroll state change
+
+2. HERO SECTION
+Must be cinematic and high-impact.
+Include:
+- strong headline
+- strong subheadline
+- background visuals or layered media
+- animated elements
+- clear CTAs
+- optional featured video / featured journey / featured article
+- premium emotional copy
+
+Possible headline direction:
+Engineer Your Vitality.
+Build strength. Master discipline. Ride further. Live deeper.
+
+or similar.
+
+Include two or three core CTA directions:
+- Explore the Blog
+- Watch the Journey
+- Shop the Brand
+- Read My Story
+
+3. FEATURED CONTENT STRIP / SLIDER
+A premium content carousel or editorial highlight row with:
+- featured blog posts
+- adventures
+- training protocols
+- latest releases
+- use elegant card system
+- make it scrollable/swipeable
+- performant and accessible
+
+4. BRAND PILLARS / BOX GRID
+Boxes/cards for major content pillars:
+- Training
+- Nutrition
+- Adventures
+- Philosophy
+- Videos
+- Shop
+
+Each must have:
+- icon or image
+- description
+- CTA
+- hover animation
+
+5. ABOUT SNAPSHOT
+A premium summary introducing the person/brand.
+Include:
+- portrait / editorial image area
+- text
+- system-thinking angle
+- strength + code + road + nature narrative
+- CTA to full About page
+
+6. FEATURED YOUTUBE FEED
+Section showing latest/featured YouTube content.
+For now use local JSON.
+Later prepared for YouTube API.
+Include:
+- featured large video card
+- supporting smaller cards
+- durations, titles, category, publish date
+- CTA to videos page and YouTube channel
+
+7. INSTAGRAM / GALLERY STRIP
+Show lifestyle visual feed:
+- training
+- bike
+- nature
+- food
+- behind the scenes
+- travel
+Make it a highly visual scrollable section.
+
+8. FEATURED BLOG / JOURNAL SECTION
+Editorial cards for latest written content:
+- longform article cards
+- categories/tags
+- reading time
+- author
+- date
+- image
+- excerpt
+- CTA
+
+9. FEATURED SHOP / PRODUCT SECTION
+Show:
+- featured merch
+- supplements / guides / digital products if relevant
+- category filters
+- quick view placeholder structure
+- ratings/reviews preview
+- CTA to shop
+
+10. COMMUNITY / TESTIMONIAL / SOCIAL PROOF
+Could include:
+- audience testimonials
+- customer reviews
+- comments highlight
+- quote slider
+- user-generated style cards
+
+11. NEWSLETTER / JOIN THE SYSTEM
+A strong branded signup section:
+- compelling copy
+- not generic
+- “Join the System”
+- promise value: protocols, stories, gear drops, ride logs, thoughts
+- structure prepared for real newsletter integration later
+
+12. CTA BANNER
+Premium banner before footer with bold message and clear CTA.
+
+13. FOOTER
+Multi-column footer:
+- navigation
+- content pillars
+- shop links
+- contact
+- social links
+- newsletter mini form
+- legal links
+- copyright
+- brand statement
+
+==================================================
+7. ABOUT PAGE REQUIREMENTS
+==================================================
+
+This page must feel premium and personal, not cringe and not generic.
+It should explain:
+- who ZdravLife is
+- the mission
+- why software engineering mindset connects to body and life optimization
+- the intersection of discipline, strength, nature, adventure, and systems
+- what content people can expect
+- the philosophy behind the brand
+
+Include:
+- hero intro
+- long-form storytelling sections
+- values/principles grid
+- timeline/journey
+- “what I’m building” section
+- “why this exists” section
+- optional stats/counters
+- gear / passions / disciplines section
+- CTA to subscribe / follow / read / watch / shop
+
+Tone:
+- intelligent
+- personal
+- grounded
+- ambitious
+- masculine
+- not fake guru
+
+==================================================
+8. BLOG / JOURNAL SYSTEM REQUIREMENTS
+==================================================
+
+Build a serious, editorial-grade blog architecture.
+
+BLOG INDEX:
+- featured article
+- latest posts
+- category filters
+- tag filters
+- search
+- sort
+- infinite scroll or progressive load
+- pagination strategy that is SEO-friendly
+- category landing pages
+- tag landing pages
+- author metadata
+- reading time
+- cover image
+- excerpts
+- featured badges
+
+BLOG POST PAGE:
+Must include:
+- hero image
+- title
+- subtitle / excerpt
+- author
+- publish date
+- reading time
+- category
+- tags
+- table of contents for long posts
+- rich content layout
+- stylized typography
+- inline images / quote blocks / callout blocks / embedded video support
+- share buttons
+- related posts
+- next/previous navigation
+- comment section
+- newsletter CTA
+- structured data for article SEO
+
+CONTENT CATEGORIES EXAMPLES:
+- Training
+- Calisthenics
+- Hypertrophy
+- Nutrition
+- Fasting
+- Longevity
+- Supplements
+- Adventure
+- Motorcycle Travel
+- Nature
+- Philosophy
+- Discipline
+- Life Talks
+- Behind the Build
+- Creativity
+- Gear
+- Journal
+
+Use sample content that reflects brand identity.
+Make sample posts feel realistic and premium.
+
+==================================================
+9. SHOP / ECOMMERCE REQUIREMENTS
+==================================================
+
+Build a premium storefront architecture even if checkout is not fully implemented yet.
+
+SHOP INDEX:
+- hero/banner
+- category filters
+- tags
+- sorting
+- price range UI
+- product cards
+- badges
+- hover states
+- grid/list view toggle if desired
+- load more / pagination / infinite scroll
+- featured collections
+- sticky filters on desktop
+- mobile filters drawer
+
+PRODUCT CATEGORIES EXAMPLES:
+- Merch
+- Apparel
+- Accessories
+- Stickers
+- Digital Guides
+- Training Plans
+- Ride Essentials
+- Lifestyle Gear
+
+PRODUCT CARD FIELDS:
+- image
+- title
+- slug
+- price
+- compare-at price if needed
+- category
+- tags
+- rating
+- review count
+- stock status
+- featured flag
+- short description
+- gallery
+
+PRODUCT DETAIL PAGE:
+Include:
+- image gallery
+- zoom/lightbox
+- title
+- subtitle
+- price
+- optional compare price
+- rating summary
+- review count
+- stock status
+- quantity selector
+- add to cart button placeholder architecture
+- wishlist placeholder structure
+- product description
+- tabs/accordions:
+  - Description
+  - Details
+  - Shipping
+  - Reviews
+- related products
+- recently viewed placeholder architecture
+- trust badges
+- review section
+- FAQ block
+
+REVIEWS:
+Every product must support reviews.
+For now:
+- load from JSON
+- architecture ready for GET/POST later
+Include:
+- average rating
+- distribution bars
+- review list
+- sorting
+- filter by rating
+- write review form placeholder or local-simulated POST
+- helpful vote UI placeholder if appropriate
+
+IMPORTANT:
+Even if payments are not implemented now, structure the code so a real cart/checkout system can be added later.
+
+==================================================
+10. COMMENTS SYSTEM REQUIREMENTS
+==================================================
+
+Every major activity/content page should support comments.
+
+Supported entities:
+- blog posts
+- adventures
+- videos/media items
+- maybe product discussions if desired separately from reviews
+
+For now:
+- comments read from JSON
+- post via route handler into in-memory or file-backed simulation if safe
+- otherwise simulate persistence but structure everything for future API/database replacement
+
+COMMENTS SHOULD SUPPORT:
+- name
+- optional email
+- optional website
+- content
+- createdAt
+- entityType
+- entityId
+- parentId for replies
+- moderation status field
+- likes placeholder
+- avatar fallback
+- threaded replies UI
+- sort by newest/oldest
+- “load more replies”
+- optimistic UI if appropriate
+
+IMPORTANT:
+Create a proper abstraction so later this can be switched to:
+GET /api/comments?entityType=post&entityId=...
+POST /api/comments
+PUT /api/comments/:id
+DELETE /api/comments/:id
+
+without major frontend rewrites.
+
+==================================================
+11. MEDIA / YOUTUBE / INSTAGRAM REQUIREMENTS
+==================================================
+
+Create a media hub.
+
+VIDEOS PAGE:
+- featured hero video
+- filter by category
+- search
+- card grid/list
+- support embedded YouTube layout
+- sample local JSON data now
+- future YouTube API ready
+
+GALLERY / INSTAGRAM PAGE:
+- masonry or responsive gallery
+- filters by type: travel, training, food, nature, bike, lifestyle
+- lightbox
+- captions
+- source metadata
+- future Instagram API / CMS ready
+- performance optimized
+
+MEDIA PAGE:
+An aggregator hub that unifies:
+- videos
+- image galleries
+- social content
+- featured clips
+- interviews / podcasts if added later
+
+==================================================
+12. ADVENTURES / CONTENT PILLAR PAGES
+==================================================
+
+Create dedicated premium content pillar pages.
+These should not just be empty archives.
+
+PAGES:
+- /adventures
+- /training
+- /nutrition
+- /lifestyle
+- /philosophy
+- /journal
+
+Each should have:
+- themed hero
+- intro copy
+- featured content
+- category filters
+- visual cards
+- related media
+- CTA sections
+- SEO content
+- strong internal linking
+
+EXAMPLES:
+ADVENTURES:
+- moto travel logs
+- road stories
+- route notes
+- scenic photo essays
+- gear and travel posts
+
+TRAINING:
+- protocols
+- progress articles
+- exercises
+- calisthenics / hypertrophy systems
+- routines
+- philosophy of training
+
+NUTRITION:
+- fasting
+- meal structure
+- low-carb / high-protein direction
+- longevity thoughts
+- supplement systems
+- recipes or food logs if desired
+
+PHILOSOPHY:
+- discipline
+- life design
+- relationships with struggle
+- systems thinking
+- identity building
+- deeper essays
+
+==================================================
+13. SEO REQUIREMENTS
+==================================================
+
+This is CRITICAL.
+The entire project must be SEO-first and technically sound.
+
+Implement:
+- full metadata architecture
+- dynamic metadata per page
+- canonical URLs
+- Open Graph tags
+- Twitter cards
+- robots.txt
+- sitemap.xml
+- structured data / JSON-LD
+- breadcrumb schema
+- article schema
+- product schema
+- organization/person schema
+- website schema
+- FAQ schema where relevant
+
+SEO REQUIREMENTS BY AREA:
+
+TECHNICAL SEO:
+- semantic HTML
+- correct heading hierarchy
+- server rendering where beneficial
+- clean URLs
+- internal linking strategy
+- optimized image loading
+- low CLS/LCP-friendly patterns
+- lazy loading where appropriate
+- metadata generation helpers
+- pagination/indexing considerations
+- search page index/noindex considerations
+- proper alt text strategy
+- sitemap coverage for content and products
+- robots best practices
+
+CONTENT SEO:
+Create placeholder/sample copy that targets realistic keyword clusters around:
+- calisthenics
+- hypertrophy
+- fasting
+- nutrition
+- longevity
+- motorcycle travel Balkans
+- personal development
+- discipline
+- lifestyle systems
+- high-performance living
+- software engineer fitness lifestyle
+- adventure blog
+- health optimization
+
+INTERNAL LINKING:
+- related articles
+- category links
+- tag links
+- content pillar links
+- shop-to-content and content-to-shop cross-linking
+- about page links
+- featured content blocks
+- breadcrumbs
+
+PERFORMANCE SEO:
+- fast pages
+- optimized images
+- code splitting
+- minimal client overuse
+- server components where appropriate
+- limited heavy JS
+- avoid unneeded libraries
+- prioritize Core Web Vitals
+
+==================================================
+14. SEARCH & DISCOVERY
+==================================================
+
+Build a search experience.
+
+SEARCH PAGE:
+- search across posts/products/media
+- grouped results
+- filters by content type
+- empty states
+- instant feedback
+- URL-based query param state
+- debounced input
+- local JSON search now
+- future API search ready
+
+DISCOVERY FEATURES:
+- related content
+- trending or featured content
+- recently added
+- popular tags
+- featured categories
+- curated collections
+- recommended products related to content
+
+==================================================
+15. DATA MODELS
+==================================================
+
+Create robust types/interfaces for all entities.
+
+MINIMUM TYPES:
+
+SiteConfig
+NavigationItem
+SocialLink
+Post
+PostCategory
+Tag
+Product
+ProductCategory
+Review
+Comment
+MediaItem
+VideoItem
+GalleryItem
+Testimonial
+FAQ
+Author
+Collection
+
+POST TYPE SHOULD INCLUDE:
+- id
+- slug
+- title
+- subtitle
+- excerpt
+- content
+- coverImage
+- gallery
+- author
+- category
+- tags
+- seo
+- featured
+- publishedAt
+- updatedAt
+- readingTime
+- relatedPostIds
+- commentCount
+- views placeholder
+- status
+
+PRODUCT TYPE SHOULD INCLUDE:
+- id
+- slug
+- title
+- subtitle
+- description
+- shortDescription
+- images
+- category
+- tags
+- price
+- compareAtPrice
+- currency
+- ratingAverage
+- reviewCount
+- featured
+- stockStatus
+- sku placeholder
+- seo
+- details/specs
+- shippingInfo
+- faqIds
+- relatedProductIds
+
+COMMENT TYPE SHOULD INCLUDE:
+- id
+- entityType
+- entityId
+- parentId
+- authorName
+- authorEmail optional
+- authorWebsite optional
+- content
+- createdAt
+- status
+- likes
+- avatar
+- repliesCount
+
+REVIEW TYPE SHOULD INCLUDE:
+- id
+- productId
+- authorName
+- rating
+- title
+- content
+- createdAt
+- verifiedPurchase placeholder
+- helpfulCount
+
+==================================================
+16. COMPONENT SYSTEM
+==================================================
+
+Create a scalable component system.
+
+SEPARATE INTO:
+- primitives
+- layout
+- navigation
+- cards
+- forms
+- media
+- sections
+- commerce
+- content
+- feedback states
+
+EXAMPLE COMPONENTS:
+
+PRIMITIVES
+- Button
+- Badge
+- Tag
+- Input
+- Textarea
+- Select
+- Tabs
+- Accordion
+- Modal
+- Drawer
+- Tooltip
+- Skeleton
+- Divider
+- Pagination
+
+LAYOUT
+- Container
+- Section
+- Grid
+- Stack
+- SidebarLayout
+- PageHero
+- PageHeader
+- Footer
+
+NAVIGATION
+- Navbar
+- MobileMenu
+- Breadcrumbs
+- MegaMenu or dropdown menu if appropriate
+- ThemeToggle
+- SearchTrigger
+
+CARDS
+- ContentCard
+- PostCard
+- ProductCard
+- VideoCard
+- GalleryCard
+- TestimonialCard
+- CategoryCard
+- PillarCard
+
+COMMERCE
+- ProductGallery
+- ProductInfo
+- ProductReviews
+- ReviewSummary
+- RelatedProducts
+- ProductFilters
+- PriceRangeFilter
+
+CONTENT
+- RichArticle
+- TOC
+- AuthorBox
+- RelatedPosts
+- ShareBar
+- CommentSection
+- CommentItem
+- CommentForm
+- CategoryFilter
+- TagCloud
+
+MEDIA
+- VideoEmbed
+- VideoGrid
+- MasonryGallery
+- Lightbox
+- SocialFeedStrip
+
+SECTIONS
+- HeroSection
+- FeaturedSlider
+- PillarsSection
+- AboutPreviewSection
+- FeaturedBlogSection
+- FeaturedShopSection
+- FeaturedVideoSection
+- NewsletterSection
+- CTASection
+- TestimonialSection
+
+Every component must be reusable, typed, accessible, and theme-aware.
+
+==================================================
+17. DESIGN DETAILS / MICROINTERACTIONS
+==================================================
+
+Implement premium details:
+- soft shadows
+- subtle glass / translucent overlays only where tasteful
+- image hover zoom
+- animated underline or glow on active nav
+- button hover motion
+- smooth card elevation
+- active filter chips
+- skeleton loading states
+- empty states with nice design
+- tasteful gradients
+- subtle dividers
+- editorial whitespace
+- premium section spacing rhythm
+- icon consistency
+- mobile-first touch-friendly interactions
+
+Do not overdo neumorphism or gimmicks.
+Do not make it look like a template.
+
+==================================================
+18. ACCESSIBILITY & QUALITY
+==================================================
+
+Must include:
+- semantic HTML
+- keyboard navigation
+- focus states
+- aria labels where needed
+- accessible forms
+- sufficient contrast
+- reduced motion support
+- image alt texts
+- correct form validation messages
+- usable mobile menu
+- readable line lengths
+- proper tap targets
+
+==================================================
+19. PERFORMANCE ENGINEERING
+==================================================
+
+Build with performance in mind from the start.
+
+Requirements:
+- use server components where sensible
+- avoid unnecessary client components
+- optimize images
+- lazy load below-the-fold media
+- avoid large bundles
+- split heavy interactive sections
+- use suspense/loading states where appropriate
+- minimize layout shifts
+- prefetch internal routes smartly
+- use stable data fetching abstraction
+- prepare for CDN-friendly asset delivery
+
+==================================================
+20. CODE STANDARDS
+==================================================
+
+Code must be:
+- TypeScript strict
+- clean
+- modular
+- maintainable
+- senior-level
+- documented where useful
+- not over-engineered
+- not messy
+- production-minded
+
+REQUIREMENTS:
+- no dead code
+- no fake lorem ipsum final output
+- use realistic sample data
+- no giant monolithic page files
+- no duplicated logic
+- utilities extracted where appropriate
+- constants/config centralized
+- types centralized
+- data access layered cleanly
+- metadata helpers reusable
+- content formatting utilities reusable
+- route params typed
+- query params handled safely
+- filtering/search utilities reusable
+- comments in code only where actually helpful
+
+==================================================
+21. SAMPLE DATA REQUIREMENTS
+==================================================
+
+Create sample content that feels like the actual brand.
+Do NOT use generic placeholder garbage.
+
+Create realistic sample items for:
+- blog posts
+- products
+- reviews
+- comments
+- categories
+- tags
+- YouTube videos
+- Instagram/gallery items
+- FAQs
+- testimonials
+
+Examples of content themes:
+- training systems for calisthenics and hypertrophy
+- fasting 20/4 experiences
+- nutrition protocols
+- Balkan moto road journeys
+- freedom on a Honda Hornet
+- discipline and philosophy essays
+- software engineer’s approach to body optimization
+- behind the scenes of building a lifestyle system
+- nature, roads, fitness, routines, recovery
+
+Make product examples believable:
+- branded apparel
+- stickers
+- digital training guide
+- fasting protocol guide
+- adventure/lifestyle accessories
+- maybe “ride & vitality” themed products
+
+==================================================
+22. FUTURE-READY EXTENSIBILITY
+==================================================
+
+Design so it can later connect to:
+- headless CMS
+- ecommerce backend
+- Supabase / PostgreSQL
+- custom REST API
+- GraphQL if needed
+- YouTube API
+- Instagram source or CMS
+- newsletter provider
+- auth system
+- comments moderation backend
+- analytics
+- search backend
+
+IMPORTANT:
+Abstract current JSON data access behind simple service/repository layers so switching to remote APIs later is easy.
+
+==================================================
+23. REQUIRED OUTPUT FORMAT
+==================================================
+
+I want you to generate a COMPLETE project scaffold and implementation plan.
+
+Your output should include:
+
+1. High-level architecture summary
+2. Folder structure
+3. Tech stack decisions and why
+4. Design system specification
+5. Routing map
+6. Data models / TypeScript types
+7. JSON data examples
+8. Shared utilities
+9. API route handler structure
+10. SEO implementation plan
+11. Component inventory
+12. Page-by-page implementation plan
+13. Actual code for core parts
+14. Homepage implementation
+15. Blog system implementation
+16. Shop system implementation
+17. Comment system implementation
+18. Review system implementation
+19. Search/filter implementation
+20. Theme system implementation
+21. Animation/motion system implementation
+22. Accessibility/performance checklist
+23. Final setup instructions
+
+If possible, generate actual code files in a clean order.
+
+==================================================
+24. IMPLEMENTATION PRIORITY
+==================================================
+
+Build in this order:
+PHASE 1:
+- app shell
+- theme
+- navbar/footer
+- homepage
+- design system
+- data models
+- data layer
+- API routes
+- sample JSON
+
+PHASE 2:
+- blog index + blog detail
+- categories/tags
+- article SEO
+- comment system
+
+PHASE 3:
+- shop index + product detail
+- filters/sort
+- reviews
+- collection support
+
+PHASE 4:
+- media pages
+- videos
+- gallery
+- pillar pages
+
+PHASE 5:
+- search
+- newsletter form structure
+- FAQ/legal/supporting pages
+
+PHASE 6:
+- performance refinement
+- SEO refinement
+- animation polish
+- cleanup/documentation
+
+==================================================
+25. IMPORTANT BRAND COPY DIRECTION
+==================================================
+
+Use copywriting that feels like:
+- premium
+- strong
+- thoughtful
+- modern
+- slightly poetic at times
+- systems-oriented
+- not cheesy
+- not fake-alpha cringe
+- not generic fitness influencer spam
+
+Possible brand lines / inspiration:
+- Engineer Your Vitality
+- Build Strength. Ride Further. Live Deeper.
+- Code the mind. Train the body. Follow the road.
+- Systems for strength, discipline, and freedom.
+- High-performance living meets the open road.
+
+Use this tone throughout.
+
+==================================================
+26. FINAL QUALITY BAR
+==================================================
+
+The final result should feel like:
+- a premium custom brand website
+- a strong startup-quality implementation
+- a design-forward editorial commerce platform
+- something a serious engineer/creator/athlete would proudly launch
+- something that looks expensive and modern
+- something investors, collaborators, followers, and customers would immediately take seriously
+
+Do NOT give me a shallow template.
+Do NOT simplify the project.
+Do NOT skip details.
+Do NOT produce vague pseudo-code.
+
+Build it as if this were a real paid senior-level website project with high expectations.
+
+Start now by:
+1. summarizing the architecture,
+2. defining the folder structure,
+3. defining the design system,
+4. generating the TypeScript data models,
+5. generating the sample JSON content,
+6. then implementing the actual Next.js project step by step.
+
+
+IMPORTANT OUTPUT BEHAVIOR:
+Generate code file by file.
+For each file:
+- print the relative file path
+- then print the full file contents
+- do not omit important files
+- do not shorten large files with comments like “rest omitted”
+- do not use placeholders unless absolutely necessary
+- keep the project runnable
+
+ENGINEERING CONSTRAINTS:
+- Use strict TypeScript
+- Keep components modular
+- No giant page files above reasonable size unless unavoidable
+- Prefer server components by default
+- Only use client components where interaction is needed
+- Keep all mock/sample data realistic and centralized
+- Create reusable filtering/search utilities
+- Create reusable SEO metadata helpers
+- Prepare all data access for future remote API swap
+
+
+SELF-REVIEW REQUIREMENT:
+Before finalizing each phase, review the implementation for:
+- SEO completeness
+- accessibility
+- performance
+- responsive behavior
+- type safety
+- maintainability
+- visual consistency
+Then improve weak areas before moving to the next phase.
+
+
+
+Now generate the project in this order:
+
+1. folder structure
+2. package.json
+3. tailwind/config/theme setup
+4. app layout and global styles
+5. design tokens
+6. shared types
+7. JSON sample data
+8. data access layer
+9. API route handlers
+10. homepage
+11. blog pages
+12. shop pages
+13. comments + reviews
+14. media pages
+15. search
+16. SEO helpers
+17. final review checklist
+
+Print one file at a time with path + full contents.
+Do not skip files.
+Do not summarize.

@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_shared_footer_legal_links",
+  "info": {
+    "displayName": "Footer legal link",
+    "description": "Legal link in footer (e.g. Privacy Policy, Terms of Service)."
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string", "required": true },
+    "link": { "type": "string", "required": true }
+  }
+}

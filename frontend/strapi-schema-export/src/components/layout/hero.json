@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_layout_heroes",
+  "info": {
+    "displayName": "Hero",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "eyebrow": { "type": "string" },
+    "heading": { "type": "string" },
+    "subheading": { "type": "text" },
+    "backgroundImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "primaryCta": { "type": "component", "component": "shared.cta", "repeatable": false },
+    "secondaryCta": { "type": "component", "component": "shared.cta", "repeatable": false }
+  }
+}

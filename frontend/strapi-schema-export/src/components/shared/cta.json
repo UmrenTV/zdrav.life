@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_ctas",
+  "info": {
+    "displayName": "CTA",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string" },
+    "href": { "type": "string" },
+    "variant": { "type": "string" }
+  }
+}

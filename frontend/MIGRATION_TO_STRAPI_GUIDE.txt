@@ -1,0 +1,1221 @@
+Below is the setup I would use for zdrav.life.
+
+1. What you should build
+
+Use this architecture:
+
+Frontend: your existing Next.js site remains the presentation layer.
+
+Backend CMS: separate Strapi v5 project for content, media, SEO fields, products, reviews, comments, home page sections, legal pages, and site settings.
+
+Bridge layer in Next.js: keep your existing lib/data/services abstraction, but start swapping JSON readers for Strapi fetchers one domain at a time.
+
+Cursor + MCP: Cursor gets connected to Strapi through MCP so it can inspect schemas, understand content types, and help generate/update backend pieces from inside the editor. Cursor supports MCP, and Cursor’s docs/changelog mention one-click MCP install, OAuth support, and MCP-based tool access.
+
+That matches your PLAN almost perfectly because the PLAN already asked for a future-ready separation between UI and content/data access, plus content types for posts, products, reviews, comments, categories, tags, videos, gallery items, FAQs, testimonials, and site settings.
+
+2. Recommended migration strategy
+
+Do not migrate everything at once.
+
+Best order:
+
+Site settings + homepage content
+
+Blog posts, categories, tags
+
+Authors + SEO components
+
+Videos / Instagram-style media / gallery
+
+Products + product categories + reviews
+
+Legal pages
+
+Comments
+
+Forms / contact submissions
+
+Optional commerce/order layer later
+
+Why this order:
+
+it gives you fast visible wins,
+
+keeps the frontend stable,
+
+and lets you test the Strapi integration on low-risk content first.
+
+Given your current app already has homepage, blog, shop, reviews, comments, media routes, filters, category/tag pages, and SEO plumbing, this migration is mostly a source-of-truth replacement, not a redesign.
+
+3. Strapi setup guide
+   3.1 Create the backend project
+
+Strapi’s current quick start creates a project with:
+
+npx create-strapi@latest zdravlife-cms
+
+and then you run:
+
+cd zdravlife-cms
+npm run develop
+
+to start the local admin and register the first admin account. Strapi’s docs show that flow directly, including npx create-strapi@latest ... and npm run develop.
+
+3.2 What I recommend instead of the most basic quick start
+
+For a real project like yours:
+
+use PostgreSQL from the start
+
+keep Strapi in a separate repo or sibling folder
+
+use .env
+
+use local uploads in dev, cloud object storage later
+
+keep Strapi at localhost:1337
+
+keep Next.js at localhost:3000
+
+Suggested local structure:
+
+D:\Coding\Own\
+ zdrav.life\ # Next.js frontend
+zdravlife-cms\ # Strapi backend
+3.3 Core environment file
+
+In Strapi:
+
+HOST=0.0.0.0
+PORT=1337
+APP_KEYS=replace_me_1,replace_me_2,replace_me_3,replace_me_4
+API_TOKEN_SALT=replace_me
+ADMIN_JWT_SECRET=replace_me
+TRANSFER_TOKEN_SALT=replace_me
+JWT_SECRET=replace_me
+
+DATABASE_CLIENT=postgres
+DATABASE_HOST=127.0.0.1
+DATABASE_PORT=5432
+DATABASE_NAME=zdravlife_cms
+DATABASE_USERNAME=postgres
+DATABASE_PASSWORD=postgres
+DATABASE_SSL=false
+
+# later
+
+CLIENT_URL=http://localhost:3000
+3.4 Recommended scripts
+
+In the Strapi project:
+
+{
+"scripts": {
+"develop": "strapi develop",
+"build": "strapi build",
+"start": "strapi start"
+}
+} 4. What content types to create in Strapi
+
+This is the important part. Do not create vague content models. Model them to mirror your frontend and PLAN.
+
+4.1 Reusable components
+
+Create Strapi components first.
+
+shared.seo
+
+Fields:
+
+metaTitle
+
+metaDescription
+
+ogTitle
+
+ogDescription
+
+ogImage (media)
+
+canonicalUrl
+
+noindex (boolean)
+
+nofollow (boolean)
+
+keywords (text or JSON/string array)
+
+shared.cta
+
+label
+
+href
+
+variant
+
+shared.imageWithAlt
+
+image (media)
+
+alt
+
+caption
+
+shared.authorReference
+
+You can skip this if author is its own collection, but I’d rather use a real Author collection.
+
+shared.richLink
+
+title
+
+href
+
+description
+
+product.specItem
+
+label
+
+value
+
+layout.hero
+
+eyebrow
+
+heading
+
+subheading
+
+backgroundImage
+
+primaryCta
+
+secondaryCta
+
+layout.statItem
+
+label
+
+value
+
+layout.faqItem
+
+question
+
+answer
+
+4.2 Collections and single types
+Single type: site-setting
+
+Purpose: global site config
+
+Fields:
+
+siteName
+
+siteUrl
+
+tagline
+
+defaultSeo (component shared.seo)
+
+logo
+
+favicon
+
+defaultOgImage
+
+socialLinks (repeatable component or JSON)
+
+newsletterHeading
+
+newsletterText
+
+footerText
+
+contactEmail
+
+youtubeUrl
+
+instagramUrl
+
+tiktokUrl
+
+githubUrl
+
+themeNotes (optional internal field)
+
+This replaces site-settings.json. The PLAN explicitly called for site-settings.json and reusable metadata.
+
+Single type: home-page
+
+Fields:
+
+hero (layout.hero)
+
+featuredPosts (relation to posts)
+
+featuredProducts (relation to products)
+
+featuredVideos (relation to videos)
+
+featuredGalleryItems (relation to gallery items)
+
+featuredTestimonials
+
+homepageSeo (shared.seo)
+
+optional section toggles
+
+Collection: author
+
+Fields:
+
+name
+
+slug
+
+bio
+
+avatar
+
+role
+
+socialLinks
+
+seo
+
+Collection: category
+
+Fields:
+
+name
+
+slug
+
+description
+
+coverImage
+
+seo
+
+Use for content categories like training, nutrition, adventure, philosophy, lifestyle, journal. The current PLAN and changelog rely on category landing pages and category filters.
+
+Collection: tag
+
+Fields:
+
+name
+
+slug
+
+description
+
+seo
+
+Collection: post
+
+Fields:
+
+title
+
+slug
+
+subtitle
+
+excerpt
+
+content (Rich Text or Blocks)
+
+coverImage
+
+gallery (multiple media)
+
+author (relation)
+
+category (relation)
+
+tags (many-to-many)
+
+featured (boolean)
+
+publishedAt
+
+readingTime
+
+relatedPosts (self relation)
+
+seo (shared.seo)
+
+status
+
+commentsEnabled (boolean)
+
+This matches your existing PLAN fields almost directly: slug, title, subtitle, excerpt, content, cover image, gallery, author, category, tags, seo, featured, published dates, reading time, related posts, comment support.
+
+Collection: video
+
+Fields:
+
+title
+
+slug
+
+platform (youtube)
+
+youtubeVideoId
+
+excerpt
+
+thumbnail
+
+category
+
+tags
+
+featured
+
+publishedAt
+
+duration
+
+seo
+
+This maps cleanly from your current videos.json / youtube.json direction. The changelog says youtube.json was added specifically for future API swap.
+
+Collection: gallery-item
+
+Fields:
+
+title
+
+slug
+
+image
+
+thumbnail
+
+caption
+
+mediaType
+
+category
+
+tags
+
+featured
+
+sourcePlatform (instagram, internal, manual)
+
+publishedAt
+
+seo
+
+This matches the instagram.json and gallery direction already added in the changelog.
+
+Collection: product-category
+
+Fields:
+
+name
+
+slug
+
+description
+
+image
+
+seo
+
+Examples: merch, apparel, accessories, stickers, digital guides, training plans, ride essentials, lifestyle gear. The PLAN lists those exact product categories.
+
+Collection: product
+
+Fields:
+
+title
+
+slug
+
+subtitle
+
+shortDescription
+
+description
+
+gallery (multiple media)
+
+featuredImage
+
+category
+
+tags
+
+price
+
+compareAtPrice
+
+currency
+
+stockStatus
+
+sku
+
+featured
+
+specs (repeatable product.specItem)
+
+shippingInfo
+
+faqItems
+
+relatedProducts
+
+seo
+
+reviewsEnabled (boolean)
+
+This also mirrors your PLAN almost exactly.
+
+Collection: review
+
+Fields:
+
+product (relation)
+
+authorName
+
+rating
+
+title
+
+content
+
+verifiedPurchase
+
+helpfulCount
+
+approved
+
+createdAtOverride optional
+
+Collection: comment
+
+Fields:
+
+entityType (post, video, adventure, maybe product)
+
+entityId or polymorphic relation pattern
+
+parentComment
+
+authorName
+
+authorEmail
+
+authorWebsite
+
+avatar
+
+content
+
+status (pending, approved, rejected)
+
+likes
+
+createdAtOverride optional
+
+The PLAN already expects comments and reviews to move from JSON into proper CRUD-backed APIs later.
+
+Collection: testimonial
+
+Fields:
+
+name
+
+role
+
+avatar
+
+quote
+
+featured
+
+order
+
+Collection: faq
+
+Fields:
+
+question
+
+answer
+
+category
+
+featured
+
+Collection: legal-page
+
+Fields:
+
+title
+
+slug
+
+content
+
+seo
+
+You can use this for:
+
+privacy-policy
+
+terms
+
+shipping-returns
+
+5. Strapi relations you should use
+
+Use these relations:
+
+post -> author many-to-one
+
+post -> category many-to-one
+
+post -> tags many-to-many
+
+post -> relatedPosts many-to-many self relation
+
+product -> product-category many-to-one
+
+product -> tags many-to-many
+
+review -> product many-to-one
+
+home-page -> featuredPosts/products/videos/galleryItems many-to-many
+
+video -> tags/categories same pattern
+
+gallery-item -> tags/categories same pattern
+
+For comments, I would not overcomplicate with polymorphic Strapi relations on day one. Use:
+
+entityType
+
+entitySlug or entityId
+
+parentComment
+
+That will be easier for Cursor and simpler to query.
+
+6. What to expose publicly
+
+In Strapi roles/permissions, give Public read access only to:
+
+site-setting
+
+home-page
+
+author
+
+category
+
+tag
+
+post
+
+video
+
+gallery-item
+
+product-category
+
+product
+
+faq
+
+legal-page
+
+testimonial
+
+approved reviews/comments only if you expose them directly
+
+Do not make raw write endpoints public for:
+
+reviews
+
+comments
+
+contact submissions
+
+Instead:
+
+keep writes behind custom Next.js API routes,
+
+validate there,
+
+then forward to Strapi using a server-side API token.
+
+That keeps spam protection and moderation under your control.
+
+7. How to connect the current Next.js app to Strapi
+
+Your current app already has a service/data layer and was built with API swap in mind. The PLAN calls for abstracted data access so local JSON can later be replaced by remote APIs, and the commit message confirms that service methods and API-backed routing were already aligned in that direction.
+
+So do this:
+
+7.1 Keep the interface, swap the source
+
+Example idea:
+
+// current
+getPosts(): Promise<Post[]>
+
+// next step
+getPosts({ source: "strapi" }): Promise<Post[]>
+
+Then once stable:
+
+getPosts(): Promise<Post[]>
+
+and internally it fetches Strapi.
+
+7.2 Add a mapper layer
+
+Do not let your UI consume raw Strapi responses everywhere.
+
+Create adapters like:
+
+mapStrapiPostToPost()
+mapStrapiProductToProduct()
+mapStrapiVideoToVideo()
+mapStrapiGalleryItemToGalleryItem()
+mapStrapiCommentToComment()
+mapStrapiReviewToReview()
+
+That protects the frontend from Strapi schema churn.
+
+7.3 Populate relations carefully
+
+Use Strapi queries with populate only where needed. Keep list pages light and detail pages richer.
+
+8. How to seed Strapi from your current JSON
+
+You already have JSON-backed posts, products, comments, reviews, videos, gallery, testimonials, FAQs, and site config in the current project, plus youtube.json and instagram.json for future API/CMS use.
+
+Best approach:
+
+write a one-off migration script in Node
+
+read your frontend /data/\*.json
+
+upload media references later or keep URL placeholders temporarily
+
+create Strapi entries via admin API / content API with token
+
+Seed in this order:
+
+categories
+
+tags
+
+authors
+
+FAQs
+
+testimonials
+
+site settings
+
+homepage
+
+posts
+
+videos
+
+gallery items
+
+product categories
+
+products
+
+reviews
+
+comments
+
+legal pages
+
+9. Image/media plan for your site
+
+Your current project already has a large placeholder asset plan, including blog covers, product images, gallery images, video thumbnails, author avatar, OG image, about portrait, and review/testimonial avatars. The image inventory explicitly says they are placeholders to be replaced with real assets.
+
+Recommended media strategy:
+
+For now
+
+upload key brand assets into Strapi Media Library:
+
+logo
+
+about portrait
+
+default OG image
+
+hero images
+
+blog covers
+
+product images
+
+video thumbnails
+
+gallery images
+
+Later
+
+use cloud storage provider for Strapi uploads
+
+optionally keep some media external if driven by YouTube/Instagram sync
+
+10. Cursor MCP setup for Strapi
+
+Cursor supports MCP and has docs/changelog indicating MCP integration, one-click install/OAuth support, and HTTP/stdio transports in Cursor contexts.
+
+For Strapi, the cleanest current option I found is the Strapi v5 MCP plugin on Strapi Market: @sensinum/strapi-plugin-mcp. The listing says it supports Strapi v5, exposes a streamable HTTP MCP endpoint, and includes a Cursor .cursor/mcp.json example.
+
+10.1 Install in Strapi
+
+Inside zdravlife-cms:
+
+npm install @sensinum/strapi-plugin-mcp
+
+The plugin page says Strapi v5 auto-discovers it after install, with no extra registration step required.
+
+10.2 Configure it
+
+Create config/plugins.ts in Strapi if you don’t already have it:
+
+export default {
+mcp: {
+enabled: true,
+config: {
+session: {
+type: "memory",
+max: 20,
+ttlMs: 600000,
+updateAgeOnGet: true,
+},
+allowedIPs: ["127.0.0.1", "::1"],
+},
+},
+};
+
+The plugin docs show memory sessions and optional IP allowlisting in config/plugins.js or config/plugins.ts.
+
+10.3 Start Strapi
+npm run develop
+10.4 Add it to Cursor
+
+In your frontend repo or workspace root, create:
+
+{
+"mcpServers": {
+"strapi": {
+"type": "streamable-http",
+"url": "http://localhost:1337/api/mcp/streamable"
+}
+}
+}
+
+That exact Cursor configuration pattern is shown on the plugin page, and the endpoint path /api/mcp/streamable is documented there as well.
+
+10.5 What this gives Cursor
+
+Once connected, Cursor can inspect:
+
+content types
+
+fields
+
+services
+
+system info
+
+schema structure
+
+The plugin listing explicitly says it enables AI assistants to access content types, system information, and services via MCP.
+
+That is exactly what you need for prompts like:
+
+“Create a Product collection that matches the Next.js product card and detail page”
+
+“Add SEO component to posts and products”
+
+“Create relations for category/tag filtering”
+
+“Add homepage single type with featured posts/products/videos”
+
+11. Image generation MCP: what I recommend
+
+I did not find an official OpenAI-hosted “image generation MCP server” product page comparable to Strapi’s plugin. What is official is OpenAI’s image generation API itself: OpenAI’s docs say image generation and editing are available through the Image API and support GPT Image models such as gpt-image-1.5, gpt-image-1, and gpt-image-1-mini, alongside DALL·E models.
+
+So the safest recommendation is:
+
+Recommended
+
+Use a small custom MCP server that wraps the official OpenAI Images API.
+
+That gives you:
+
+full control,
+
+no mystery third-party dependency,
+
+prompts tailored to your exact asset workflow,
+
+and the ability to save generated files directly into your project or upload them into Strapi.
+
+Why not rely blindly on a random community MCP
+
+Because for a serious brand site, the model/API can be official while the MCP wrapper can still be lightweight and yours.
+
+12. Minimal custom image MCP design
+
+Create a tiny Node project, for example:
+
+D:\Coding\Own\zdravlife-image-mcp\
+
+Tools to expose:
+
+generate_site_image
+
+edit_site_image
+
+generate_blog_cover
+
+generate_product_mockup
+
+generate_gallery_image
+
+generate_og_image
+
+Each tool should:
+
+accept prompt + size + style notes + output path
+
+call OpenAI Images API
+
+save image locally
+
+return the saved filepath
+
+optionally upload to Strapi media later
+
+Because OpenAI’s docs confirm text-to-image and image edits are supported through the API, this wrapper is straightforward.
+
+Example .cursor/mcp.json with both servers:
+
+{
+"mcpServers": {
+"strapi": {
+"type": "streamable-http",
+"url": "http://localhost:1337/api/mcp/streamable"
+},
+"zdravlife-images": {
+"command": "node",
+"args": ["D:/Coding/Own/zdravlife-image-mcp/dist/index.js"],
+"env": {
+"OPENAI_API_KEY": "your_openai_api_key"
+}
+}
+}
+} 13. What Cursor should own vs what it should not own
+
+Let Cursor own:
+
+Strapi content-type generation
+
+components and relations
+
+service layer migration
+
+frontend adapters
+
+API route rewiring
+
+seed scripts
+
+upload helper scripts
+
+media sync scripts
+
+SEO field wiring
+
+frontend fetchers
+
+webhook handlers
+
+Do not let Cursor blindly own:
+
+production secrets
+
+role permissions without review
+
+destructive migration scripts against live content
+
+payment logic without manual review
+
+14. Exact backend shape I’d instruct Cursor to build in Strapi
+
+Tell Cursor to create these Strapi entities first:
+
+Phase 1
+
+site-setting single type
+
+home-page single type
+
+author
+
+category
+
+tag
+
+post
+
+Phase 2
+
+video
+
+gallery-item
+
+testimonial
+
+faq
+
+legal-page
+
+Phase 3
+
+product-category
+
+product
+
+review
+
+Phase 4
+
+comment
+
+contact-submission optional
+
+Shared components
+
+shared.seo
+
+shared.cta
+
+layout.hero
+
+product.specItem
+
+15. How the frontend should fetch Strapi
+
+Your current frontend should end up with something like:
+
+const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+const STRAPI_TOKEN = process.env.STRAPI_API_TOKEN;
+
+Create server-side helpers:
+
+getStrapi<T>(path: string, params?: Record<string, string>)
+postStrapi<T>(path: string, body: unknown)
+
+Then repositories:
+
+posts.repository.ts
+products.repository.ts
+media.repository.ts
+site.repository.ts
+comments.repository.ts
+reviews.repository.ts
+
+And adapters:
+
+mapStrapiPost
+mapStrapiProduct
+mapStrapiVideo
+mapStrapiGalleryItem
+
+That matches the PLAN’s direction of reusable filtering, reusable metadata helpers, centralized types, and an abstracted data access layer ready for future remote APIs.
+
+16. Recommended workflow for you in Cursor
+    Step A
+
+Open the Strapi repo in Cursor and connect the Strapi MCP server.
+
+Step B
+
+Use prompts like:
+
+Inspect the Strapi instance through MCP.
+List all content types, components, and relations currently present.
+Then compare them against the ZdravLife frontend requirements:
+
+- posts
+- products
+- categories
+- tags
+- reviews
+- comments
+- videos
+- gallery / instagram-style feed
+- homepage
+- site settings
+- FAQs
+- legal pages
+- testimonials
+
+Create a gap analysis and then implement the missing Strapi content models in the safest order.
+Do not change existing content types without migration notes.
+Step C
+
+Then in the frontend repo:
+
+Migrate the Next.js data layer from local JSON to Strapi incrementally.
+Keep all existing TypeScript domain types stable.
+Add adapters from Strapi response shapes into current frontend models.
+Start with site settings, homepage, authors, categories, tags, and posts.
+Do not break existing routes.
+Keep build passing after each phase.
+Step D
+
+Then for media:
+
+Use the image MCP server to generate missing placeholder assets for:
+
+- blog covers
+- product covers
+- video thumbnails
+- gallery images
+- OG image
+- about portrait placeholders
+
+Match the existing file naming and public paths used by the site.
+Prefer premium, realistic, brand-consistent visuals for ZdravLife:
+fitness, motorcycles, mountain roads, discipline, nutrition, nature, blue-white brand palette.
+
+This is especially useful because your current project already has an explicit list of required asset paths and placeholder-image handling.
+
+17. Best production setup after local dev
+
+For production I’d use:
+
+Frontend: Vercel
+
+Strapi: self-hosted VM / Docker / Railway / Render / Strapi Cloud
+
+Database: PostgreSQL
+
+Media: object storage
+
+Comments/reviews writes: Next.js server actions or API routes -> Strapi secured endpoints
+
+SEO: keep canonical/meta in Strapi for content pages, with frontend defaults in Next.js
+
+Strapi’s docs say you can self-host or deploy via Strapi Cloud.
+
+18. Biggest mistakes to avoid
+
+Do not:
+
+map frontend components 1:1 into Strapi fields with no editorial logic
+
+let raw Strapi response shapes leak across the app
+
+make comments/reviews open public write endpoints
+
+over-model ecommerce before you have real checkout
+
+move every transient UI thing into CMS
+
+build custom Strapi types with inconsistent slugs/naming
+
+store “homepage layout logic” entirely as free-form rich text
+
+Do:
+
+keep CMS for content/data
+
+keep layout logic in code
+
+use reusable components for SEO and CTA fields
+
+use strict slug discipline
+
+keep a migration script folder
+
+document field mappings
+
+19. My recommendation in one sentence
+
+Set up Strapi as a separate v5 backend, install the Strapi MCP plugin for Cursor, keep your Next.js service layer intact, migrate JSON domains one by one into Strapi, and use a small custom image MCP server backed by OpenAI’s official Images API for generating the site’s real media assets.
+
+20. The exact order I would do this this week
+
+Day 1:
+
+create Strapi project
+
+connect PostgreSQL
+
+install MCP plugin
+
+connect Cursor
+
+Day 2:
+
+build site-setting, home-page, author, category, tag, post
+
+seed from current JSON
+
+Day 3:
+
+wire Next.js homepage + blog to Strapi
+
+keep products still on JSON
+
+Day 4:
+
+build video, gallery-item, legal-page, faq, testimonial
+
+wire media/legal pages
+
+Day 5:
+
+build product-category, product, review
+
+wire shop
+
+Day 6:
+
+build comment
+
+wire comments via moderated server-side write flow
+
+Day 7:
+
+add custom image MCP
+
+generate missing assets
+
+upload brand assets into Strapi media library
+
+If you want, next I can write you:
+
+the exact Strapi content model blueprint for every collection type and component, or
+
+a single master Cursor prompt that tells Cursor to build the Strapi backend and then migrate the Next.js frontend to it step by step.

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_seos",
+  "info": {
+    "displayName": "SEO",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": { "type": "string" },
+    "metaDescription": { "type": "text" },
+    "ogTitle": { "type": "string" },
+    "ogDescription": { "type": "text" },
+    "ogImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "canonicalUrl": { "type": "string" },
+    "noindex": { "type": "boolean", "default": false },
+    "nofollow": { "type": "boolean", "default": false },
+    "keywords": { "type": "text" }
+  }
+}

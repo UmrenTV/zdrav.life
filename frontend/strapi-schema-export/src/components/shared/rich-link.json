@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_shared_rich_links",
+  "info": {
+    "displayName": "Rich link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "href": { "type": "string" },
+    "description": { "type": "text" }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_menu_links",
+  "info": {
+    "displayName": "Menu link",
+    "description": "Single navigation item: name, link, optional icon (Lucide), open in new tab."
+  },
+  "options": {},
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "link": { "type": "string", "required": true },
+    "icon": {
+      "type": "string",
+      "description": "Lucide icon name (PascalCase), e.g. BookOpen, ShoppingBag, Youtube, Image, User. See https://lucide.dev/icons/"
+    },
+    "openInNewTab": { "type": "boolean", "default": false }
+  }
+}

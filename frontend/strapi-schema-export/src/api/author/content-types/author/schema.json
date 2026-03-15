@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "authors",
+  "info": {
+    "singularName": "author",
+    "pluralName": "authors",
+    "displayName": "Author"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "name", "required": true },
+    "bio": { "type": "text" },
+    "avatar": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "role": { "type": "string" },
+    "socialLinks": { "type": "component", "component": "shared.social-link", "repeatable": true },
+    "seo": { "type": "component", "component": "shared.seo", "repeatable": false },
+    "posts": { "type": "relation", "relation": "oneToMany", "target": "api::post.post", "mappedBy": "author", "description": "Posts by this author" }
+  }
+}
