@@ -22,7 +22,7 @@ const config = ({
           cipher: env("DATABASE_SSL_CIPHER", undefined),
           rejectUnauthorized: env.bool(
             "DATABASE_SSL_REJECT_UNAUTHORIZED",
-            true,
+            false,
           ),
         },
       },
