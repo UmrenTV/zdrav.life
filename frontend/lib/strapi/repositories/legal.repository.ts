@@ -14,7 +14,7 @@ export interface LegalPageData {
 function mapLegalPage(doc: unknown): LegalPageData | null {
   if (!doc || typeof doc !== 'object') return null;
   const d = doc as { documentId?: string; attributes?: Record<string, unknown> };
-  const attrs = d.attributes ?? d;
+  const attrs = (d.attributes ?? d) as Record<string, unknown>;
   return {
     id: (d.documentId as string) ?? '',
     title: (attrs.title as string) ?? '',
