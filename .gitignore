@@ -3,6 +3,8 @@
 /.pnp
 .pnp.js
 */node_modules
+*/.next
+frontend/.next
 
 
 # Testing
