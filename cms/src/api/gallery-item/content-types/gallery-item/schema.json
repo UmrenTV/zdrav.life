@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gallery_items",
+  "info": {
+    "singularName": "gallery-item",
+    "pluralName": "gallery-items",
+    "displayName": "Gallery item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": { "type": "string" },
+    "slug": { "type": "uid", "targetField": "title" },
+    "image": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "thumbnail": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "caption": { "type": "text" },
+    "mediaType": { "type": "string" },
+    "category": { "type": "relation", "relation": "manyToOne", "target": "api::category.category" },
+    "tags": { "type": "relation", "relation": "manyToMany", "target": "api::tag.tag" },
+    "featured": { "type": "boolean", "default": false },
+    "sourcePlatform": { "type": "string" },
+    "publishedAt": { "type": "datetime" },
+    "seo": { "type": "component", "component": "shared.seo", "repeatable": false }
+  }
+}

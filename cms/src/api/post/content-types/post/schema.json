@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": { "type": "string", "required": true },
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "subtitle": { "type": "string" },
+    "excerpt": { "type": "text" },
+    "content": { "type": "richtext" },
+    "coverImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "gallery": { "type": "media", "multiple": true, "required": false, "allowedTypes": ["images"] },
+    "author": { "type": "relation", "relation": "manyToOne", "target": "api::author.author", "inversedBy": "posts" },
+    "category": { "type": "relation", "relation": "manyToOne", "target": "api::category.category" },
+    "tags": { "type": "relation", "relation": "manyToMany", "target": "api::tag.tag" },
+    "featured": { "type": "boolean", "default": false },
+    "publishedAt": { "type": "datetime" },
+    "readingTime": { "type": "integer" },
+    "relatedPosts": { "type": "relation", "relation": "manyToMany", "target": "api::post.post", "description": "Self-relation for related posts" },
+    "seo": { "type": "component", "component": "shared.seo", "repeatable": false },
+    "commentsEnabled": { "type": "boolean", "default": true }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site setting"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "siteName": { "type": "string" },
+    "siteUrl": { "type": "string" },
+    "tagline": { "type": "string" },
+    "defaultSeo": { "type": "component", "component": "shared.seo", "repeatable": false },
+    "logo": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "favicon": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "defaultOgImage": { "type": "media", "multiple": false, "required": false, "allowedTypes": ["images"] },
+    "socialLinks": { "type": "component", "component": "shared.social-link", "repeatable": true },
+    "newsletterHeading": { "type": "string" },
+    "newsletterText": { "type": "text" },
+    "footerText": { "type": "text" },
+    "contactEmail": { "type": "string" },
+    "youtubeUrl": { "type": "string" },
+    "instagramUrl": { "type": "string" },
+    "tiktokUrl": { "type": "string" },
+    "githubUrl": { "type": "string" },
+    "twitterUrl": { "type": "string" },
+    "maintenanceMode": { "type": "boolean", "default": false },
+    "themeNotes": { "type": "text" },
+    "menuItems": { "type": "component", "component": "shared.menu-link", "repeatable": true },
+    "enableShop": { "type": "boolean", "default": true },
+    "enableBlog": { "type": "boolean", "default": true },
+    "enableGallery": { "type": "boolean", "default": true },
+    "enableVideos": { "type": "boolean", "default": true },
+    "footerLegalLinks": { "type": "component", "component": "shared.footer-legal-link", "repeatable": true },
+    "footerLinkGroups": { "type": "component", "component": "shared.footer-link-group", "repeatable": true },
+    "useAccentColorForName": { "type": "boolean", "default": true },
+    "nameAccentPosition": { "type": "enumeration", "enum": ["first", "last"], "default": "last" },
+    "nameAccentLetterCount": { "type": "integer", "default": 4, "min": 1 }
+  }
+}
