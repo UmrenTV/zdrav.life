@@ -19,6 +19,7 @@
     "@sensinum/strapi-plugin-mcp": "^1.1.0",
     "@strapi/plugin-cloud": "5.39.0",
     "@strapi/plugin-users-permissions": "5.39.0",
+    "@strapi/provider-upload-cloudinary": "^5.39.0",
     "@strapi/strapi": "5.39.0",
     "lucide-react": "^0.577.0",
     "pg": "8.8.0",

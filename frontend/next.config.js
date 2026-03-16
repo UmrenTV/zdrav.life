@@ -23,6 +23,8 @@ const nextConfig = {
       { protocol: 'http', hostname: 'localhost', port: '1337', pathname: '/uploads/**' },
       { protocol: 'https', hostname: 'localhost', port: '1337', pathname: '/uploads/**' },
       { protocol: 'https', hostname: 'zdravlife-production.up.railway.app', pathname: '/uploads/**' },
+      // Cloudinary
+      { protocol: 'https', hostname: 'res.cloudinary.com' },
     ],
   },
   async headers() {
