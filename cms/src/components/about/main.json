@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_about_mains",
+  "info": {
+    "displayName": "About main",
+    "description": "Main story + philosophy content and icons"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "imageAlt": { "type": "string" },
+    "headingIntro": { "type": "string" },
+    "bodyIntro": { "type": "text" },
+    "headingPhilosophy": { "type": "string" },
+    "bodyPhilosophy1": { "type": "text" },
+    "bodyPhilosophy2": { "type": "text" },
+    "iconTexts": {
+      "type": "component",
+      "component": "home.icon-text",
+      "repeatable": true
+    }
+  }
+}

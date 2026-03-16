@@ -492,6 +492,7 @@ export async function getSiteConfig(): Promise<SiteConfig> {
   return {
     ...raw,
     maintenanceMode: raw.maintenanceMode ?? false,
+    footerForm: null,
     menu: Array.isArray(raw.menu) ? raw.menu : [],
     footerLegalLinks: Array.isArray(raw.footerLegalLinks) ? raw.footerLegalLinks : [],
     footerLinkGroups: Array.isArray(raw.footerLinkGroups) ? raw.footerLinkGroups : [],

@@ -6,6 +6,10 @@
 import type {
   SiteConfig,
   MenuItem,
+  HomePageData,
+  AboutPageData,
+  FormData,
+  FeaturedContentItem,
   Post,
   PostCategory,
   Tag,
@@ -112,8 +116,7 @@ export function mapStrapiSiteSettings(raw: unknown): SiteConfig | null {
       twitterHandle: (defaultSeo.twitterHandle as string) ?? '',
       keywords,
     },
-    newsletterHeading: (a.newsletterHeading as string) ?? '',
-    newsletterText: (a.newsletterText as string) ?? '',
+    footerForm: a.footerForm ? mapStrapiForm(a.footerForm) : null,
     footerText: (a.footerText as string) ?? '',
     menu: mapMenuItems(Array.isArray(a.menuItems) ? a.menuItems : (a.menuItems as { data?: unknown[] } | null)?.data ?? []),
     footerLegalLinks: mapFooterLegalLinks(a.footerLegalLinks),
@@ -181,18 +184,159 @@ function mapFooterLinkGroups(raw: unknown): SiteConfig['footerLinkGroups'] {
     .filter((g) => g.title);
 }
 
-export function mapStrapiHomePage(raw: unknown): {
-  hero?: { heading?: string; subheading?: string; eyebrow?: string };
-  featuredPostIds?: string[];
-  featuredProductIds?: string[];
-  featuredVideoIds?: string[];
-  featuredGalleryIds?: string[];
-  featuredTestimonialIds?: string[];
-} | null {
+function compAttrs(c: unknown): Record<string, unknown> {
+  if (!c || typeof c !== 'object') return {};
+  const o = c as Record<string, unknown>;
+  return (o.attributes as Record<string, unknown>) ?? o;
+}
+
+function richtextToPlain(blocks: unknown): string {
+  if (typeof blocks === 'string') return blocks;
+  if (!Array.isArray(blocks)) return '';
+  return blocks
+    .map((b) => {
+      const block = b as Record<string, unknown>;
+      const children = block.children as unknown[];
+      if (Array.isArray(children)) return children.map((c) => ((c as Record<string, unknown>).text as string) ?? '').join('');
+      return (block.text as string) ?? '';
+    })
+    .join('\n');
+}
+
+function compList(raw: unknown): Record<string, unknown>[] {
+  if (!Array.isArray(raw)) return [];
+  const withData = raw && typeof raw === 'object' && 'data' in (raw as object) ? (raw as { data: unknown[] }).data : raw;
+  if (!Array.isArray(withData)) return [];
+  return withData.map((item) => compAttrs(item));
+}
+
+function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem | null {
+  const component = entry.__component as string | undefined;
+  if (!component) return null;
+
+  const resolveRelation = (rel: unknown): Record<string, unknown> | null => {
+    if (!rel || typeof rel !== 'object') return null;
+    const r = rel as Record<string, unknown>;
+    return (r.attributes as Record<string, unknown>) ?? r;
+  };
+
+  if (component === 'home.featured-post') {
+    const a = resolveRelation(entry.post);
+    if (!a) return null;
+    const docId = (entry.post as Record<string, unknown>)?.documentId as string ?? '';
+    return {
+      type: 'article',
+      id: docId,
+      slug: (a.slug as string) ?? '',
+      title: (a.title as string) ?? '',
+      subtitle: (a.excerpt as string) ?? undefined,
+      image: strapiMediaUrl(a.coverImage) || '',
+      category: (a.category as Record<string, unknown>)?.name as string ?? undefined,
+      tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? '') : undefined,
+      publishedAt: (a.publishedAt as string) ?? undefined,
+      info: a.readingTime ? `${a.readingTime} min read` : undefined,
+      href: `/blog/${(a.slug as string) ?? ''}`,
+    };
+  }
+
+  if (component === 'home.featured-product') {
+    const a = resolveRelation(entry.product);
+    if (!a) return null;
+    const docId = (entry.product as Record<string, unknown>)?.documentId as string ?? '';
+    const price = a.price != null ? Number(a.price) : null;
+    const currency = (a.currency as string) ?? 'USD';
+    return {
+      type: 'product',
+      id: docId,
+      slug: (a.slug as string) ?? '',
+      title: (a.title as string) ?? '',
+      subtitle: (a.shortDescription as string) ?? (a.subtitle as string) ?? undefined,
+      image: strapiMediaUrl(a.featuredImage) || strapiMediaUrl(Array.isArray(a.gallery) ? a.gallery[0] : null) || '',
+      category: (a.category as Record<string, unknown>)?.name as string ?? undefined,
+      tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? '') : undefined,
+      publishedAt: (a.publishedAt as string) ?? undefined,
+      info: price != null ? `${currency} ${price.toFixed(2)}` : undefined,
+      href: `/shop/${(a.slug as string) ?? ''}`,
+    };
+  }
+
+  if (component === 'home.featured-video') {
+    const a = resolveRelation(entry.video);
+    if (!a) return null;
+    const docId = (entry.video as Record<string, unknown>)?.documentId as string ?? '';
+    return {
+      type: 'video',
+      id: docId,
+      slug: (a.slug as string) ?? '',
+      title: (a.title as string) ?? '',
+      subtitle: (a.excerpt as string) ?? undefined,
+      image: strapiMediaUrl(a.thumbnail) || '',
+      category: (a.category as Record<string, unknown>)?.name as string ?? undefined,
+      tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? '') : undefined,
+      publishedAt: (a.publishedAt as string) ?? undefined,
+      info: (a.duration as string) ?? undefined,
+      href: `/videos/${(a.slug as string) ?? ''}`,
+    };
+  }
+
+  if (component === 'home.featured-gallery-item') {
+    const a = resolveRelation(entry.galleryItem);
+    if (!a) return null;
+    const docId = (entry.galleryItem as Record<string, unknown>)?.documentId as string ?? '';
+    return {
+      type: 'gallery',
+      id: docId,
+      slug: (a.slug as string) ?? '',
+      title: (a.title as string) ?? (a.caption as string) ?? '',
+      subtitle: (a.caption as string) ?? undefined,
+      image: strapiMediaUrl(a.image) || strapiMediaUrl(a.thumbnail) || '',
+      category: (a.category as Record<string, unknown>)?.name as string ?? undefined,
+      tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? '') : undefined,
+      publishedAt: (a.publishedAt as string) ?? undefined,
+      info: (a.location as string) ?? undefined,
+      href: `/gallery/${(a.slug as string) ?? ''}`,
+    };
+  }
+
+  return null;
+}
+
+function mapDynamicZone(raw: unknown): FeaturedContentItem[] {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((entry) => mapDynamicZoneItem(entry as Record<string, unknown>))
+    .filter((item): item is FeaturedContentItem => item !== null);
+}
+
+export function mapStrapiForm(raw: unknown): FormData | null {
+  if (!raw || typeof raw !== 'object') return null;
+  const o = raw as Record<string, unknown>;
+  const a = (o.attributes as Record<string, unknown>) ?? o;
+  const id = (o.documentId as string) ?? (o.id as string)?.toString() ?? '';
+  if (!id && !a.name) return null;
+  const benefitsList = compList(a.benefits).map((b) => (b.text as string) ?? '');
+  return {
+    id,
+    name: (a.name as string) ?? '',
+    enabled: (a.enabled as boolean) ?? true,
+    pillLabel: a.pillLabel as string | undefined,
+    pillIcon: a.pillIcon as string | undefined,
+    heading: a.heading as string | undefined,
+    subheading: a.subheading as string | undefined,
+    benefits: benefitsList.length ? benefitsList : undefined,
+    namePlaceholder: a.namePlaceholder as string | undefined,
+    emailPlaceholder: a.emailPlaceholder as string | undefined,
+    buttonLabel: a.buttonLabel as string | undefined,
+    buttonIcon: a.buttonIcon as string | undefined,
+    disclaimer: a.disclaimer as string | undefined,
+  };
+}
+
+export function mapStrapiHomePage(raw: unknown): HomePageData | null {
   const doc = strapiDoc<Record<string, unknown>>(raw);
   if (!doc) return null;
   const a = doc.attrs;
-  const hero = a.hero as Record<string, unknown> | undefined;
+
   const connectIds = (rel: unknown): string[] => {
     if (Array.isArray(rel)) return rel.map((r) => (typeof r === 'object' && r && 'documentId' in r ? (r as { documentId: string }).documentId : String(r)));
     if (rel && typeof rel === 'object' && 'data' in rel) {
@@ -201,13 +345,208 @@ export function mapStrapiHomePage(raw: unknown): {
     }
     return [];
   };
+
+  const heroRaw = a.hero as Record<string, unknown> | undefined;
+  const heroAttrs = heroRaw ? compAttrs(heroRaw) : {};
+  const heroButtons = compList(heroAttrs.buttons).map((b) => ({
+    label: (b.label as string) ?? '',
+    href: (b.href as string) ?? '',
+    icon: b.icon as string | undefined,
+    iconPosition: (b.iconPosition === 'left' ? 'left' : 'right') as 'left' | 'right',
+  }));
+  const heroStats = compList(heroAttrs.stats).map((s) => ({
+    value: (s.value as string) ?? '',
+    label: (s.label as string) ?? '',
+  }));
+
+  const section = (key: string) => {
+    const s = a[key] as Record<string, unknown> | undefined;
+    const attrs = s ? compAttrs(s) : {};
+    return {
+      heading: attrs.heading as string | undefined,
+      subheading: attrs.subheading as string | undefined,
+      viewAllLabel: attrs.viewAllLabel as string | undefined,
+      viewAllHref: attrs.viewAllHref as string | undefined,
+    };
+  };
+
+  const pillarsRaw = a.pillars as Record<string, unknown> | undefined;
+  const pillarsAttrs = pillarsRaw ? compAttrs(pillarsRaw) : {};
+  const pillarItems = compList(pillarsAttrs.items).map((p) => ({
+    icon: (p.icon as string) ?? '',
+    title: (p.title as string) ?? '',
+    description: (p.description as string) ?? '',
+    href: (p.href as string) ?? '',
+    colorKey: (p.colorKey as string) ?? 'primary',
+  }));
+
+  const aboutRaw = a.aboutPreview as Record<string, unknown> | undefined;
+  const aboutAttrs = aboutRaw ? compAttrs(aboutRaw) : {};
+  const aboutImageStats = compList(aboutAttrs.imageStats).map((s) => ({
+    value: (s.value as string) ?? '',
+    label: (s.label as string) ?? '',
+  }));
+  const aboutIconTexts = compList(aboutAttrs.iconTexts).map((t) => ({
+    icon: (t.icon as string) ?? '',
+    text: (t.text as string) ?? '',
+  }));
+
+  const newsletterForm = a.newsletter ? mapStrapiForm(a.newsletter) : null;
+
+  const ctaRaw = a.cta as Record<string, unknown> | undefined;
+  const ctaAttrs = ctaRaw ? compAttrs(ctaRaw) : {};
+  const ctaPrimary = compAttrs(ctaAttrs.primaryButton);
+  const ctaSecondary = compAttrs(ctaAttrs.secondaryButton);
+
   return {
-    hero: hero ? { heading: hero.heading as string, subheading: hero.subheading as string, eyebrow: hero.eyebrow as string } : undefined,
+    hero: heroAttrs && (heroAttrs.pillText != null || heroAttrs.headingWhite != null || heroAttrs.headingAccent != null)
+      ? {
+          pillText: heroAttrs.pillText as string | undefined,
+          headingWhite: heroAttrs.headingWhite as string | undefined,
+          headingAccent: heroAttrs.headingAccent as string | undefined,
+          subheading: heroAttrs.subheading as string | undefined,
+          buttons: heroButtons.length ? heroButtons : undefined,
+          stats: heroStats.length ? heroStats : undefined,
+        }
+      : undefined,
+    sectionFeaturedContent: section('sectionFeaturedContent').heading != null ? section('sectionFeaturedContent') : undefined,
+    topPromoted: mapDynamicZone(a.topPromoted)[0] ?? undefined,
+    featuredContent: (() => { const items = mapDynamicZone(a.featuredContent); return items.length ? items : undefined; })(),
+    pillars:
+      pillarsAttrs.heading != null || (pillarItems.length > 0)
+        ? { heading: pillarsAttrs.heading as string, subheading: pillarsAttrs.subheading as string, items: pillarItems.length ? pillarItems : undefined }
+        : undefined,
+    aboutPreview:
+      aboutAttrs.headingLine1 != null || aboutAttrs.eyebrow != null
+        ? {
+            image: aboutAttrs.image ? strapiMediaUrl(aboutAttrs.image) : undefined,
+            imageAlt: aboutAttrs.imageAlt as string | undefined,
+            imageStats: aboutImageStats.length ? aboutImageStats : undefined,
+            eyebrow: aboutAttrs.eyebrow as string | undefined,
+            headingLine1: aboutAttrs.headingLine1 as string | undefined,
+            headingAccent: aboutAttrs.headingAccent as string | undefined,
+            headingLine2: aboutAttrs.headingLine2 as string | undefined,
+            description:
+              typeof aboutAttrs.description === 'string'
+                ? aboutAttrs.description
+                : (richtextToPlain(aboutAttrs.description) || undefined),
+            iconTexts: aboutIconTexts.length ? aboutIconTexts : undefined,
+            buttonLabel: aboutAttrs.buttonLabel as string | undefined,
+            buttonHref: aboutAttrs.buttonHref as string | undefined,
+            buttonIcon: aboutAttrs.buttonIcon as string | undefined,
+          }
+        : undefined,
+    sectionVideos: section('sectionVideos').heading != null ? section('sectionVideos') : undefined,
+    sectionGallery: section('sectionGallery').heading != null ? section('sectionGallery') : undefined,
+    sectionBlog: section('sectionBlog').heading != null ? section('sectionBlog') : undefined,
+    sectionShop: section('sectionShop').heading != null ? section('sectionShop') : undefined,
+    sectionTestimonials:
+      section('sectionTestimonials').heading != null
+        ? { heading: section('sectionTestimonials').heading, subheading: section('sectionTestimonials').subheading }
+        : undefined,
+    newsletter: newsletterForm ?? undefined,
+    cta:
+      ctaAttrs.heading != null
+        ? {
+            heading: ctaAttrs.heading as string,
+            subheading: ctaAttrs.subheading as string | undefined,
+            primaryButton: ctaPrimary?.label
+              ? { label: ctaPrimary.label as string, href: (ctaPrimary.href as string) ?? '', icon: ctaPrimary.icon as string | undefined }
+              : undefined,
+            secondaryButton: ctaSecondary?.label
+              ? { label: ctaSecondary.label as string, href: (ctaSecondary.href as string) ?? '', icon: ctaSecondary.icon as string | undefined }
+              : undefined,
+          }
+        : undefined,
     featuredPostIds: connectIds(a.featuredPosts),
     featuredProductIds: connectIds(a.featuredProducts),
     featuredVideoIds: connectIds(a.featuredVideos),
     featuredGalleryIds: connectIds(a.featuredGalleryItems),
     featuredTestimonialIds: connectIds(a.featuredTestimonials),
+  };
+}
+
+// ---------------------------------------------------------------------------
+// About page
+// ---------------------------------------------------------------------------
+
+export function mapStrapiAboutPage(raw: unknown): AboutPageData | null {
+  const doc = strapiDoc<Record<string, unknown>>(raw);
+  if (!doc) return null;
+  const a = doc.attrs;
+
+  const heroRaw = a.hero as Record<string, unknown> | undefined;
+  const heroAttrs = heroRaw ? compAttrs(heroRaw) : {};
+
+  const mainRaw = a.main as Record<string, unknown> | undefined;
+  const mainAttrs = mainRaw ? compAttrs(mainRaw) : {};
+  const mainIconTexts = compList(mainAttrs.iconTexts).map((t) => ({
+    icon: (t.icon as string) ?? '',
+    text: (t.text as string) ?? '',
+  }));
+
+  const statsItems = compList(a.stats).map((s) => ({
+    value: (s.value as string) ?? '',
+    label: (s.label as string) ?? '',
+  }));
+
+  const valuesSectionRaw = a.valuesSection as Record<string, unknown> | undefined;
+  const valuesSectionAttrs = valuesSectionRaw ? compAttrs(valuesSectionRaw) : {};
+
+  const valuesItems = compList(a.values).map((v) => ({
+    icon: (v.icon as string) ?? '',
+    title: (v.title as string) ?? '',
+    description: (v.description as string) ?? '',
+  }));
+
+  const ctaRaw = a.cta as Record<string, unknown> | undefined;
+  const ctaAttrs = ctaRaw ? compAttrs(ctaRaw) : {};
+
+  return {
+    hero:
+      heroAttrs.pillText != null || heroAttrs.headingLine1 != null || heroAttrs.headingAccent != null
+        ? {
+            pillText: heroAttrs.pillText as string | undefined,
+            headingLine1: heroAttrs.headingLine1 as string | undefined,
+            headingAccent: heroAttrs.headingAccent as string | undefined,
+            subheading: heroAttrs.subheading as string | undefined,
+          }
+        : undefined,
+    main:
+      mainAttrs.headingIntro != null || mainAttrs.image != null
+        ? {
+            image: mainAttrs.image ? strapiMediaUrl(mainAttrs.image) : undefined,
+            imageAlt: mainAttrs.imageAlt as string | undefined,
+            headingIntro: mainAttrs.headingIntro as string | undefined,
+            bodyIntro: mainAttrs.bodyIntro as string | undefined,
+            headingPhilosophy: mainAttrs.headingPhilosophy as string | undefined,
+            bodyPhilosophy1: mainAttrs.bodyPhilosophy1 as string | undefined,
+            bodyPhilosophy2: mainAttrs.bodyPhilosophy2 as string | undefined,
+            iconTexts: mainIconTexts.length ? mainIconTexts : undefined,
+          }
+        : undefined,
+    stats: statsItems.length ? statsItems : undefined,
+    valuesSection:
+      valuesSectionAttrs.heading != null
+        ? {
+            heading: valuesSectionAttrs.heading as string | undefined,
+            subheading: valuesSectionAttrs.subheading as string | undefined,
+          }
+        : undefined,
+    values: valuesItems.length ? valuesItems : undefined,
+    cta:
+      ctaAttrs.heading != null
+        ? {
+            heading: ctaAttrs.heading as string | undefined,
+            subheading: ctaAttrs.subheading as string | undefined,
+            primaryLabel: ctaAttrs.primaryLabel as string | undefined,
+            primaryHref: ctaAttrs.primaryHref as string | undefined,
+            primaryIcon: ctaAttrs.primaryIcon as string | undefined,
+            secondaryLabel: ctaAttrs.secondaryLabel as string | undefined,
+            secondaryHref: ctaAttrs.secondaryHref as string | undefined,
+            secondaryIcon: ctaAttrs.secondaryIcon as string | undefined,
+          }
+        : undefined,
   };
 }
 
@@ -401,6 +740,7 @@ export function mapStrapiGalleryItemToGalleryItem(raw: unknown): GalleryItem | n
     thumbnail: strapiMediaUrl(a.thumbnail) || strapiMediaUrl(a.image) || '',
     caption: (a.caption as string) ?? undefined,
     category: ((a.category as Record<string, string>)?.name ?? (a.category as string) ?? 'lifestyle') as GalleryItem['category'],
+    location: (a.location as string) ?? undefined,
     tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? String(t)) : [],
     featured: (a.featured as boolean) ?? false,
   };

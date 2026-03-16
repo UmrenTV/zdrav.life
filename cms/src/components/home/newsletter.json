@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_home_newsletters",
+  "info": {
+    "displayName": "Newsletter",
+    "description": "Newsletter block: pill, heading, subheading, benefits list (form is static)"
+  },
+  "options": {},
+  "attributes": {
+    "pillLabel": { "type": "string" },
+    "pillIcon": { "type": "string", "description": "Lucide icon name, e.g. Mail" },
+    "heading": { "type": "string" },
+    "subheading": { "type": "text" },
+    "benefits": { "type": "component", "component": "home.newsletter-benefit", "repeatable": true }
+  }
+}

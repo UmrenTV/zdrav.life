@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_home_newsletter_benefits",
+  "info": {
+    "displayName": "Newsletter benefit",
+    "description": "Single bullet benefit for newsletter section"
+  },
+  "options": {},
+  "attributes": {
+    "text": { "type": "string" }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_home_featured_videos",
+  "info": {
+    "displayName": "Featured video",
+    "description": "Select a video for the featured content section"
+  },
+  "options": {},
+  "attributes": {
+    "video": { "type": "relation", "relation": "manyToOne", "target": "api::video.video" }
+  }
+}

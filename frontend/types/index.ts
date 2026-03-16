@@ -35,8 +35,8 @@ export interface SiteConfig {
     twitterHandle: string;
     keywords: string[];
   };
-  newsletterHeading: string;
-  newsletterText: string;
+  /** Form data for the footer newsletter (relation to Forms collection). */
+  footerForm: FormData | null;
   footerText: string;
   /** Navigation items for header, hamburger, and footer. From Strapi menuItems. */
   menu: MenuItem[];
@@ -64,6 +64,126 @@ export interface MenuItem {
   href: string;
   icon?: string;
   openInNewTab: boolean;
+}
+
+/** Home page content from Strapi (single type). When null, sections use hardcoded defaults. */
+export interface HomePageData {
+  hero?: {
+    pillText?: string;
+    headingWhite?: string;
+    headingAccent?: string;
+    subheading?: string;
+    buttons?: { label: string; href: string; icon?: string; iconPosition?: 'left' | 'right' }[];
+    stats?: { value: string; label: string }[];
+  };
+  sectionFeaturedContent?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
+  pillars?: {
+    heading?: string;
+    subheading?: string;
+    items?: { icon: string; title: string; description: string; href: string; colorKey: string }[];
+  };
+  aboutPreview?: {
+    image?: string;
+    imageAlt?: string;
+    imageStats?: { value: string; label: string }[];
+    eyebrow?: string;
+    headingLine1?: string;
+    headingAccent?: string;
+    headingLine2?: string;
+    description?: string;
+    iconTexts?: { icon: string; text: string }[];
+    buttonLabel?: string;
+    buttonHref?: string;
+    buttonIcon?: string;
+  };
+  sectionVideos?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
+  sectionGallery?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
+  sectionBlog?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
+  sectionShop?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
+  sectionTestimonials?: { heading?: string; subheading?: string };
+  topPromoted?: FeaturedContentItem;
+  featuredContent?: FeaturedContentItem[];
+  newsletter?: FormData;
+  cta?: {
+    heading?: string;
+    subheading?: string;
+    primaryButton?: { label: string; href: string; icon?: string };
+    secondaryButton?: { label: string; href: string; icon?: string };
+  };
+  featuredPostIds?: string[];
+  featuredProductIds?: string[];
+  featuredVideoIds?: string[];
+  featuredGalleryIds?: string[];
+  featuredTestimonialIds?: string[];
+}
+
+/** Normalized item from the Featured Content dynamic zone. Can be a post, product, video, or gallery item. */
+export interface FeaturedContentItem {
+  type: 'article' | 'product' | 'video' | 'gallery';
+  id: string;
+  slug: string;
+  title: string;
+  subtitle?: string;
+  image: string;
+  category?: string;
+  tags?: string[];
+  publishedAt?: string;
+  /** Contextual info: reading time for articles, price for products, duration for videos, location for gallery */
+  info?: string;
+  href: string;
+}
+
+/** About page content from Strapi (single type). When null, page uses hardcoded defaults. */
+export interface AboutPageData {
+  hero?: {
+    pillText?: string;
+    headingLine1?: string;
+    headingAccent?: string;
+    subheading?: string;
+  };
+  main?: {
+    image?: string;
+    imageAlt?: string;
+    headingIntro?: string;
+    bodyIntro?: string;
+    headingPhilosophy?: string;
+    bodyPhilosophy1?: string;
+    bodyPhilosophy2?: string;
+    iconTexts?: { icon: string; text: string }[];
+  };
+  stats?: { value: string; label: string }[];
+  valuesSection?: {
+    heading?: string;
+    subheading?: string;
+  };
+  values?: { icon: string; title: string; description: string }[];
+  cta?: {
+    heading?: string;
+    subheading?: string;
+    primaryLabel?: string;
+    primaryHref?: string;
+    primaryIcon?: string;
+    secondaryLabel?: string;
+    secondaryHref?: string;
+    secondaryIcon?: string;
+  };
+}
+
+/** Reusable form entity from Strapi "Form" collection type. Used for homepage newsletter and footer. */
+export interface FormData {
+  id: string;
+  name: string;
+  enabled: boolean;
+  pillLabel?: string;
+  pillIcon?: string;
+  heading?: string;
+  subheading?: string;
+  benefits?: string[];
+  namePlaceholder?: string;
+  emailPlaceholder?: string;
+  buttonLabel?: string;
+  buttonIcon?: string;
+  disclaimer?: string;
 }
 
 export interface NavigationItem {

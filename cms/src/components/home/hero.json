@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_home_heroes",
+  "info": {
+    "displayName": "Home hero",
+    "description": "Hero block: pill, two-line heading (white + accent), subheading, buttons, stats"
+  },
+  "options": {},
+  "attributes": {
+    "pillText": { "type": "string" },
+    "headingWhite": { "type": "string" },
+    "headingAccent": { "type": "string" },
+    "subheading": { "type": "text" },
+    "buttons": { "type": "component", "component": "home.hero-button", "repeatable": true },
+    "stats": { "type": "component", "component": "home.hero-stat", "repeatable": true }
+  }
+}

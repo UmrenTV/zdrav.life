@@ -27,8 +27,6 @@ interface SiteConfigJson {
     twitterHandle?: string;
     keywords?: string[];
   };
-  newsletterHeading?: string;
-  newsletterText?: string;
   footerText?: string;
   menu?: { name: string; href: string; icon?: string; openInNewTab?: boolean }[];
   footerLegalLinks?: { label: string; href: string }[];
@@ -85,8 +83,6 @@ export async function seedSiteSetting(): Promise<void> {
     instagramUrl: config.links.instagram || undefined,
     githubUrl: config.links.github || undefined,
     twitterUrl: config.links.twitter || undefined,
-    newsletterHeading: config.newsletterHeading ?? undefined,
-    newsletterText: config.newsletterText ?? undefined,
     footerText: config.footerText ?? undefined,
     menuItems: Array.isArray(config.menu)
       ? config.menu.map((item) => ({

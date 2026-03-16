@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_home_featured_gallery_items",
+  "info": {
+    "displayName": "Featured gallery item",
+    "description": "Select a gallery item for the featured content section"
+  },
+  "options": {},
+  "attributes": {
+    "galleryItem": { "type": "relation", "relation": "manyToOne", "target": "api::gallery-item.gallery-item" }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_home_featured_posts",
+  "info": {
+    "displayName": "Featured post",
+    "description": "Select a blog post for the featured content section"
+  },
+  "options": {},
+  "attributes": {
+    "post": { "type": "relation", "relation": "manyToOne", "target": "api::post.post" }
+  }
+}

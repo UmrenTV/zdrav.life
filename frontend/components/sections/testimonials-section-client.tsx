@@ -7,19 +7,23 @@ import type { Testimonial } from '@/types';
 
 interface TestimonialsSectionClientProps {
   testimonials: Testimonial[];
+  section?: { heading?: string; subheading?: string };
 }
 
-export function TestimonialsSectionClient({ testimonials }: TestimonialsSectionClientProps) {
+export function TestimonialsSectionClient({ testimonials, section }: TestimonialsSectionClientProps) {
+  const heading = section?.heading ?? "What the Community Says";
+  const subheading = section?.subheading ?? "Real stories from real people who've embraced the ZdravLife philosophy.";
+
   return (
     <section className="section-padding">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <h2 className="text-heading-2 font-heading font-semibold mb-4">
-            What the Community Says
+            {heading}
           </h2>
           <p className="text-muted-foreground">
-            Real stories from real people who've embraced the ZdravLife philosophy.
+            {subheading}
           </p>
         </div>
 

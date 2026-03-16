@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_about_values",
+  "info": {
+    "displayName": "Core value",
+    "description": "Single core principle card"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "description": "Lucide icon name, e.g. Target, Zap, Brain, Mountain"
+    },
+    "title": { "type": "string" },
+    "description": { "type": "text" }
+  }
+}

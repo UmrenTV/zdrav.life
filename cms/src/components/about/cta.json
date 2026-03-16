@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_about_ctas",
+  "info": {
+    "displayName": "About CTA",
+    "description": "Bottom CTA on About page"
+  },
+  "options": {},
+  "attributes": {
+    "heading": { "type": "string" },
+    "subheading": { "type": "text" },
+    "primaryLabel": { "type": "string" },
+    "primaryHref": { "type": "string" },
+    "primaryIcon": {
+      "type": "string",
+      "description": "Lucide icon name, e.g. ArrowRight"
+    },
+    "secondaryLabel": { "type": "string" },
+    "secondaryHref": { "type": "string" },
+    "secondaryIcon": {
+      "type": "string",
+      "description": "Lucide icon name (optional)"
+    }
+  }
+}

@@ -11,24 +11,31 @@ import type { Product } from '@/types';
 
 interface FeaturedShopSectionClientProps {
   products: Product[];
+  section?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
 }
 
-export function FeaturedShopSectionClient({ products }: FeaturedShopSectionClientProps) {
+export function FeaturedShopSectionClient({ products, section }: FeaturedShopSectionClientProps) {
+  const heading = section?.heading ?? 'Shop the Brand';
+  const subheading = section?.subheading ?? 'Premium apparel, digital guides, and gear for the pursuit of vitality.';
+  const viewAllHref = section?.viewAllHref ?? '/shop';
+  const viewAllLabel = section?.viewAllLabel ?? 'View All';
+  const viewAllProductsLabel = 'View All Products';
+
   return (
     <section className="section-padding bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-heading-2 font-heading font-semibold mb-2">
-              Shop the Brand
+              {heading}
             </h2>
             <p className="text-muted-foreground">
-              Premium apparel, digital guides, and gear for the pursuit of vitality.
+              {subheading}
             </p>
           </div>
           <Button asChild variant="ghost" className="hidden sm:flex group">
-            <Link href="/shop">
-              View All
+            <Link href={viewAllHref}>
+              {viewAllLabel}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
@@ -116,7 +123,7 @@ export function FeaturedShopSectionClient({ products }: FeaturedShopSectionClien
 
         <div className="mt-6 sm:hidden">
           <Button asChild variant="outline" className="w-full">
-            <Link href="/shop">View All Products</Link>
+            <Link href={viewAllHref}>{viewAllProductsLabel}</Link>
           </Button>
         </div>
       </div>

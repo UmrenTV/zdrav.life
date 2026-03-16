@@ -2,10 +2,49 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, ShoppingBag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { getLucideIcon } from '@/lib/lucide-icon';
+import type { HomePageData } from '@/types';
 
-export function HeroSection() {
+const DEFAULT_HERO = {
+  pillText: 'Software Engineer & Problem Solver',
+  headingWhite: 'Engineer Your',
+  headingAccent: 'Vitality',
+  subheading:
+    "Build strength. Master discipline. Ride further. Live deeper.\nA software engineer's journey into high-performance living.",
+  buttons: [
+    { label: 'Explore the Blog', href: '/blog', icon: 'ArrowRight', iconPosition: 'right' as const },
+    { label: 'Watch the Journey', href: '/videos', icon: 'Play', iconPosition: 'left' as const },
+    { label: 'Shop the Brand', href: '/shop', icon: 'ShoppingBag', iconPosition: 'left' as const },
+  ],
+  stats: [
+    { value: '50K+', label: 'Subscribers' },
+    { value: '100+', label: 'Videos' },
+    { value: '5K+', label: 'Community' },
+  ],
+};
+
+export function HeroSection({ home }: { home?: HomePageData }) {
+  const hero = home?.hero;
+  const pillText = hero?.pillText ?? DEFAULT_HERO.pillText;
+  const headingWhite = hero?.headingWhite ?? DEFAULT_HERO.headingWhite;
+  const headingAccent = hero?.headingAccent ?? DEFAULT_HERO.headingAccent;
+  const subheading = hero?.subheading ?? DEFAULT_HERO.subheading;
+  const rawButtons = hero?.buttons?.length ? hero.buttons : undefined;
+  const buttons =
+    rawButtons && rawButtons.length
+      ? rawButtons.map((btn, index) => {
+          const defaultBtn = DEFAULT_HERO.buttons[index] ?? DEFAULT_HERO.buttons[0];
+          return {
+            ...defaultBtn,
+            ...btn,
+            icon: btn.icon ?? defaultBtn.icon,
+            iconPosition: btn.iconPosition ?? defaultBtn.iconPosition,
+          };
+        })
+      : DEFAULT_HERO.buttons;
+  const stats = hero?.stats?.length ? hero.stats : DEFAULT_HERO.stats;
+
   return (
     <section className="relative min-h-screen w-full max-w-full min-w-0 flex items-center justify-center overflow-hidden">
       {/* Background Gradient */}
@@ -48,7 +87,7 @@ export function HeroSection() {
             className="mb-6"
           >
             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
-              Software Engineer & Problem Solver
+              {pillText}
             </span>
           </motion.div>
 
@@ -59,8 +98,8 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight mb-6"
           >
-            <span className="block">Engineer Your</span>
-            <span className="block text-gradient">Vitality</span>
+            <span className="block">{headingWhite}</span>
+            <span className="block text-gradient">{headingAccent}</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -68,10 +107,9 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8"
+            className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 whitespace-pre-line"
           >
-            Build strength. Master discipline. Ride further. Live deeper.
-            A software engineer's journey into high-performance living.
+            {subheading}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -81,34 +119,23 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
-            <Button asChild size="lg" className="w-full sm:w-auto group">
-              <Link href="/blog">
-                Explore the Blog
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto group"
-            >
-              <Link href="/videos">
-                <Play className="mr-2 h-4 w-4" />
-                Watch the Journey
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="secondary"
-              size="lg"
-              className="w-full sm:w-auto group"
-            >
-              <Link href="/shop">
-                <ShoppingBag className="mr-2 h-4 w-4" />
-                Shop the Brand
-              </Link>
-            </Button>
+            {buttons.map((btn, i) => {
+              const Icon = getLucideIcon(btn.icon);
+              const isFirst = i === 0;
+              const isLast = i === buttons.length - 1;
+              const variant = isFirst ? 'default' : isLast ? 'secondary' : 'outline';
+              return (
+                <Button key={btn.href + i} asChild size="lg" variant={variant} className="w-full sm:w-auto group">
+                  <Link href={btn.href}>
+                    {btn.iconPosition === 'left' && Icon && <Icon className="mr-2 h-4 w-4" />}
+                    {btn.label}
+                    {btn.iconPosition === 'right' && Icon && (
+                      <Icon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    )}
+                  </Link>
+                </Button>
+              );
+            })}
           </motion.div>
 
           {/* Stats */}
@@ -118,30 +145,16 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="grid grid-cols-3 gap-8 max-w-lg mx-auto"
           >
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
-                50K+
+            {stats.map((stat) => (
+              <div key={stat.label} className="text-center">
+                <div className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
+                  {stat.value}
+                </div>
+                <div className="text-xs sm:text-sm text-muted-foreground">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-xs sm:text-sm text-muted-foreground">
-                Subscribers
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
-                100+
-              </div>
-              <div className="text-xs sm:text-sm text-muted-foreground">
-                Videos
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl sm:text-3xl font-heading font-bold text-foreground">
-                5K+
-              </div>
-              <div className="text-xs sm:text-sm text-muted-foreground">
-                Community
-              </div>
-            </div>
+            ))}
           </motion.div>
         </div>
       </div>

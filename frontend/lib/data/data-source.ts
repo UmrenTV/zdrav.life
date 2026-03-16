@@ -21,6 +21,11 @@ export async function getHomePage() {
   return null;
 }
 
+export async function getAboutPage() {
+  if (isStrapiEnabled) return strapi.getAboutPage();
+  return null;
+}
+
 export async function getFeaturedPosts(limit: number = 3) {
   if (isStrapiEnabled) return strapi.getFeaturedPosts(limit);
   return services.getFeaturedPosts(limit);

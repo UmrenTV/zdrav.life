@@ -11,24 +11,31 @@ import type { Post } from '@/types';
 
 interface FeaturedBlogSectionClientProps {
   posts: Post[];
+  section?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
 }
 
-export function FeaturedBlogSectionClient({ posts }: FeaturedBlogSectionClientProps) {
+export function FeaturedBlogSectionClient({ posts, section }: FeaturedBlogSectionClientProps) {
+  const heading = section?.heading ?? 'From the Journal';
+  const subheading = section?.subheading ?? 'Thoughts on training, nutrition, discipline, and the pursuit of excellence.';
+  const viewAllHref = section?.viewAllHref ?? '/blog';
+  const viewAllLabel = section?.viewAllLabel ?? 'Read All';
+  const viewAllArticlesLabel = 'Read All Articles';
+
   return (
     <section className="section-padding">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-heading-2 font-heading font-semibold mb-2">
-              From the Journal
+              {heading}
             </h2>
             <p className="text-muted-foreground">
-              Thoughts on training, nutrition, discipline, and the pursuit of excellence.
+              {subheading}
             </p>
           </div>
           <Button asChild variant="ghost" className="hidden sm:flex group">
-            <Link href="/blog">
-              Read All
+            <Link href={viewAllHref}>
+              {viewAllLabel}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
@@ -84,7 +91,7 @@ export function FeaturedBlogSectionClient({ posts }: FeaturedBlogSectionClientPr
 
         <div className="mt-6 sm:hidden">
           <Button asChild variant="outline" className="w-full">
-            <Link href="/blog">Read All Articles</Link>
+            <Link href={viewAllHref}>{viewAllArticlesLabel}</Link>
           </Button>
         </div>
       </div>

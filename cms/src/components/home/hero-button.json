@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_home_hero_buttons",
+  "info": {
+    "displayName": "Hero button",
+    "description": "CTA in hero: label, href, optional icon (Lucide name), position left or right"
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string" },
+    "href": { "type": "string" },
+    "icon": { "type": "string", "description": "Lucide icon name, e.g. ArrowRight, Play" },
+    "iconPosition": {
+      "type": "enumeration",
+      "enum": ["left", "right"],
+      "default": "right"
+    }
+  }
+}

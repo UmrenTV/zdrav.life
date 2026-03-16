@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_home_section_headings",
+  "info": {
+    "displayName": "Section heading",
+    "description": "Section title block: heading, subheading, optional View All label and href"
+  },
+  "options": {},
+  "attributes": {
+    "heading": { "type": "string" },
+    "subheading": { "type": "text" },
+    "viewAllLabel": { "type": "string" },
+    "viewAllHref": { "type": "string" }
+  }
+}

@@ -11,10 +11,16 @@ import type { VideoItem } from '@/types';
 
 interface FeaturedVideosSectionClientProps {
   videos: VideoItem[];
+  section?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
 }
 
-export function FeaturedVideosSectionClient({ videos }: FeaturedVideosSectionClientProps) {
+export function FeaturedVideosSectionClient({ videos, section }: FeaturedVideosSectionClientProps) {
   const [featuredVideo, ...otherVideos] = videos;
+  const heading = section?.heading ?? 'Latest Videos';
+  const subheading = section?.subheading ?? 'Training tutorials, adventure vlogs, and deep dives.';
+  const viewAllHref = section?.viewAllHref ?? '/videos';
+  const viewAllLabel = section?.viewAllLabel ?? 'View All';
+  const viewAllVideosLabel = 'View All Videos';
 
   return (
     <section className="section-padding">
@@ -22,15 +28,15 @@ export function FeaturedVideosSectionClient({ videos }: FeaturedVideosSectionCli
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-heading-2 font-heading font-semibold mb-2">
-              Latest Videos
+              {heading}
             </h2>
             <p className="text-muted-foreground">
-              Training tutorials, adventure vlogs, and deep dives.
+              {subheading}
             </p>
           </div>
           <Button asChild variant="ghost" className="hidden sm:flex group">
-            <Link href="/videos">
-              View All
+            <Link href={viewAllHref}>
+              {viewAllLabel}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
@@ -147,7 +153,7 @@ export function FeaturedVideosSectionClient({ videos }: FeaturedVideosSectionCli
 
         <div className="mt-6 sm:hidden">
           <Button asChild variant="outline" className="w-full">
-            <Link href="/videos">View All Videos</Link>
+            <Link href={viewAllHref}>{viewAllVideosLabel}</Link>
           </Button>
         </div>
       </div>

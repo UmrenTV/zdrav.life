@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_home_ctas",
+  "info": {
+    "displayName": "Home CTA",
+    "description": "Bottom CTA banner: heading, subheading, primary and secondary buttons"
+  },
+  "options": {},
+  "attributes": {
+    "heading": { "type": "string" },
+    "subheading": { "type": "text" },
+    "primaryButton": { "type": "component", "component": "home.cta-button", "repeatable": false },
+    "secondaryButton": { "type": "component", "component": "home.cta-button", "repeatable": false }
+  }
+}

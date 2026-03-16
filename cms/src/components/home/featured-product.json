@@ -1,0 +1,11 @@
+{
+  "collectionName": "components_home_featured_products",
+  "info": {
+    "displayName": "Featured product",
+    "description": "Select a product for the featured content section"
+  },
+  "options": {},
+  "attributes": {
+    "product": { "type": "relation", "relation": "manyToOne", "target": "api::product.product" }
+  }
+}

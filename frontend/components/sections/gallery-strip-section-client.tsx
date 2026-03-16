@@ -9,24 +9,30 @@ import type { GalleryItem } from '@/types';
 
 interface GalleryStripSectionClientProps {
   items: GalleryItem[];
+  section?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
 }
 
-export function GalleryStripSectionClient({ items }: GalleryStripSectionClientProps) {
+export function GalleryStripSectionClient({ items, section }: GalleryStripSectionClientProps) {
+  const heading = section?.heading ?? 'Life in Frames';
+  const subheading = section?.subheading ?? 'Training, travel, and everything in between.';
+  const viewAllHref = section?.viewAllHref ?? '/gallery';
+  const viewAllLabel = section?.viewAllLabel ?? 'View Gallery';
+
   return (
     <section className="section-padding-sm w-full max-w-full min-w-0 overflow-hidden bg-muted/30">
       <div className="container mx-auto w-full max-w-full min-w-0 px-4 sm:px-6 lg:px-8 mb-8">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-heading-3 font-heading font-semibold mb-1">
-              Life in Frames
+              {heading}
             </h2>
             <p className="text-muted-foreground text-sm">
-              Training, travel, and everything in between.
+              {subheading}
             </p>
           </div>
           <Button asChild variant="ghost" size="sm" className="hidden sm:flex group">
-            <Link href="/gallery">
-              View Gallery
+            <Link href={viewAllHref}>
+              {viewAllLabel}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>

@@ -467,6 +467,40 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutPageAboutPage extends Struct.SingleTypeSchema {
+  collectionName: 'about_pages';
+  info: {
+    displayName: 'About page';
+    pluralName: 'about-pages';
+    singularName: 'about-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'about.cta', false>;
+    hero: Schema.Attribute.Component<'about.hero', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-page.about-page'
+    > &
+      Schema.Attribute.Private;
+    main: Schema.Attribute.Component<'about.main', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    seo: Schema.Attribute.Component<'shared.seo', false>;
+    stats: Schema.Attribute.Component<'layout.stat-item', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    values: Schema.Attribute.Component<'about.value', true>;
+    valuesSection: Schema.Attribute.Component<'about.section-heading', false>;
+  };
+}
+
 export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
   collectionName: 'authors';
   info: {
@@ -606,6 +640,42 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiFormForm extends Struct.CollectionTypeSchema {
+  collectionName: 'forms';
+  info: {
+    displayName: 'Form';
+    pluralName: 'forms';
+    singularName: 'form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    benefits: Schema.Attribute.Component<'home.newsletter-benefit', true>;
+    buttonIcon: Schema.Attribute.String;
+    buttonLabel: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    disclaimer: Schema.Attribute.Text;
+    emailPlaceholder: Schema.Attribute.String;
+    enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    heading: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::form.form'> &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    namePlaceholder: Schema.Attribute.String;
+    pillIcon: Schema.Attribute.String;
+    pillLabel: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    subheading: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGalleryItemGalleryItem extends Struct.CollectionTypeSchema {
   collectionName: 'gallery_items';
   info: {
@@ -630,6 +700,7 @@ export interface ApiGalleryItemGalleryItem extends Struct.CollectionTypeSchema {
       'api::gallery-item.gallery-item'
     > &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String;
     mediaType: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     seo: Schema.Attribute.Component<'shared.seo', false>;
@@ -655,9 +726,19 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    aboutPreview: Schema.Attribute.Component<'home.about-preview', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'home.cta', false>;
+    featuredContent: Schema.Attribute.DynamicZone<
+      [
+        'home.featured-post',
+        'home.featured-product',
+        'home.featured-video',
+        'home.featured-gallery-item',
+      ]
+    >;
     featuredGalleryItems: Schema.Attribute.Relation<
       'manyToMany',
       'api::gallery-item.gallery-item'
@@ -672,7 +753,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       'api::testimonial.testimonial'
     >;
     featuredVideos: Schema.Attribute.Relation<'manyToMany', 'api::video.video'>;
-    hero: Schema.Attribute.Component<'layout.hero', false>;
+    hero: Schema.Attribute.Component<'home.hero', false>;
     homepageSeo: Schema.Attribute.Component<'shared.seo', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -680,7 +761,29 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       'api::home-page.home-page'
     > &
       Schema.Attribute.Private;
+    newsletter: Schema.Attribute.Relation<'manyToOne', 'api::form.form'>;
+    pillars: Schema.Attribute.Component<'home.pillars', false>;
     publishedAt: Schema.Attribute.DateTime;
+    sectionBlog: Schema.Attribute.Component<'home.section-heading', false>;
+    sectionFeaturedContent: Schema.Attribute.Component<
+      'home.section-heading',
+      false
+    >;
+    sectionGallery: Schema.Attribute.Component<'home.section-heading', false>;
+    sectionShop: Schema.Attribute.Component<'home.section-heading', false>;
+    sectionTestimonials: Schema.Attribute.Component<
+      'home.section-heading',
+      false
+    >;
+    sectionVideos: Schema.Attribute.Component<'home.section-heading', false>;
+    topPromoted: Schema.Attribute.DynamicZone<
+      [
+        'home.featured-post',
+        'home.featured-product',
+        'home.featured-video',
+        'home.featured-gallery-item',
+      ]
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -906,6 +1009,7 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
     enableShop: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     enableVideos: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     favicon: Schema.Attribute.Media<'images'>;
+    footerForm: Schema.Attribute.Relation<'manyToOne', 'api::form.form'>;
     footerLegalLinks: Schema.Attribute.Component<
       'shared.footer-legal-link',
       true
@@ -937,8 +1041,6 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
       Schema.Attribute.DefaultTo<4>;
     nameAccentPosition: Schema.Attribute.Enumeration<['first', 'last']> &
       Schema.Attribute.DefaultTo<'last'>;
-    newsletterHeading: Schema.Attribute.String;
-    newsletterText: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     siteName: Schema.Attribute.String;
     siteUrl: Schema.Attribute.String;
@@ -1564,10 +1666,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::comment.comment': ApiCommentComment;
       'api::faq.faq': ApiFaqFaq;
+      'api::form.form': ApiFormForm;
       'api::gallery-item.gallery-item': ApiGalleryItemGalleryItem;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::legal-page.legal-page': ApiLegalPageLegalPage;

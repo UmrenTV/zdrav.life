@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_home_icon_texts",
+  "info": {
+    "displayName": "Icon text",
+    "description": "Icon + label pair (e.g. Code + Engineering)"
+  },
+  "options": {},
+  "attributes": {
+    "icon": { "type": "string", "description": "Lucide icon name" },
+    "text": { "type": "string" }
+  }
+}

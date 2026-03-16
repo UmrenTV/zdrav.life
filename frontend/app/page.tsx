@@ -11,7 +11,8 @@ import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { NewsletterSection } from '@/components/sections/newsletter-section';
 import { CTABannerSection } from '@/components/sections/cta-banner-section';
 import { generateMetadata as genMeta } from '@/lib/seo/metadata';
-import { getSiteConfig } from '@/lib/data/data-source';
+import { getSiteConfig, getHomePage } from '@/lib/data/data-source';
+
 
 export async function generateMetadata() {
   const config = await getSiteConfig();
@@ -27,52 +28,52 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  const config = await getSiteConfig();
+  const [config, home] = await Promise.all([getSiteConfig(), getHomePage()]);
   const features = config.features ?? { shop: true, blog: true, gallery: true, videos: true };
 
   return (
     <>
-      <HeroSection />
+      <HeroSection home={home ?? undefined} />
 
       <Suspense fallback={<div className="h-96 bg-muted/50 animate-pulse" />}>
-        <FeaturedContentSection />
+        <FeaturedContentSection home={home ?? undefined} />
       </Suspense>
 
-      <PillarsSection />
+      <PillarsSection home={home ?? undefined} />
 
-      <AboutPreviewSection />
+      <AboutPreviewSection home={home ?? undefined} />
 
       {features.videos !== false && (
         <Suspense fallback={<div className="h-96 bg-muted/50 animate-pulse" />}>
-          <FeaturedVideosSection />
+          <FeaturedVideosSection home={home ?? undefined} />
         </Suspense>
       )}
 
       {features.gallery !== false && (
         <Suspense fallback={<div className="h-64 bg-muted/50 animate-pulse" />}>
-          <GalleryStripSection />
+          <GalleryStripSection home={home ?? undefined} />
         </Suspense>
       )}
 
       {features.blog !== false && (
         <Suspense fallback={<div className="h-96 bg-muted/50 animate-pulse" />}>
-          <FeaturedBlogSection />
+          <FeaturedBlogSection home={home ?? undefined} />
         </Suspense>
       )}
 
       {features.shop !== false && (
         <Suspense fallback={<div className="h-96 bg-muted/50 animate-pulse" />}>
-          <FeaturedShopSection />
+          <FeaturedShopSection home={home ?? undefined} />
         </Suspense>
       )}
 
       <Suspense fallback={<div className="h-64 bg-muted/50 animate-pulse" />}>
-        <TestimonialsSection />
+        <TestimonialsSection home={home ?? undefined} />
       </Suspense>
 
-      <NewsletterSection />
+      <NewsletterSection form={home?.newsletter} />
 
-      <CTABannerSection />
+      <CTABannerSection home={home ?? undefined} />
     </>
   );
 }

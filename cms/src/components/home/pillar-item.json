@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_home_pillar_items",
+  "info": {
+    "displayName": "Pillar item",
+    "description": "Single pillar card: icon (Lucide), title, description, href, colorKey for hover gradient"
+  },
+  "options": {},
+  "attributes": {
+    "icon": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "text" },
+    "href": { "type": "string" },
+    "colorKey": { "type": "string", "description": "e.g. blue, green, orange, purple, red, primary" }
+  }
+}

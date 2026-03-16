@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_about_heroes",
+  "info": {
+    "displayName": "About hero",
+    "description": "About page hero: pill, heading, accent, subheading"
+  },
+  "options": {},
+  "attributes": {
+    "pillText": {
+      "type": "string"
+    },
+    "headingLine1": {
+      "type": "string"
+    },
+    "headingAccent": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "text"
+    }
+  }
+}

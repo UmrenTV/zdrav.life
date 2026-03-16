@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_home_cta_buttons",
+  "info": {
+    "displayName": "CTA button",
+    "description": "Button in CTA banner: label, href, optional icon"
+  },
+  "options": {},
+  "attributes": {
+    "label": { "type": "string" },
+    "href": { "type": "string" },
+    "icon": { "type": "string" }
+  }
+}

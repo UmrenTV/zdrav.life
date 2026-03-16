@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "forms",
+  "info": {
+    "singularName": "form",
+    "pluralName": "forms",
+    "displayName": "Form"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": { "type": "string", "required": true },
+    "enabled": { "type": "boolean", "default": true },
+    "pillLabel": { "type": "string" },
+    "pillIcon": { "type": "string", "description": "Lucide icon name, e.g. Mail" },
+    "heading": { "type": "string" },
+    "subheading": { "type": "text" },
+    "benefits": { "type": "component", "component": "home.newsletter-benefit", "repeatable": true },
+    "namePlaceholder": { "type": "string", "description": "If set, shows a Name input with this placeholder. Leave empty to hide the Name field." },
+    "emailPlaceholder": { "type": "string" },
+    "buttonLabel": { "type": "string" },
+    "buttonIcon": { "type": "string", "description": "Lucide icon name for the submit button, e.g. ArrowRight" },
+    "disclaimer": { "type": "text", "description": "Small text below the form, e.g. 'By subscribing you agree to...'" }
+  }
+}

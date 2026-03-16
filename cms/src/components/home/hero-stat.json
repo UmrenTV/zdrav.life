@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_home_hero_stats",
+  "info": {
+    "displayName": "Hero stat",
+    "description": "Stat row: value (e.g. 50K+), label (e.g. Subscribers)"
+  },
+  "options": {},
+  "attributes": {
+    "value": { "type": "string" },
+    "label": { "type": "string" }
+  }
+}
