@@ -34,25 +34,20 @@ export async function getPostsByTag(tagSlug: string): Promise<Post[]> {
   return posts.filter((p) => p.tags.some((t) => t.slug === tagSlug));
 }
 
-export async function getLatestPosts(limit: number): Promise<Post[]> {
+export async function getLatestPosts(limit: number, featuredOnly = false): Promise<Post[]> {
   const list = await getCollection('posts', {
     populate: POPULATE,
     publicationState: 'live',
     sort: ['publishedAt:desc'],
-    pagination: { pageSize: limit },
+    pagination: { pageSize: featuredOnly ? 50 : limit },
   });
-  return list.map((d) => mapStrapiPostToPost(d)).filter(Boolean) as Post[];
+  let posts = list.map((d) => mapStrapiPostToPost(d)).filter(Boolean) as Post[];
+  if (featuredOnly) posts = posts.filter((p) => p.featured);
+  return posts.slice(0, limit);
 }
 
 export async function getFeaturedPosts(limit: number): Promise<Post[]> {
-  const list = await getCollection('posts', {
-    populate: POPULATE,
-    publicationState: 'live',
-    sort: ['publishedAt:desc'],
-    pagination: { pageSize: 50 },
-  });
-  const posts = list.map((d) => mapStrapiPostToPost(d)).filter(Boolean) as Post[];
-  return posts.filter((p) => p.featured).slice(0, limit);
+  return getLatestPosts(limit, true);
 }
 
 export async function getPaginatedPosts(

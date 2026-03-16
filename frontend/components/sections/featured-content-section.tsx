@@ -1,14 +1,16 @@
 import { getFeaturedPosts } from '@/lib/data/data-source';
-import { FeaturedContentSectionClient } from './featured-content-section-client';
+import { ContentShowcase } from './content-showcase';
 import type { HomePageData, FeaturedContentItem } from '@/types';
 
 export async function FeaturedContentSection({ home }: { home?: HomePageData }) {
+  if (home?.sectionFeaturedContent?.enableSection === false) return null;
+
   const topPromoted = home?.topPromoted;
   const featuredContent = home?.featuredContent;
 
   if (topPromoted || (featuredContent && featuredContent.length > 0)) {
     return (
-      <FeaturedContentSectionClient
+      <ContentShowcase
         topPromoted={topPromoted}
         items={featuredContent ?? []}
         section={home?.sectionFeaturedContent}
@@ -51,7 +53,7 @@ export async function FeaturedContentSection({ home }: { home?: HomePageData }) 
   }));
 
   return (
-    <FeaturedContentSectionClient
+    <ContentShowcase
       topPromoted={fallbackTop}
       items={fallbackItems}
       section={home?.sectionFeaturedContent}

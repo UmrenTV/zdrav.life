@@ -83,3 +83,46 @@ export function usePostComment() {
     },
   });
 }
+
+interface LikeCommentVariables {
+  commentId: string;
+  entityType: string;
+  entityId: string;
+}
+
+async function likeComment(vars: LikeCommentVariables): Promise<{ liked: boolean; likes: number }> {
+  const res = await fetch(`/api/comments/${vars.commentId}/like`, { method: 'POST' });
+  const data = await res.json();
+  if (!res.ok) throw new Error((data.error as string) || 'Failed to toggle like');
+  return data as { liked: boolean; likes: number };
+}
+
+export function useLikeComment() {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: likeComment,
+    onMutate: async (vars) => {
+      const queryKey = getCommentsQueryKey(vars.entityType, vars.entityId);
+      await queryClient.cancelQueries({ queryKey });
+      const previous = queryClient.getQueryData<Comment[]>(queryKey);
+      queryClient.setQueryData<Comment[]>(queryKey, (old) =>
+        old?.map((c) =>
+          c.id === vars.commentId
+            ? { ...c, likedByMe: !c.likedByMe, likes: c.likedByMe ? c.likes - 1 : c.likes + 1 }
+            : c,
+        ),
+      );
+      return { previous };
+    },
+    onError: (_err, vars, context) => {
+      if (context?.previous) {
+        const queryKey = getCommentsQueryKey(vars.entityType, vars.entityId);
+        queryClient.setQueryData(queryKey, context.previous);
+      }
+    },
+    onSettled: (_data, _err, vars) => {
+      const queryKey = getCommentsQueryKey(vars.entityType, vars.entityId);
+      queryClient.invalidateQueries({ queryKey });
+    },
+  });
+}

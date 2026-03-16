@@ -1,11 +1,13 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Play, ArrowRight, Eye } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { VideoPreviewModal } from '@/components/videos/video-preview-modal';
 import { formatRelativeTime } from '@/lib/utils';
 import type { VideoItem } from '@/types';
 
@@ -21,6 +23,14 @@ export function FeaturedVideosSectionClient({ videos, section }: FeaturedVideosS
   const viewAllHref = section?.viewAllHref ?? '/videos';
   const viewAllLabel = section?.viewAllLabel ?? 'View All';
   const viewAllVideosLabel = 'View All Videos';
+
+  const [selectedVideo, setSelectedVideo] = useState<VideoItem | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openVideo = (video: VideoItem) => {
+    setSelectedVideo(video);
+    setModalOpen(true);
+  };
 
   return (
     <section className="section-padding">
@@ -43,20 +53,20 @@ export function FeaturedVideosSectionClient({ videos, section }: FeaturedVideosS
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
+          {/* Featured (left) video — full height */}
           <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="group lg:row-span-2"
+            className="group"
           >
-            <Link
-              href={`https://youtube.com/watch?v=${featuredVideo.youtubeId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block h-full"
+            <button
+              type="button"
+              onClick={() => openVideo(featuredVideo)}
+              className="block w-full h-full text-left"
             >
-              <div className="relative h-full min-h-[300px] lg:min-h-full rounded-xl overflow-hidden bg-card border group-hover:border-primary/50 transition-colors">
+              <div className="relative h-full min-h-[300px] lg:h-[360px] rounded-xl overflow-hidden bg-card border group-hover:border-primary/50 transition-colors">
                 <div className="absolute inset-0">
                   <Image
                     src={featuredVideo.thumbnail}
@@ -94,10 +104,11 @@ export function FeaturedVideosSectionClient({ videos, section }: FeaturedVideosS
                   </div>
                 </div>
               </div>
-            </Link>
+            </button>
           </motion.article>
 
-          <div className="grid gap-6">
+          {/* Right side — scrollable list, matched height */}
+          <div className="flex flex-col gap-4 max-h-[360px] overflow-y-auto scrollbar-thin pr-1 lg:h-[360px]">
             {otherVideos.map((video, index) => (
               <motion.article
                 key={video.id}
@@ -105,13 +116,12 @@ export function FeaturedVideosSectionClient({ videos, section }: FeaturedVideosS
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
+                className="group shrink-0"
               >
-                <Link
-                  href={`https://youtube.com/watch?v=${video.youtubeId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
+                <button
+                  type="button"
+                  onClick={() => openVideo(video)}
+                  className="block w-full text-left"
                 >
                   <div className="flex gap-4 p-3 rounded-xl bg-card border hover:border-primary/50 transition-colors">
                     <div className="relative w-40 h-24 flex-shrink-0 rounded-lg overflow-hidden">
@@ -145,7 +155,7 @@ export function FeaturedVideosSectionClient({ videos, section }: FeaturedVideosS
                       </div>
                     </div>
                   </div>
-                </Link>
+                </button>
               </motion.article>
             ))}
           </div>
@@ -157,6 +167,15 @@ export function FeaturedVideosSectionClient({ videos, section }: FeaturedVideosS
           </Button>
         </div>
       </div>
+
+      <VideoPreviewModal
+        video={selectedVideo}
+        open={modalOpen}
+        onOpenChange={(v) => {
+          setModalOpen(v);
+          if (!v) setSelectedVideo(null);
+        }}
+      />
     </section>
   );
 }

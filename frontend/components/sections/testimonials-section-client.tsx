@@ -3,11 +3,11 @@
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import type { Testimonial } from '@/types';
+import type { Testimonial, SectionConfig } from '@/types';
 
 interface TestimonialsSectionClientProps {
   testimonials: Testimonial[];
-  section?: { heading?: string; subheading?: string };
+  section?: SectionConfig;
 }
 
 export function TestimonialsSectionClient({ testimonials, section }: TestimonialsSectionClientProps) {

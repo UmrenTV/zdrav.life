@@ -252,3 +252,53 @@ export async function createEntry<T>(
   const json = (await res.json()) as StrapiResponse<StrapiEntity<T>>;
   return json.data ?? null;
 }
+
+export async function updateEntry<T>(
+  collection: string,
+  documentId: string,
+  data: Record<string, unknown>,
+): Promise<StrapiEntity<T> | null> {
+  if (!isStrapiEnabled) return null;
+
+  const cleanData = Object.fromEntries(
+    Object.entries(data).filter(([, v]) => v !== undefined)
+  ) as Record<string, unknown>;
+
+  const url = `${STRAPI_URL}/api/${collection}/${documentId}`;
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${STRAPI_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: cleanData }),
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error(`[Strapi] update ${collection}/${documentId} failed: ${res.status}`, text.slice(0, 500));
+    return null;
+  }
+  const json = (await res.json()) as StrapiResponse<StrapiEntity<T>>;
+  return json.data ?? null;
+}
+
+export async function deleteEntry(
+  collection: string,
+  documentId: string,
+): Promise<boolean> {
+  if (!isStrapiEnabled) return false;
+
+  const url = `${STRAPI_URL}/api/${collection}/${documentId}`;
+  const res = await fetch(url, {
+    method: 'DELETE',
+    headers: { Authorization: `Bearer ${STRAPI_TOKEN}` },
+  });
+
+  if (!res.ok) {
+    const text = await res.text();
+    console.error(`[Strapi] delete ${collection}/${documentId} failed: ${res.status}`, text.slice(0, 500));
+    return false;
+  }
+  return true;
+}

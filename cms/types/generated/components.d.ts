@@ -283,13 +283,25 @@ export interface HomePillars extends Struct.ComponentSchema {
 export interface HomeSectionHeading extends Struct.ComponentSchema {
   collectionName: 'components_home_section_headings';
   info: {
-    description: 'Section title block: heading, subheading, optional View All label and href';
+    description: 'Section title block: heading, subheading, item count, optional View All button';
     displayName: 'Section heading';
   };
   attributes: {
+    enableSection: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    featuredOnly: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     heading: Schema.Attribute.String;
+    latestCount: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 50;
+          min: 1;
+        },
+        number
+      > &
+      Schema.Attribute.DefaultTo<5>;
     subheading: Schema.Attribute.Text;
     viewAllHref: Schema.Attribute.String;
+    viewAllIcon: Schema.Attribute.String;
     viewAllLabel: Schema.Attribute.String;
   };
 }

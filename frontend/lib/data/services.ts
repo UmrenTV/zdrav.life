@@ -262,7 +262,8 @@ export async function getReviewSummary(productId: string): Promise<{
 // ============================================
 
 export async function getAllComments(): Promise<Comment[]> {
-  return loadJsonFile<Comment[]>('comments.json');
+  const raw = await loadJsonFile<Comment[]>('comments.json');
+  return raw.map((c) => ({ ...c, likedByMe: c.likedByMe ?? false }));
 }
 
 export async function getCommentsByEntity(
@@ -280,7 +281,8 @@ export async function getCommentsByEntity(
 // ============================================
 
 export async function getAllVideos(): Promise<VideoItem[]> {
-  return loadJsonFile<VideoItem[]>('videos.json');
+  const raw = await loadJsonFile<VideoItem[]>('videos.json');
+  return raw.map((v) => ({ ...v, slug: v.slug ?? v.id }));
 }
 
 export async function getVideoById(id: string): Promise<VideoItem | null> {

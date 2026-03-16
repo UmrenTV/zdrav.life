@@ -73,7 +73,7 @@ export function AboutPreviewSection({ home }: { home?: HomePageData }) {
             transition={{ duration: 0.6 }}
             className="relative mx-auto w-full max-w-md lg:max-w-none pb-8 lg:pb-0"
           >
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+            <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image
                 src={imageSrc}
                 alt={imageAlt}

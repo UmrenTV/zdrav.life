@@ -16,7 +16,7 @@ async function main(): Promise<void> {
   await seedSiteSetting();
   console.log('');
 
-  await seedHomePage([], [], [], [], 0);
+  await seedHomePage();
   console.log('');
 
   console.log('Strapi seed: done.');

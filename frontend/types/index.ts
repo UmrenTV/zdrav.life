@@ -66,6 +66,18 @@ export interface MenuItem {
   openInNewTab: boolean;
 }
 
+/** Configuration for a homepage "latest" section (videos, blog, shop, gallery, testimonials). */
+export interface SectionConfig {
+  enableSection?: boolean;
+  heading?: string;
+  subheading?: string;
+  latestCount?: number;
+  featuredOnly?: boolean;
+  viewAllLabel?: string;
+  viewAllHref?: string;
+  viewAllIcon?: string;
+}
+
 /** Home page content from Strapi (single type). When null, sections use hardcoded defaults. */
 export interface HomePageData {
   hero?: {
@@ -76,7 +88,7 @@ export interface HomePageData {
     buttons?: { label: string; href: string; icon?: string; iconPosition?: 'left' | 'right' }[];
     stats?: { value: string; label: string }[];
   };
-  sectionFeaturedContent?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
+  sectionFeaturedContent?: SectionConfig;
   pillars?: {
     heading?: string;
     subheading?: string;
@@ -96,11 +108,11 @@ export interface HomePageData {
     buttonHref?: string;
     buttonIcon?: string;
   };
-  sectionVideos?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
-  sectionGallery?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
-  sectionBlog?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
-  sectionShop?: { heading?: string; subheading?: string; viewAllLabel?: string; viewAllHref?: string };
-  sectionTestimonials?: { heading?: string; subheading?: string };
+  sectionVideos?: SectionConfig;
+  sectionGallery?: SectionConfig;
+  sectionBlog?: SectionConfig;
+  sectionShop?: SectionConfig;
+  sectionTestimonials?: SectionConfig;
   topPromoted?: FeaturedContentItem;
   featuredContent?: FeaturedContentItem[];
   newsletter?: FormData;
@@ -110,11 +122,6 @@ export interface HomePageData {
     primaryButton?: { label: string; href: string; icon?: string };
     secondaryButton?: { label: string; href: string; icon?: string };
   };
-  featuredPostIds?: string[];
-  featuredProductIds?: string[];
-  featuredVideoIds?: string[];
-  featuredGalleryIds?: string[];
-  featuredTestimonialIds?: string[];
 }
 
 /** Normalized item from the Featured Content dynamic zone. Can be a post, product, video, or gallery item. */
@@ -126,6 +133,8 @@ export interface FeaturedContentItem {
   subtitle?: string;
   image: string;
   category?: string;
+  /** Link to the category listing page (e.g. /blog?category=training) */
+  categoryHref?: string;
   tags?: string[];
   publishedAt?: string;
   /** Contextual info: reading time for articles, price for products, duration for videos, location for gallery */
@@ -395,7 +404,7 @@ export interface ReviewSummary {
 
 export interface Comment {
   id: string;
-  entityType: 'post' | 'video' | 'adventure' | 'gallery';
+  entityType: 'post' | 'video' | 'adventure' | 'gallery' | 'product';
   entityId: string;
   parentId?: string;
   authorName: string;
@@ -407,6 +416,7 @@ export interface Comment {
   updatedAt?: string;
   status: 'approved' | 'pending' | 'spam';
   likes: number;
+  likedByMe: boolean;
   replies: Comment[];
   repliesCount: number;
 }
@@ -417,6 +427,7 @@ export interface Comment {
 
 export interface VideoItem {
   id: string;
+  slug: string;
   youtubeId: string;
   title: string;
   description: string;
@@ -614,7 +625,7 @@ export interface SEOData {
   description: string;
   keywords: string[];
   ogImage?: string;
-  ogType?: 'website' | 'article' | 'product';
+  ogType?: 'website' | 'article' | 'product' | 'video.other';
   canonicalUrl?: string;
   noIndex?: boolean;
   structuredData?: Record<string, unknown>;

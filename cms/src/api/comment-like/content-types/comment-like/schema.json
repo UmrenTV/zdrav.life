@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comment_likes",
+  "info": {
+    "singularName": "comment-like",
+    "pluralName": "comment-likes",
+    "displayName": "Comment like"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "commentId": { "type": "string", "required": true },
+    "ipHash": { "type": "string", "required": true }
+  }
+}

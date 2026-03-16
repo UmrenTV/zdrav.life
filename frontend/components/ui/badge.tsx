@@ -21,7 +21,7 @@ const badgeVariants = cva(
         info:
           'border-transparent bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20',
         vitality:
-          'border-transparent bg-vitality/10 text-vitality-dark dark:text-vitality hover:bg-vitality/20',
+          'border-vitality/50 bg-background dark:bg-background/90 text-vitality-dark dark:text-vitality hover:bg-vitality/10',
       },
     },
     defaultVariants: {

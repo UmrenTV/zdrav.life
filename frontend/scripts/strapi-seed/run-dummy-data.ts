@@ -83,13 +83,7 @@ async function main(): Promise<void> {
   const slugFromName = (name: string) =>
     name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
 
-  await seedHomePage(
-    postsForFeatured.filter((p) => p.featured).map((p) => p.slug).slice(0, 6),
-    productsForFeatured.filter((p) => p.featured).map((p) => p.slug).slice(0, 4),
-    videosForFeatured.filter((v) => v.featured).map((v) => slugFromName(v.title)).slice(0, 4),
-    galleryForFeatured.filter((g) => g.featured).map((g) => g.id).slice(0, 8),
-    Math.min(testimonialsCount, 4)
-  );
+  await seedHomePage();
 
   console.log('\nStrapi dummy-data seed: done.');
 }

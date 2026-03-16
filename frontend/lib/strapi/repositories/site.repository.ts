@@ -68,11 +68,6 @@ const HOME_PAGE_POPULATE = [
   'cta',
   'cta.primaryButton',
   'cta.secondaryButton',
-  'featuredPosts',
-  'featuredProducts',
-  'featuredVideos',
-  'featuredGalleryItems',
-  'featuredTestimonials',
 ];
 
 export async function getHomePage(): Promise<ReturnType<typeof mapStrapiHomePage>> {

@@ -3,10 +3,10 @@ import { HeroSection } from '@/components/sections/hero-section';
 import { FeaturedContentSection } from '@/components/sections/featured-content-section';
 import { PillarsSection } from '@/components/sections/pillars-section';
 import { AboutPreviewSection } from '@/components/sections/about-preview-section';
-import { FeaturedVideosSection } from '@/components/sections/featured-videos-section';
+import { LatestVideosSection } from '@/components/sections/latest-videos-section';
 import { GalleryStripSection } from '@/components/sections/gallery-strip-section';
-import { FeaturedBlogSection } from '@/components/sections/featured-blog-section';
-import { FeaturedShopSection } from '@/components/sections/featured-shop-section';
+import { LatestBlogSection } from '@/components/sections/latest-blog-section';
+import { LatestShopSection } from '@/components/sections/latest-shop-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
 import { NewsletterSection } from '@/components/sections/newsletter-section';
 import { CTABannerSection } from '@/components/sections/cta-banner-section';
@@ -45,7 +45,7 @@ export default async function HomePage() {
 
       {features.videos !== false && (
         <Suspense fallback={<div className="h-96 bg-muted/50 animate-pulse" />}>
-          <FeaturedVideosSection home={home ?? undefined} />
+          <LatestVideosSection home={home ?? undefined} />
         </Suspense>
       )}
 
@@ -57,13 +57,13 @@ export default async function HomePage() {
 
       {features.blog !== false && (
         <Suspense fallback={<div className="h-96 bg-muted/50 animate-pulse" />}>
-          <FeaturedBlogSection home={home ?? undefined} />
+          <LatestBlogSection home={home ?? undefined} />
         </Suspense>
       )}
 
       {features.shop !== false && (
         <Suspense fallback={<div className="h-96 bg-muted/50 animate-pulse" />}>
-          <FeaturedShopSection home={home ?? undefined} />
+          <LatestShopSection home={home ?? undefined} />
         </Suspense>
       )}
 

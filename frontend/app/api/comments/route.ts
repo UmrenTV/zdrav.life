@@ -1,8 +1,17 @@
 import { NextResponse } from 'next/server';
+import { createHash } from 'crypto';
 import { isStrapiEnabled } from '@/lib/strapi/client';
 import { getCommentsByEntity, getAllComments, createComment } from '@/lib/data/data-source';
+import { getCommentLikesByIp } from '@/lib/strapi/repositories/comments.repository';
 
 export const dynamic = 'force-dynamic';
+
+function hashIp(request: Request): string {
+  const forwarded = request.headers.get('x-forwarded-for');
+  const realIp = request.headers.get('x-real-ip');
+  const ip = forwarded?.split(',')[0]?.trim() || realIp || 'unknown';
+  return createHash('sha256').update(ip).digest('hex');
+}
 
 export async function GET(request: Request) {
   try {
@@ -12,10 +21,18 @@ export async function GET(request: Request) {
 
     if (entityType && entityId) {
       const comments = await getCommentsByEntity(entityType, entityId);
+
+      if (isStrapiEnabled && comments.length > 0) {
+        const ipHash = hashIp(request);
+        const likedIds = await getCommentLikesByIp(ipHash, comments.map((c) => c.id));
+        for (const comment of comments) {
+          comment.likedByMe = likedIds.has(comment.id);
+        }
+      }
+
       return NextResponse.json({ comments });
     }
 
-    // Return all comments (for admin purposes)
     const comments = await getAllComments();
     return NextResponse.json({ comments });
   } catch (error) {
@@ -41,7 +58,7 @@ export async function POST(request: Request) {
     }
 
     // Validate entity type
-    const validEntityTypes = ['post', 'video', 'adventure', 'gallery'];
+    const validEntityTypes = ['post', 'video', 'adventure', 'gallery', 'product'];
     if (!validEntityTypes.includes(body.entityType)) {
       return NextResponse.json(
         { error: `Invalid entityType. Must be one of: ${validEntityTypes.join(', ')}` },
@@ -102,6 +119,7 @@ export async function POST(request: Request) {
       createdAt: new Date().toISOString(),
       status: 'pending' as const,
       likes: 0,
+      likedByMe: false,
       replies: [],
       repliesCount: 0,
     };

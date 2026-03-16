@@ -5,6 +5,7 @@
 
 import type {
   SiteConfig,
+  SectionConfig,
   MenuItem,
   HomePageData,
   AboutPageData,
@@ -205,7 +206,7 @@ function richtextToPlain(blocks: unknown): string {
 
 function compList(raw: unknown): Record<string, unknown>[] {
   if (!Array.isArray(raw)) return [];
-  const withData = raw && typeof raw === 'object' && 'data' in (raw as object) ? (raw as { data: unknown[] }).data : raw;
+  const withData = raw && typeof raw === 'object' && 'data' in (raw as object) ? (raw as unknown as { data: unknown[] }).data : raw;
   if (!Array.isArray(withData)) return [];
   return withData.map((item) => compAttrs(item));
 }
@@ -224,6 +225,7 @@ function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem
     const a = resolveRelation(entry.post);
     if (!a) return null;
     const docId = (entry.post as Record<string, unknown>)?.documentId as string ?? '';
+    const catSlug = (a.category as Record<string, unknown>)?.slug as string | undefined;
     return {
       type: 'article',
       id: docId,
@@ -232,6 +234,7 @@ function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem
       subtitle: (a.excerpt as string) ?? undefined,
       image: strapiMediaUrl(a.coverImage) || '',
       category: (a.category as Record<string, unknown>)?.name as string ?? undefined,
+      categoryHref: catSlug ? `/blog?category=${catSlug}` : undefined,
       tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? '') : undefined,
       publishedAt: (a.publishedAt as string) ?? undefined,
       info: a.readingTime ? `${a.readingTime} min read` : undefined,
@@ -245,6 +248,7 @@ function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem
     const docId = (entry.product as Record<string, unknown>)?.documentId as string ?? '';
     const price = a.price != null ? Number(a.price) : null;
     const currency = (a.currency as string) ?? 'USD';
+    const catSlug = (a.category as Record<string, unknown>)?.slug as string | undefined;
     return {
       type: 'product',
       id: docId,
@@ -253,6 +257,7 @@ function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem
       subtitle: (a.shortDescription as string) ?? (a.subtitle as string) ?? undefined,
       image: strapiMediaUrl(a.featuredImage) || strapiMediaUrl(Array.isArray(a.gallery) ? a.gallery[0] : null) || '',
       category: (a.category as Record<string, unknown>)?.name as string ?? undefined,
+      categoryHref: catSlug ? `/shop?category=${catSlug}` : undefined,
       tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? '') : undefined,
       publishedAt: (a.publishedAt as string) ?? undefined,
       info: price != null ? `${currency} ${price.toFixed(2)}` : undefined,
@@ -264,6 +269,7 @@ function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem
     const a = resolveRelation(entry.video);
     if (!a) return null;
     const docId = (entry.video as Record<string, unknown>)?.documentId as string ?? '';
+    const catName = (a.category as Record<string, unknown>)?.name as string ?? (a.category as string) ?? '';
     return {
       type: 'video',
       id: docId,
@@ -271,10 +277,11 @@ function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem
       title: (a.title as string) ?? '',
       subtitle: (a.excerpt as string) ?? undefined,
       image: strapiMediaUrl(a.thumbnail) || '',
-      category: (a.category as Record<string, unknown>)?.name as string ?? undefined,
+      category: catName || undefined,
+      categoryHref: catName ? `/videos?category=${encodeURIComponent(catName)}` : undefined,
       tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? '') : undefined,
       publishedAt: (a.publishedAt as string) ?? undefined,
-      info: (a.duration as string) ?? undefined,
+      info: (a.duration as string) ? `${a.duration as string} min long` : undefined,
       href: `/videos/${(a.slug as string) ?? ''}`,
     };
   }
@@ -283,6 +290,7 @@ function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem
     const a = resolveRelation(entry.galleryItem);
     if (!a) return null;
     const docId = (entry.galleryItem as Record<string, unknown>)?.documentId as string ?? '';
+    const catName = (a.category as Record<string, unknown>)?.name as string ?? (a.category as string) ?? '';
     return {
       type: 'gallery',
       id: docId,
@@ -290,7 +298,8 @@ function mapDynamicZoneItem(entry: Record<string, unknown>): FeaturedContentItem
       title: (a.title as string) ?? (a.caption as string) ?? '',
       subtitle: (a.caption as string) ?? undefined,
       image: strapiMediaUrl(a.image) || strapiMediaUrl(a.thumbnail) || '',
-      category: (a.category as Record<string, unknown>)?.name as string ?? undefined,
+      category: catName || undefined,
+      categoryHref: catName ? `/gallery?category=${encodeURIComponent(catName)}` : undefined,
       tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? '') : undefined,
       publishedAt: (a.publishedAt as string) ?? undefined,
       info: (a.location as string) ?? undefined,
@@ -337,15 +346,6 @@ export function mapStrapiHomePage(raw: unknown): HomePageData | null {
   if (!doc) return null;
   const a = doc.attrs;
 
-  const connectIds = (rel: unknown): string[] => {
-    if (Array.isArray(rel)) return rel.map((r) => (typeof r === 'object' && r && 'documentId' in r ? (r as { documentId: string }).documentId : String(r)));
-    if (rel && typeof rel === 'object' && 'data' in rel) {
-      const data = (rel as { data: unknown[] }).data;
-      return Array.isArray(data) ? data.map((d: unknown) => (d as { documentId?: string }).documentId ?? (d as { id?: number }).id?.toString() ?? '') : [];
-    }
-    return [];
-  };
-
   const heroRaw = a.hero as Record<string, unknown> | undefined;
   const heroAttrs = heroRaw ? compAttrs(heroRaw) : {};
   const heroButtons = compList(heroAttrs.buttons).map((b) => ({
@@ -359,14 +359,19 @@ export function mapStrapiHomePage(raw: unknown): HomePageData | null {
     label: (s.label as string) ?? '',
   }));
 
-  const section = (key: string) => {
+  const section = (key: string): SectionConfig | undefined => {
     const s = a[key] as Record<string, unknown> | undefined;
     const attrs = s ? compAttrs(s) : {};
+    if (attrs.heading == null && attrs.enableSection == null) return undefined;
     return {
+      enableSection: (attrs.enableSection as boolean) ?? true,
       heading: attrs.heading as string | undefined,
       subheading: attrs.subheading as string | undefined,
+      latestCount: (attrs.latestCount as number) ?? undefined,
+      featuredOnly: (attrs.featuredOnly as boolean) ?? undefined,
       viewAllLabel: attrs.viewAllLabel as string | undefined,
       viewAllHref: attrs.viewAllHref as string | undefined,
+      viewAllIcon: attrs.viewAllIcon as string | undefined,
     };
   };
 
@@ -409,7 +414,7 @@ export function mapStrapiHomePage(raw: unknown): HomePageData | null {
           stats: heroStats.length ? heroStats : undefined,
         }
       : undefined,
-    sectionFeaturedContent: section('sectionFeaturedContent').heading != null ? section('sectionFeaturedContent') : undefined,
+    sectionFeaturedContent: section('sectionFeaturedContent'),
     topPromoted: mapDynamicZone(a.topPromoted)[0] ?? undefined,
     featuredContent: (() => { const items = mapDynamicZone(a.featuredContent); return items.length ? items : undefined; })(),
     pillars:
@@ -436,14 +441,11 @@ export function mapStrapiHomePage(raw: unknown): HomePageData | null {
             buttonIcon: aboutAttrs.buttonIcon as string | undefined,
           }
         : undefined,
-    sectionVideos: section('sectionVideos').heading != null ? section('sectionVideos') : undefined,
-    sectionGallery: section('sectionGallery').heading != null ? section('sectionGallery') : undefined,
-    sectionBlog: section('sectionBlog').heading != null ? section('sectionBlog') : undefined,
-    sectionShop: section('sectionShop').heading != null ? section('sectionShop') : undefined,
-    sectionTestimonials:
-      section('sectionTestimonials').heading != null
-        ? { heading: section('sectionTestimonials').heading, subheading: section('sectionTestimonials').subheading }
-        : undefined,
+    sectionVideos: section('sectionVideos'),
+    sectionGallery: section('sectionGallery'),
+    sectionBlog: section('sectionBlog'),
+    sectionShop: section('sectionShop'),
+    sectionTestimonials: section('sectionTestimonials'),
     newsletter: newsletterForm ?? undefined,
     cta:
       ctaAttrs.heading != null
@@ -458,11 +460,6 @@ export function mapStrapiHomePage(raw: unknown): HomePageData | null {
               : undefined,
           }
         : undefined,
-    featuredPostIds: connectIds(a.featuredPosts),
-    featuredProductIds: connectIds(a.featuredProducts),
-    featuredVideoIds: connectIds(a.featuredVideos),
-    featuredGalleryIds: connectIds(a.featuredGalleryItems),
-    featuredTestimonialIds: connectIds(a.featuredTestimonials),
   };
 }
 
@@ -716,6 +713,7 @@ export function mapStrapiVideoToVideo(raw: unknown): VideoItem | null {
   const youtubeId = (a.youtubeVideoId as string) ?? '';
   return {
     id: doc.documentId,
+    slug: (a.slug as string) ?? doc.documentId,
     youtubeId,
     title: (a.title as string) ?? '',
     description: (a.excerpt as string) ?? '',
@@ -780,6 +778,7 @@ export function mapStrapiCommentToComment(raw: unknown): Comment | null {
     createdAt: (a.createdAtOverride as string) ?? (a.createdAt as string) ?? '',
     status: (a.commentStatus as Comment['status']) ?? 'pending',
     likes: (a.likes as number) ?? 0,
+    likedByMe: false,
     replies: [],
     repliesCount: 0,
   };

@@ -24,10 +24,15 @@ export async function getProductsByCategory(categorySlug: string): Promise<Produ
   return products.filter((p) => p.category.slug === categorySlug);
 }
 
+export async function getLatestProducts(limit: number, featuredOnly = false): Promise<Product[]> {
+  const list = await getCollection('products', { populate: POPULATE, publicationState: 'live', sort: ['publishedAt:desc'] });
+  let products = list.map((d) => mapStrapiProductToProduct(d)).filter(Boolean) as Product[];
+  if (featuredOnly) products = products.filter((p) => p.featured);
+  return products.slice(0, limit);
+}
+
 export async function getFeaturedProducts(limit: number): Promise<Product[]> {
-  const list = await getCollection('products', { populate: POPULATE, publicationState: 'live' });
-  const products = list.map((d) => mapStrapiProductToProduct(d)).filter(Boolean) as Product[];
-  return products.filter((p) => p.featured).slice(0, limit);
+  return getLatestProducts(limit, true);
 }
 
 function strapiSort(sortBy?: string): string[] | undefined {

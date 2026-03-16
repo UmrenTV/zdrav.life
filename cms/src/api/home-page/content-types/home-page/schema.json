@@ -30,11 +30,6 @@
     "sectionTestimonials": { "type": "component", "component": "home.section-heading", "repeatable": false },
     "newsletter": { "type": "relation", "relation": "manyToOne", "target": "api::form.form" },
     "cta": { "type": "component", "component": "home.cta", "repeatable": false },
-    "featuredPosts": { "type": "relation", "relation": "manyToMany", "target": "api::post.post", "description": "Featured blog posts" },
-    "featuredProducts": { "type": "relation", "relation": "manyToMany", "target": "api::product.product" },
-    "featuredVideos": { "type": "relation", "relation": "manyToMany", "target": "api::video.video" },
-    "featuredGalleryItems": { "type": "relation", "relation": "manyToMany", "target": "api::gallery-item.gallery-item" },
-    "featuredTestimonials": { "type": "relation", "relation": "manyToMany", "target": "api::testimonial.testimonial" },
     "homepageSeo": { "type": "component", "component": "shared.seo", "repeatable": false }
   }
 }

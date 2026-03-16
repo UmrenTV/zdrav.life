@@ -568,6 +568,35 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCommentLikeCommentLike extends Struct.CollectionTypeSchema {
+  collectionName: 'comment_likes';
+  info: {
+    displayName: 'Comment like';
+    pluralName: 'comment-likes';
+    singularName: 'comment-like';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    commentId: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    ipHash: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::comment-like.comment-like'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   collectionName: 'comments';
   info: {
@@ -739,20 +768,6 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         'home.featured-gallery-item',
       ]
     >;
-    featuredGalleryItems: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::gallery-item.gallery-item'
-    >;
-    featuredPosts: Schema.Attribute.Relation<'manyToMany', 'api::post.post'>;
-    featuredProducts: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::product.product'
-    >;
-    featuredTestimonials: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::testimonial.testimonial'
-    >;
-    featuredVideos: Schema.Attribute.Relation<'manyToMany', 'api::video.video'>;
     hero: Schema.Attribute.Component<'home.hero', false>;
     homepageSeo: Schema.Attribute.Component<'shared.seo', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -1669,6 +1684,7 @@ declare module '@strapi/strapi' {
       'api::about-page.about-page': ApiAboutPageAboutPage;
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
+      'api::comment-like.comment-like': ApiCommentLikeCommentLike;
       'api::comment.comment': ApiCommentComment;
       'api::faq.faq': ApiFaqFaq;
       'api::form.form': ApiFormForm;

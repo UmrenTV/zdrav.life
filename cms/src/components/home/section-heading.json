@@ -2,13 +2,17 @@
   "collectionName": "components_home_section_headings",
   "info": {
     "displayName": "Section heading",
-    "description": "Section title block: heading, subheading, optional View All label and href"
+    "description": "Section title block: heading, subheading, item count, optional View All button"
   },
   "options": {},
   "attributes": {
+    "enableSection": { "type": "boolean", "default": true },
     "heading": { "type": "string" },
     "subheading": { "type": "text" },
+    "latestCount": { "type": "integer", "default": 5, "min": 1, "max": 50 },
+    "featuredOnly": { "type": "boolean", "default": false },
     "viewAllLabel": { "type": "string" },
-    "viewAllHref": { "type": "string" }
+    "viewAllHref": { "type": "string" },
+    "viewAllIcon": { "type": "string" }
   }
 }

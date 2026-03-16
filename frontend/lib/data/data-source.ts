@@ -41,14 +41,38 @@ export async function getFeaturedVideos(limit: number = 3) {
   return services.getFeaturedVideos(limit);
 }
 
+export async function getLatestVideosDs(limit: number = 5, featuredOnly = false) {
+  if (isStrapiEnabled) return strapi.getLatestVideos(limit, featuredOnly);
+  const videos = await services.getLatestVideos(limit * 2);
+  return featuredOnly ? videos.filter((v) => v.featured).slice(0, limit) : videos.slice(0, limit);
+}
+
 export async function getFeaturedGalleryItems(limit: number = 8) {
   if (isStrapiEnabled) return strapi.getFeaturedGalleryItems(limit);
   return services.getFeaturedGalleryItems(limit);
 }
 
+export async function getLatestGalleryItemsDs(limit: number = 8, featuredOnly = false) {
+  if (isStrapiEnabled) return strapi.getLatestGalleryItems(limit, featuredOnly);
+  const items = await services.getFeaturedGalleryItems(limit * 2);
+  return featuredOnly ? items.filter((i) => i.featured).slice(0, limit) : items.slice(0, limit);
+}
+
 export async function getFeaturedTestimonials(limit: number = 4) {
   if (isStrapiEnabled) return strapi.getFeaturedTestimonials(limit);
   return services.getFeaturedTestimonials(limit);
+}
+
+export async function getLatestTestimonialsDs(limit: number = 4, featuredOnly = false) {
+  if (isStrapiEnabled) return strapi.getLatestTestimonials(limit, featuredOnly);
+  const items = await services.getAllTestimonials();
+  return featuredOnly ? items.filter((t) => t.featured).slice(0, limit) : items.slice(0, limit);
+}
+
+export async function getLatestProductsDs(limit: number = 4, featuredOnly = false) {
+  if (isStrapiEnabled) return strapi.getLatestProducts(limit, featuredOnly);
+  const products = await services.getAllProducts();
+  return featuredOnly ? products.filter((p) => p.featured).slice(0, limit) : products.slice(0, limit);
 }
 
 // Blog (Phase 7): delegate to Strapi when enabled
@@ -92,9 +116,10 @@ export async function getTagBySlug(slug: string) {
   if (isStrapiEnabled) return strapi.getTagBySlug(slug);
   return services.getTagBySlug(slug);
 }
-export async function getLatestPosts(limit: number) {
-  if (isStrapiEnabled) return strapi.getLatestPosts(limit);
-  return services.getLatestPosts(limit);
+export async function getLatestPosts(limit: number, featuredOnly = false) {
+  if (isStrapiEnabled) return strapi.getLatestPosts(limit, featuredOnly);
+  const posts = await services.getLatestPosts(limit * 2);
+  return featuredOnly ? posts.filter((p) => p.featured).slice(0, limit) : posts.slice(0, limit);
 }
 
 // Media (Phase 8): delegate to Strapi when enabled
@@ -113,6 +138,11 @@ export async function getAllFAQs() {
 export async function getAllTestimonials() {
   if (isStrapiEnabled) return strapi.getAllTestimonials();
   return services.getAllTestimonials();
+}
+export async function getVideoBySlug(slug: string) {
+  if (isStrapiEnabled) return strapi.getVideoBySlug(slug);
+  const videos = await services.getAllVideos();
+  return videos.find((v) => v.id === slug || (v as { slug?: string }).slug === slug) ?? null;
 }
 export const getVideoById = services.getVideoById;
 export const getLatestVideos = services.getLatestVideos;

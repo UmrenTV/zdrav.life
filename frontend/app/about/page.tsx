@@ -100,7 +100,7 @@ export default async function AboutPage() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Image */}
           <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+            <div className="relative aspect-square rounded-2xl overflow-hidden">
               <Image
                 src={main?.image || '/images/about-portrait.jpg'}
                 alt={main?.imageAlt || 'Zdrav - Software Engineer & Athlete'}

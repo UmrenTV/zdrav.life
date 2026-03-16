@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
 import { BlogContent } from '@/components/blog/blog-content';
 import { RelatedPosts } from '@/components/blog/related-posts';
-import { CommentSection } from '@/components/blog/comment-section';
+import { CommentSection } from '@/components/shared/comment-section';
 import { formatDate } from '@/lib/utils';
 import { Calendar, Clock, MessageCircle } from 'lucide-react';
 

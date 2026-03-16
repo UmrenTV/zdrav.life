@@ -40,7 +40,7 @@ interface GenerateMetadataParams {
   description?: string;
   keywords?: string[];
   ogImage?: string;
-  ogType?: 'website' | 'article' | 'product';
+  ogType?: 'website' | 'article' | 'product' | 'video.other';
   canonicalUrl?: string;
   /** SEO pagination: rel="prev" (full URL) */
   prevUrl?: string;
