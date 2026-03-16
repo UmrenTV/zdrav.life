@@ -66,16 +66,31 @@ const TYPE_CONFIG: Record<
   },
 };
 
-function CategoryBadge({ item, size = 'sm' }: { item: FeaturedContentItem; size?: 'sm' | 'xs' }) {
+function CategoryBadge({ item, size = 'sm', insideLink = false }: { item: FeaturedContentItem; size?: 'sm' | 'xs'; insideLink?: boolean }) {
   if (!item.category) return null;
   const cls = size === 'sm' ? 'text-xs' : 'text-[10px] px-1.5 py-0';
 
   if (item.categoryHref) {
+    if (insideLink) {
+      return (
+        <span
+          role="button"
+          tabIndex={0}
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = item.categoryHref!; }}
+          onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); window.location.href = item.categoryHref!; } }}
+          className="relative z-10 inline-flex"
+        >
+          <Badge variant="secondary" className={`${cls} cursor-pointer hover:bg-secondary/60 transition-colors`}>
+            {item.category}
+          </Badge>
+        </span>
+      );
+    }
     return (
       <Link
         href={item.categoryHref}
         onClick={(e) => e.stopPropagation()}
-        className="relative z-10"
+        className="relative z-10 inline-flex"
       >
         <Badge variant="secondary" className={`${cls} cursor-pointer hover:bg-secondary/60 transition-colors`}>
           {item.category}
@@ -90,9 +105,11 @@ function CategoryBadge({ item, size = 'sm' }: { item: FeaturedContentItem; size?
 function ContentCardInner({
   item,
   variant = 'small',
+  insideLink = false,
 }: {
   item: FeaturedContentItem;
   variant?: 'hero' | 'small';
+  insideLink?: boolean;
 }) {
   const config = TYPE_CONFIG[item.type];
   const TypeIcon = config.icon;
@@ -119,7 +136,7 @@ function ContentCardInner({
               <TypeIcon className="h-3 w-3" />
               {config.label}
             </Badge>
-            <CategoryBadge item={item} size="sm" />
+            <CategoryBadge item={item} size="sm" insideLink={insideLink} />
           </div>
           {hasTags && (
             <div className="flex flex-wrap items-center gap-2 mb-4">
@@ -168,7 +185,7 @@ function ContentCardInner({
               <TypeIcon className="h-2.5 w-2.5" />
               {config.label}
             </Badge>
-            <CategoryBadge item={item} size="xs" />
+            <CategoryBadge item={item} size="xs" insideLink={insideLink} />
           </div>
         </div>
         <h3 className="font-heading font-semibold mb-1 group-hover:text-primary transition-colors line-clamp-2 text-sm sm:text-base">
@@ -266,7 +283,7 @@ export function ContentShowcase({
     >
       {clickBehavior === 'link' ? (
         <Link href={topPromoted.href} className="block h-full w-full text-left group">
-          <ContentCardInner item={topPromoted} variant="hero" />
+          <ContentCardInner item={topPromoted} variant="hero" insideLink />
         </Link>
       ) : (
         <button
@@ -293,7 +310,7 @@ export function ContentShowcase({
         >
           {clickBehavior === 'link' ? (
             <Link href={item.href} className="block w-full text-left group">
-              <ContentCardInner item={item} variant="small" />
+              <ContentCardInner item={item} variant="small" insideLink />
             </Link>
           ) : (
             <button
