@@ -44,7 +44,7 @@ export function Footer() {
 
   return (
     <footer className="w-full max-w-full overflow-x-hidden bg-muted/50 border-t">
-      <div className="container mx-auto w-full max-w-full min-w-0 px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div className="container mx-auto w-full max-w-full min-w-0 px-4 sm:px-6 lg:px-8 pt-12 md:pt-16 pb-4">
         <div
           className="flex flex-col gap-8 lg:grid lg:gap-6 mb-12"
           style={{ gridTemplateColumns: `repeat(${lgCols}, minmax(0, 1fr))` }}
@@ -161,7 +161,7 @@ export function Footer() {
           )}
         </div>
 
-        <Separator className="mb-8" />
+        <Separator className="mb-4" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
