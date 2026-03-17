@@ -316,7 +316,7 @@ export function ContentShowcase({
 
   const heroBlock = topPromoted && (
     priorityImage ? (
-      <article className="min-h-[320px] lg:h-[532px] opacity-0 animate-[fade-in-up_0.5s_ease-out_both]">
+      <article className="min-h-[320px] lg:h-[532px] animate-[slide-up_0.4s_ease-out_both]">
         {heroContent}
       </article>
     ) : (

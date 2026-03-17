@@ -7,6 +7,7 @@ import { getLucideIcon } from "@/lib/lucide-icon";
 import type { HomePageData } from "@/types";
 
 const HERO_ANIM = "opacity-0 animate-[fade-in-up_0.5s_ease-out_both]";
+const HERO_LCP = "animate-[slide-up_0.4s_ease-out_both]";
 
 const DEFAULT_HERO = {
   pillText: "Software Engineer & Problem Solver",
@@ -104,9 +105,9 @@ export function HeroSection({ home }: { home?: HomePageData }) {
             </span>
           </div>
 
-          {/* Main Headline */}
+          {/* Main Headline — always visible for LCP, slide-up only (no opacity) */}
           <h1
-            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight mb-6 ${HERO_ANIM} [animation-delay:100ms]`}
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight mb-6 ${HERO_LCP}`}
           >
             <span className="block">{headingWhite}</span>
             <span className="block text-gradient">{headingAccent}</span>
