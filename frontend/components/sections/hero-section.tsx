@@ -96,7 +96,7 @@ export function HeroSection({ home }: { home?: HomePageData }) {
       />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto w-full max-w-full min-w-0 px-4 sm:px-6 lg:px-8 pt-20">
+      <div className="relative z-10 container mx-auto w-full max-w-full min-w-0 px-4 sm:px-6 lg:px-8 pt-10 sm:pt-14">
         <div className="max-w-4xl mx-auto text-center min-w-0">
           {/* Badge */}
           <div className={`mb-6 ${HERO_ANIM}`}>
