@@ -38,6 +38,8 @@ interface ContentShowcaseProps {
   clickBehavior?: ClickBehavior;
   /** Optional background class override */
   bgClassName?: string;
+  /** Mark the hero image as LCP priority (loads eagerly) */
+  priorityImage?: boolean;
 }
 
 const TYPE_CONFIG: Record<
@@ -99,10 +101,12 @@ function ContentCardInner({
   item,
   variant = 'small',
   insideLink = false,
+  priority = false,
 }: {
   item: FeaturedContentItem;
   variant?: 'hero' | 'small';
   insideLink?: boolean;
+  priority?: boolean;
 }) {
   const config = TYPE_CONFIG[item.type];
   const TypeIcon = config.icon;
@@ -117,6 +121,7 @@ function ContentCardInner({
               src={item.image}
               alt={item.title}
               fill
+              priority={priority}
               className="object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
@@ -232,6 +237,7 @@ export function ContentShowcase({
   layout = 'left',
   clickBehavior = 'modal',
   bgClassName = 'bg-muted/30',
+  priorityImage = false,
 }: ContentShowcaseProps) {
   const heading = section?.heading ?? 'Featured Content';
   const subheading = section?.subheading;
@@ -300,7 +306,7 @@ export function ContentShowcase({
     >
       {clickBehavior === 'link' ? (
         <Link href={topPromoted.href} className="block h-full w-full text-left group">
-          <ContentCardInner item={topPromoted} variant="hero" insideLink />
+          <ContentCardInner item={topPromoted} variant="hero" insideLink priority={priorityImage} />
         </Link>
       ) : (
         <button
@@ -308,7 +314,7 @@ export function ContentShowcase({
           onClick={() => handleItemClick(topPromoted)}
           className="block h-full w-full text-left group"
         >
-          <ContentCardInner item={topPromoted} variant="hero" />
+          <ContentCardInner item={topPromoted} variant="hero" priority={priorityImage} />
         </button>
       )}
     </motion.article>

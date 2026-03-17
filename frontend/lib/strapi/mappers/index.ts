@@ -41,14 +41,20 @@ export function strapiDoc<T = Record<string, unknown>>(raw: unknown): { document
   return { documentId: documentId ?? '', attrs: attrs as T };
 }
 
+function optimizeCloudinaryUrl(url: string, width = 1200): string {
+  if (!url.includes('res.cloudinary.com') || url.includes('/upload/f_')) return url;
+  return url.replace('/upload/', `/upload/f_auto,q_auto,w_${width}/`);
+}
+
 function strapiMediaUrl(media: unknown): string {
   if (!media || typeof media !== 'object') return '';
   const m = media as Record<string, unknown>;
   const url = m.url as string | undefined;
   if (!url) return '';
-  if (url.startsWith('http')) return url;
+  if (url.startsWith('http')) return optimizeCloudinaryUrl(url);
   const base = process.env.STRAPI_URL ?? process.env.NEXT_PUBLIC_STRAPI_URL ?? '';
-  return base ? `${base.replace(/\/$/, '')}${url.startsWith('/') ? url : `/${url}`}` : url;
+  const full = base ? `${base.replace(/\/$/, '')}${url.startsWith('/') ? url : `/${url}`}` : url;
+  return optimizeCloudinaryUrl(full);
 }
 
 function strapiSeo(seo: unknown): SEOData {

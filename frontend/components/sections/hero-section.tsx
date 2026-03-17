@@ -1,26 +1,43 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
-import { getLucideIcon } from '@/lib/lucide-icon';
-import type { HomePageData } from '@/types';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { getLucideIcon } from "@/lib/lucide-icon";
+import type { HomePageData } from "@/types";
+
+const HERO_ANIM = "opacity-0 animate-[fade-in-up_0.5s_ease-out_both]";
 
 const DEFAULT_HERO = {
-  pillText: 'Software Engineer & Problem Solver',
-  headingWhite: 'Engineer Your',
-  headingAccent: 'Vitality',
+  pillText: "Software Engineer & Problem Solver",
+  headingWhite: "Engineer Your",
+  headingAccent: "Vitality",
   subheading:
     "Build strength. Master discipline. Ride further. Live deeper.\nA software engineer's journey into high-performance living.",
   buttons: [
-    { label: 'Explore the Blog', href: '/blog', icon: 'ArrowRight', iconPosition: 'right' as const },
-    { label: 'Watch the Journey', href: '/videos', icon: 'Play', iconPosition: 'left' as const },
-    { label: 'Shop the Brand', href: '/shop', icon: 'ShoppingBag', iconPosition: 'left' as const },
+    {
+      label: "Explore the Blog",
+      href: "/blog",
+      icon: "ArrowRight",
+      iconPosition: "right" as const,
+    },
+    {
+      label: "Watch the Journey",
+      href: "/videos",
+      icon: "Play",
+      iconPosition: "left" as const,
+    },
+    {
+      label: "Shop the Brand",
+      href: "/shop",
+      icon: "ShoppingBag",
+      iconPosition: "left" as const,
+    },
   ],
   stats: [
-    { value: '50K+', label: 'Subscribers' },
-    { value: '100+', label: 'Videos' },
-    { value: '5K+', label: 'Community' },
+    { value: "50K+", label: "Subscribers" },
+    { value: "100+", label: "Videos" },
+    { value: "5K+", label: "Community" },
   ],
 };
 
@@ -34,7 +51,8 @@ export function HeroSection({ home }: { home?: HomePageData }) {
   const buttons =
     rawButtons && rawButtons.length
       ? rawButtons.map((btn, index) => {
-          const defaultBtn = DEFAULT_HERO.buttons[index] ?? DEFAULT_HERO.buttons[0];
+          const defaultBtn =
+            DEFAULT_HERO.buttons[index] ?? DEFAULT_HERO.buttons[0];
           return {
             ...defaultBtn,
             ...btn,
@@ -49,7 +67,7 @@ export function HeroSection({ home }: { home?: HomePageData }) {
     <section className="relative min-h-screen w-full max-w-full min-w-0 flex items-center justify-center overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-primary/5 dark:to-primary/10" />
-      
+
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -67,12 +85,12 @@ export function HeroSection({ home }: { home?: HomePageData }) {
       </div>
 
       {/* Grid Pattern Overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]"
         style={{
           backgroundImage: `linear-gradient(to right, currentColor 1px, transparent 1px),
                            linear-gradient(to bottom, currentColor 1px, transparent 1px)`,
-          backgroundSize: '4rem 4rem',
+          backgroundSize: "4rem 4rem",
         }}
       />
 
@@ -80,63 +98,61 @@ export function HeroSection({ home }: { home?: HomePageData }) {
       <div className="relative z-10 container mx-auto w-full max-w-full min-w-0 px-4 sm:px-6 lg:px-8 pt-20">
         <div className="max-w-4xl mx-auto text-center min-w-0">
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-6"
-          >
+          <div className={`mb-6 ${HERO_ANIM}`}>
             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary border border-primary/20">
               {pillText}
             </span>
-          </motion.div>
+          </div>
 
           {/* Main Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight mb-6"
+          <h1
+            className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold tracking-tight mb-6 ${HERO_ANIM} [animation-delay:100ms]`}
           >
             <span className="block">{headingWhite}</span>
             <span className="block text-gradient">{headingAccent}</span>
-          </motion.h1>
+          </h1>
 
           {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 whitespace-pre-line"
+          <p
+            className={`text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8 whitespace-pre-line ${HERO_ANIM} [animation-delay:200ms]`}
           >
             {subheading}
-          </motion.p>
+          </p>
 
           {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          <div
+            className={`flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 ${HERO_ANIM} [animation-delay:300ms]`}
           >
             {buttons.map((btn, i) => {
               const Icon = getLucideIcon(btn.icon);
               const isFirst = i === 0;
               const isLast = i === buttons.length - 1;
-              const variant = isFirst ? 'default' : isLast ? 'secondary' : 'outline';
+              const variant = isFirst
+                ? "default"
+                : isLast
+                  ? "secondary"
+                  : "outline";
               return (
-                <Button key={btn.href + i} asChild size="lg" variant={variant} className="w-full sm:w-auto group">
+                <Button
+                  key={btn.href + i}
+                  asChild
+                  size="lg"
+                  variant={variant}
+                  className="w-full sm:w-auto group"
+                >
                   <Link href={btn.href}>
-                    {btn.iconPosition === 'left' && Icon && <Icon className="mr-2 h-4 w-4" />}
+                    {btn.iconPosition === "left" && Icon && (
+                      <Icon className="mr-2 h-4 w-4" />
+                    )}
                     {btn.label}
-                    {btn.iconPosition === 'right' && Icon && (
+                    {btn.iconPosition === "right" && Icon && (
                       <Icon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     )}
                   </Link>
                 </Button>
               );
             })}
-          </motion.div>
+          </div>
 
           {/* Stats */}
           <motion.div
@@ -168,7 +184,7 @@ export function HeroSection({ home }: { home?: HomePageData }) {
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
           className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2"
         >
           <motion.div className="w-1 h-2 rounded-full bg-muted-foreground/50" />

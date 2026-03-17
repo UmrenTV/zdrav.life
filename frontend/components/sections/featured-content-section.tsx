@@ -14,6 +14,7 @@ export async function FeaturedContentSection({ home }: { home?: HomePageData }) 
         topPromoted={topPromoted}
         items={featuredContent ?? []}
         section={home?.sectionFeaturedContent}
+        priorityImage
       />
     );
   }
@@ -57,6 +58,7 @@ export async function FeaturedContentSection({ home }: { home?: HomePageData }) 
       topPromoted={fallbackTop}
       items={fallbackItems}
       section={home?.sectionFeaturedContent}
+      priorityImage
     />
   );
 }

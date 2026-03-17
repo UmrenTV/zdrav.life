@@ -88,6 +88,12 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </head>
       <body className="min-h-screen w-full max-w-full bg-background font-sans antialiased overflow-x-hidden">
         <GoogleAnalytics />
         <ThemeProvider
