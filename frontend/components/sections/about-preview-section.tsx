@@ -7,6 +7,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useSiteConfig } from '@/lib/context/site-config';
 import { getLucideIcon } from '@/lib/lucide-icon';
+import { MarkdownText } from '@/components/shared/markdown-text';
 import type { HomePageData } from '@/types';
 
 const DEFAULT_STATS = [
@@ -55,7 +56,7 @@ export function AboutPreviewSection({ home }: { home?: HomePageData }) {
     </>
   );
   const descriptionBlock = description
-    ? description.split('\n').filter(Boolean).map((p, i) => <p key={i}>{p}</p>)
+    ? description.split('\n').filter(Boolean).map((p, i) => <MarkdownText key={i} as="p">{p}</MarkdownText>)
     : defaultDescription;
   const iconTexts = about?.iconTexts?.length ? about.iconTexts : DEFAULT_ICON_TEXTS;
   const buttonLabel = about?.buttonLabel ?? 'Read My Story';

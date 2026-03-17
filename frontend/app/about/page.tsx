@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { ArrowRight, Code, Dumbbell, Bike, Brain, Target, Zap, Mountain } from 'lucide-react';
 import { getLucideIcon } from '@/lib/lucide-icon';
+import { MarkdownText } from '@/components/shared/markdown-text';
 import Link from 'next/link';
 
 export async function generateMetadata() {
@@ -89,9 +90,9 @@ export default async function AboutPage() {
             <br />
             <span className="text-gradient">{hero?.headingAccent || 'Athlete by Choice.'}</span>
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <MarkdownText as="p" className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {hero?.subheading || 'I\'m a software engineer who approaches health and fitness with the same systematic rigor I apply to code. This is my journey into high-performance living.'}
-          </p>
+          </MarkdownText>
         </div>
       </section>
 
@@ -119,21 +120,21 @@ export default async function AboutPage() {
               <h2 className="text-heading-2 font-heading font-semibold mb-4">
                 {main?.headingIntro || 'The Beginning'}
               </h2>
-              <p className="text-muted-foreground">
+              <MarkdownText as="p" className="text-muted-foreground">
                 {main?.bodyIntro || 'Three years ago, I cancelled my gym membership. Not because I was giving up on fitness, but because I wanted to prove a point: that the most sophisticated piece of equipment you\'ll ever own is your own body.'}
-              </p>
+              </MarkdownText>
             </div>
 
             <div>
               <h3 className="text-heading-4 font-heading font-semibold mb-3">
                 {main?.headingPhilosophy || 'The Philosophy'}
               </h3>
-              <p className="text-muted-foreground mb-4">
+              <MarkdownText as="p" className="text-muted-foreground mb-4">
                 {main?.bodyPhilosophy1 || `${siteName} is built on a simple principle: approach your body and life with the same systematic thinking you apply to complex engineering problems. Measure inputs. Observe outputs. Iterate.`}
-              </p>
-              <p className="text-muted-foreground">
+              </MarkdownText>
+              <MarkdownText as="p" className="text-muted-foreground">
                 {main?.bodyPhilosophy2 || 'This isn\'t about being perfect. It\'s about being consistent. It\'s about building systems that work when motivation fails. It\'s about the long game.'}
-              </p>
+              </MarkdownText>
             </div>
 
             {/* Icons */}
@@ -176,9 +177,9 @@ export default async function AboutPage() {
           <h2 className="text-heading-2 font-heading font-semibold mb-4">
             {valuesSection?.heading || 'Core Principles'}
           </h2>
-          <p className="text-muted-foreground">
+          <MarkdownText as="p" className="text-muted-foreground">
             {valuesSection?.subheading || 'The values that guide everything I do, from training to content creation.'}
-          </p>
+          </MarkdownText>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
@@ -195,7 +196,7 @@ export default async function AboutPage() {
                 <h3 className="font-heading font-semibold text-lg mb-2">
                   {value.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">{value.description}</p>
+                <MarkdownText as="p" className="text-muted-foreground text-sm">{value.description}</MarkdownText>
               </div>
             );
           })}
@@ -210,9 +211,9 @@ export default async function AboutPage() {
           <h2 className="text-heading-2 font-heading font-semibold mb-4">
             {cta?.heading || 'Ready to Start Your Journey?'}
           </h2>
-          <p className="text-muted-foreground mb-8">
+          <MarkdownText as="p" className="text-muted-foreground mb-8">
             {cta?.subheading || 'Explore the blog for training protocols, nutrition strategies, and mindset insights. Or check out the shop for gear that supports your pursuit of vitality.'}
-          </p>
+          </MarkdownText>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button asChild size="lg" className="group">
               <Link href={cta?.primaryHref || '/blog'}>
