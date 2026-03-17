@@ -15,6 +15,20 @@ const PILLAR_COLOR_MAP: Record<string, string> = {
   primary: 'from-primary/20 to-vitality/20',
 };
 
+function hexToGradientStyle(hex: string): React.CSSProperties {
+  const clean = hex.replace('#', '');
+  const r = parseInt(clean.substring(0, 2), 16);
+  const g = parseInt(clean.substring(2, 4), 16);
+  const b = parseInt(clean.substring(4, 6), 16);
+  return {
+    background: `linear-gradient(to bottom right, rgba(${r},${g},${b},0.2), rgba(${r},${g},${b},0.08))`,
+  };
+}
+
+function isHex(value: string): boolean {
+  return /^#?[0-9a-fA-F]{6}$/.test(value);
+}
+
 const DEFAULT_PILLARS = {
   heading: 'Explore the Pillars',
   subheading:
@@ -79,7 +93,9 @@ export function PillarsSection({ home }: { home?: HomePageData }) {
         >
           {items.map((pillar) => {
             const Icon = getLucideIcon(pillar.icon);
-            const color = PILLAR_COLOR_MAP[pillar.colorKey] ?? PILLAR_COLOR_MAP.primary;
+            const useHex = isHex(pillar.colorKey);
+            const gradientClass = useHex ? '' : (PILLAR_COLOR_MAP[pillar.colorKey] ?? PILLAR_COLOR_MAP.primary);
+            const gradientStyle = useHex ? hexToGradientStyle(pillar.colorKey) : undefined;
             return (
               <motion.div key={pillar.title} variants={itemVariants}>
                 <Link href={pillar.href} className="block h-full group">
@@ -90,12 +106,13 @@ export function PillarsSection({ home }: { home?: HomePageData }) {
                       'hover:shadow-soft-lg hover:-translate-y-1 hover:border-primary/30'
                     )}
                   >
-                    {/* Gradient Background */}
                     <div
                       className={cn(
-                        'absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-300',
-                        color
+                        'absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300',
+                        !useHex && 'bg-gradient-to-br',
+                        gradientClass
                       )}
+                      style={gradientStyle}
                     />
 
                     {/* Content */}

@@ -259,7 +259,7 @@ export interface HomePillarItem extends Struct.ComponentSchema {
     displayName: 'Pillar item';
   };
   attributes: {
-    colorKey: Schema.Attribute.String;
+    colorKey: Schema.Attribute.String & Schema.Attribute.DefaultTo<'primary'>;
     description: Schema.Attribute.Text;
     href: Schema.Attribute.String;
     icon: Schema.Attribute.String;

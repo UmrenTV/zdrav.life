@@ -10,6 +10,6 @@
     "title": { "type": "string" },
     "description": { "type": "text" },
     "href": { "type": "string" },
-    "colorKey": { "type": "string", "description": "e.g. blue, green, orange, purple, red, primary" }
+    "colorKey": { "type": "string", "default": "primary", "description": "Hex color (#4287f5) or named preset (blue, green, orange, purple, red, primary)" }
   }
 }
