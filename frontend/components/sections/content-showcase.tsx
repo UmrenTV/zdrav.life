@@ -12,9 +12,13 @@ import {
   Play,
   ImageIcon,
   Loader2,
+  MapPin,
+  Clock,
+  DollarSign,
+  Tag,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Pill } from '@/components/ui/pill';
 import { GalleryModal } from '@/components/gallery/gallery-modal';
 import { ProductPreviewModal } from '@/components/shop/product-preview-modal';
 import { VideoPreviewModal } from '@/components/videos/video-preview-modal';
@@ -38,68 +42,57 @@ interface ContentShowcaseProps {
 
 const TYPE_CONFIG: Record<
   FeaturedContentItem['type'],
-  { label: string; icon: typeof FileText; className: string }
+  { label: string; icon: typeof FileText; bg: string; border: string; textColor: string }
 > = {
   article: {
     label: 'Article',
     icon: FileText,
-    className:
-      'bg-background dark:bg-background/90 text-blue-600 dark:text-blue-400 border-blue-500/40',
+    bg: 'bg-background dark:bg-background/90',
+    border: 'border-blue-500/40',
+    textColor: 'text-blue-600 dark:text-blue-400',
   },
   product: {
     label: 'Product',
     icon: ShoppingBag,
-    className:
-      'bg-background dark:bg-background/90 text-emerald-600 dark:text-emerald-400 border-emerald-500/40',
+    bg: 'bg-background dark:bg-background/90',
+    border: 'border-emerald-500/40',
+    textColor: 'text-emerald-600 dark:text-emerald-400',
   },
   video: {
     label: 'Video',
     icon: Play,
-    className:
-      'bg-background dark:bg-background/90 text-red-600 dark:text-red-400 border-red-500/40',
+    bg: 'bg-background dark:bg-background/90',
+    border: 'border-red-500/40',
+    textColor: 'text-red-600 dark:text-red-400',
   },
   gallery: {
     label: 'Gallery',
     icon: ImageIcon,
-    className:
-      'bg-background dark:bg-background/90 text-purple-600 dark:text-purple-400 border-purple-500/40',
+    bg: 'bg-background dark:bg-background/90',
+    border: 'border-purple-500/40',
+    textColor: 'text-purple-600 dark:text-purple-400',
   },
 };
 
-function CategoryBadge({ item, size = 'sm', insideLink = false }: { item: FeaturedContentItem; size?: 'sm' | 'xs'; insideLink?: boolean }) {
+const INFO_ICON_MAP: Record<string, typeof Clock> = {
+  article: Clock,
+  video: Clock,
+  gallery: MapPin,
+  product: DollarSign,
+};
+
+function CategoryPill({ item, size = 'sm', insideLink = false }: { item: FeaturedContentItem; size?: 'sm' | 'xs'; insideLink?: boolean }) {
   if (!item.category) return null;
-  const cls = size === 'sm' ? 'text-xs' : 'text-[10px] px-1.5 py-0';
-
-  if (item.categoryHref) {
-    if (insideLink) {
-      return (
-        <span
-          role="button"
-          tabIndex={0}
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.location.href = item.categoryHref!; }}
-          onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); window.location.href = item.categoryHref!; } }}
-          className="relative z-10 inline-flex"
-        >
-          <Badge variant="secondary" className={`${cls} cursor-pointer hover:bg-secondary/60 transition-colors`}>
-            {item.category}
-          </Badge>
-        </span>
-      );
-    }
-    return (
-      <Link
-        href={item.categoryHref}
-        onClick={(e) => e.stopPropagation()}
-        className="relative z-10 inline-flex"
-      >
-        <Badge variant="secondary" className={`${cls} cursor-pointer hover:bg-secondary/60 transition-colors`}>
-          {item.category}
-        </Badge>
-      </Link>
-    );
-  }
-
-  return <Badge variant="secondary" className={cls}>{item.category}</Badge>;
+  return (
+    <Pill
+      text={item.category}
+      icon={Tag}
+      size={size}
+      href={item.categoryHref}
+      insideLink={insideLink}
+      hoverBg="bg-secondary/60"
+    />
+  );
 }
 
 function ContentCardInner({
@@ -132,16 +125,20 @@ function ContentCardInner({
         </div>
         <div className="relative h-full flex flex-col justify-end p-6 lg:p-8">
           <div className="flex flex-wrap items-center gap-2 mb-4">
-            <Badge variant="outline" className={`${config.className} gap-1 text-xs`}>
-              <TypeIcon className="h-3 w-3" />
-              {config.label}
-            </Badge>
-            <CategoryBadge item={item} size="sm" insideLink={insideLink} />
+            <Pill
+              text={config.label}
+              icon={TypeIcon}
+              size="sm"
+              bg={config.bg}
+              border={config.border}
+              textColor={config.textColor}
+            />
+            <CategoryPill item={item} size="sm" insideLink={insideLink} />
           </div>
           {hasTags && (
             <div className="flex flex-wrap items-center gap-2 mb-4">
               {item.tags!.slice(0, 2).map((tag) => (
-                <Badge key={tag} variant="outline" className="text-xs bg-background/50">#{tag}</Badge>
+                <Pill key={tag} text={`#${tag}`} size="sm" bg="bg-background/50" border="border-border" textColor="text-foreground" />
               ))}
             </div>
           )}
@@ -158,7 +155,15 @@ function ContentCardInner({
                 {formatDate(item.publishedAt)}
               </span>
             )}
-            {item.info && <span className="text-foreground/70">{item.info}</span>}
+            {item.info && (() => {
+              const InfoIcon = INFO_ICON_MAP[item.type];
+              return (
+                <span className="flex items-center gap-1 text-foreground/70">
+                  {InfoIcon && <InfoIcon className="h-4 w-4" />}
+                  {item.info}
+                </span>
+              );
+            })()}
           </div>
         </div>
       </div>
@@ -181,11 +186,15 @@ function ContentCardInner({
       <div className="flex flex-col justify-center min-w-0">
         <div className="mb-2">
           <div className="flex flex-wrap items-center gap-1.5">
-            <Badge variant="outline" className={`${config.className} gap-1 text-[10px] px-1.5 py-0`}>
-              <TypeIcon className="h-2.5 w-2.5" />
-              {config.label}
-            </Badge>
-            <CategoryBadge item={item} size="xs" insideLink={insideLink} />
+            <Pill
+              text={config.label}
+              icon={TypeIcon}
+              size="xs"
+              bg={config.bg}
+              border={config.border}
+              textColor={config.textColor}
+            />
+            <CategoryPill item={item} size="xs" insideLink={insideLink} />
           </div>
         </div>
         <h3 className="font-heading font-semibold mb-1 group-hover:text-primary transition-colors line-clamp-2 text-sm sm:text-base">
@@ -201,7 +210,15 @@ function ContentCardInner({
               {formatDate(item.publishedAt)}
             </span>
           )}
-          {item.info && <span className="text-foreground/70">{item.info}</span>}
+          {item.info && (() => {
+            const InfoIcon = INFO_ICON_MAP[item.type];
+            return (
+              <span className="flex items-center gap-1 text-foreground/70">
+                {InfoIcon && <InfoIcon className="h-3 w-3" />}
+                {item.info}
+              </span>
+            );
+          })()}
         </div>
       </div>
     </div>
