@@ -732,10 +732,17 @@ export interface ApiGalleryItemGalleryItem extends Struct.CollectionTypeSchema {
     location: Schema.Attribute.String;
     mediaType: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    relatedToHref: Schema.Attribute.String;
+    relatedToLabel: Schema.Attribute.String;
+    relatedToNewTab: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     seo: Schema.Attribute.Component<'shared.seo', false>;
     slug: Schema.Attribute.UID<'title'>;
     sourcePlatform: Schema.Attribute.String;
     tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>;
+    takenByHref: Schema.Attribute.String;
+    takenByLabel: Schema.Attribute.String;
+    takenByNewTab: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     thumbnail: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;

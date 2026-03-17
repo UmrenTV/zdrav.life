@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronLeft, ChevronRight, MapPin, Calendar, ExternalLink, Maximize2, Minimize2, Loader2, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, Calendar, ExternalLink, Maximize2, Minimize2, Loader2, X, Camera, LinkIcon, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import {
@@ -136,20 +136,61 @@ export function GalleryModal({
               <h3 className="text-lg font-heading font-semibold">{item.caption}</h3>
             )}
 
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-              {item.location && (
-                <span className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  {item.location}
-                </span>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-4">
+                {item.location && (
+                  <span className="flex items-center gap-1">
+                    <MapPin className="h-4 w-4" />
+                    {item.location}
+                  </span>
+                )}
+                {item.takenAt && (
+                  <span className="flex items-center gap-1">
+                    <Calendar className="h-4 w-4" />
+                    {formatDate(item.takenAt)}
+                  </span>
+                )}
+                <Link
+                  href={`/gallery?category=${item.category}`}
+                  className="inline-flex items-center gap-1 capitalize text-xs bg-muted px-2 py-0.5 rounded hover:bg-muted/70 transition-colors cursor-pointer"
+                >
+                  <Tag className="h-3 w-3" />
+                  {item.category}
+                </Link>
+              </div>
+
+              {(item.takenByLabel || item.relatedToLabel) && (
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm">
+                  {item.takenByLabel && item.takenByHref && (
+                    <span className="flex items-center gap-1.5">
+                      <Camera className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-muted-foreground">Taken by:</span>
+                      <Link
+                        href={item.takenByHref}
+                        target={item.takenByNewTab ? '_blank' : undefined}
+                        rel={item.takenByNewTab ? 'noopener noreferrer' : undefined}
+                        className="text-primary font-medium hover:underline"
+                      >
+                        {item.takenByLabel}
+                      </Link>
+                    </span>
+                  )}
+                  {item.relatedToLabel && item.relatedToHref && (
+                    <span className="flex items-center gap-1.5">
+                      <LinkIcon className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-muted-foreground">Related to:</span>
+                      <Link
+                        href={item.relatedToHref}
+                        target={item.relatedToNewTab ? '_blank' : undefined}
+                        rel={item.relatedToNewTab ? 'noopener noreferrer' : undefined}
+                        className="text-primary font-medium hover:underline"
+                      >
+                        {item.relatedToLabel}
+                      </Link>
+                    </span>
+                  )}
+                </div>
               )}
-              {item.takenAt && (
-                <span className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  {formatDate(item.takenAt)}
-                </span>
-              )}
-              <span className="capitalize text-xs bg-muted px-2 py-0.5 rounded">{item.category}</span>
             </div>
 
             {!isGalleryRoute && (

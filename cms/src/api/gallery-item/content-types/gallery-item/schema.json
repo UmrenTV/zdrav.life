@@ -22,6 +22,12 @@
     "location": { "type": "string" },
     "featured": { "type": "boolean", "default": false },
     "sourcePlatform": { "type": "string" },
+    "takenByLabel": { "type": "string" },
+    "takenByHref": { "type": "string" },
+    "takenByNewTab": { "type": "boolean", "default": true },
+    "relatedToLabel": { "type": "string" },
+    "relatedToHref": { "type": "string" },
+    "relatedToNewTab": { "type": "boolean", "default": false },
     "publishedAt": { "type": "datetime" },
     "seo": { "type": "component", "component": "shared.seo", "repeatable": false }
   }

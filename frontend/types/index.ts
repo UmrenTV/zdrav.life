@@ -453,6 +453,12 @@ export interface GalleryItem {
   tags: string[];
   featured: boolean;
   instagramUrl?: string;
+  takenByLabel?: string;
+  takenByHref?: string;
+  takenByNewTab?: boolean;
+  relatedToLabel?: string;
+  relatedToHref?: string;
+  relatedToNewTab?: boolean;
 }
 
 export interface InstagramPost {

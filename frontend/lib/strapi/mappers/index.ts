@@ -741,6 +741,12 @@ export function mapStrapiGalleryItemToGalleryItem(raw: unknown): GalleryItem | n
     location: (a.location as string) ?? undefined,
     tags: Array.isArray(a.tags) ? (a.tags as { name?: string }[]).map((t) => t.name ?? String(t)) : [],
     featured: (a.featured as boolean) ?? false,
+    takenByLabel: (a.takenByLabel as string) ?? undefined,
+    takenByHref: (a.takenByHref as string) ?? undefined,
+    takenByNewTab: (a.takenByNewTab as boolean) ?? true,
+    relatedToLabel: (a.relatedToLabel as string) ?? undefined,
+    relatedToHref: (a.relatedToHref as string) ?? undefined,
+    relatedToNewTab: (a.relatedToNewTab as boolean) ?? false,
   };
 }
 
