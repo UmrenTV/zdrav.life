@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { GalleryModal } from '@/components/gallery/gallery-modal';
@@ -45,9 +46,10 @@ export function GalleryGrid({ items }: GalleryGridProps) {
             transition={{ duration: 0.5, delay: index * 0.05 }}
             className="break-inside-avoid"
           >
-            <button
-              onClick={() => setSelectedIndex(index)}
-              className="group relative w-full overflow-hidden rounded-xl"
+            <Link
+              href={`/gallery/${item.slug || item.id}`}
+              onClick={(e) => { e.preventDefault(); setSelectedIndex(index); }}
+              className="group relative block w-full overflow-hidden rounded-xl"
             >
               <div className={`relative ${
                 item.category === 'training' || item.category === 'bike'
@@ -73,7 +75,7 @@ export function GalleryGrid({ items }: GalleryGridProps) {
                   )}
                 </div>
               </div>
-            </button>
+            </Link>
           </motion.div>
         ))}
       </div>

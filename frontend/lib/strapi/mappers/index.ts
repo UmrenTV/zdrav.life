@@ -740,6 +740,7 @@ export function mapStrapiGalleryItemToGalleryItem(raw: unknown): GalleryItem | n
   const a = doc.attrs;
   return {
     id: doc.documentId,
+    slug: (a.slug as string) ?? undefined,
     image: strapiMediaUrl(a.image) || '',
     thumbnail: strapiMediaUrl(a.thumbnail) || strapiMediaUrl(a.image) || '',
     caption: (a.caption as string) ?? undefined,

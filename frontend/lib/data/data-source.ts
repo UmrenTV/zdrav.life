@@ -144,6 +144,11 @@ export async function getVideoBySlug(slug: string) {
   const videos = await services.getAllVideos();
   return videos.find((v) => v.id === slug || (v as { slug?: string }).slug === slug) ?? null;
 }
+export async function getGalleryItemBySlug(slug: string) {
+  if (isStrapiEnabled) return strapi.getGalleryItemBySlug(slug);
+  const items = await services.getAllGalleryItems();
+  return items.find((i) => i.id === slug || (i as { slug?: string }).slug === slug) ?? null;
+}
 export const getVideoById = services.getVideoById;
 export const getLatestVideos = services.getLatestVideos;
 export const getVideosByCategory = services.getVideosByCategory;

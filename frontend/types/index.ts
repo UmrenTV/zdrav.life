@@ -444,6 +444,7 @@ export interface VideoItem {
 
 export interface GalleryItem {
   id: string;
+  slug?: string;
   image: string;
   thumbnail: string;
   caption?: string;

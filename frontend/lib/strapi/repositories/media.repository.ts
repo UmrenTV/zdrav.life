@@ -48,7 +48,7 @@ export async function getFeaturedVideos(limit: number): Promise<VideoItem[]> {
   return getLatestVideos(limit, true);
 }
 
-const GALLERY_POPULATE = ['image', 'thumbnail'];
+const GALLERY_POPULATE = ['image', 'thumbnail', 'category', 'tags'];
 
 export async function getAllGalleryItems(): Promise<GalleryItem[]> {
   const list = await getCollection('gallery-items', {
@@ -56,6 +56,17 @@ export async function getAllGalleryItems(): Promise<GalleryItem[]> {
     populate: GALLERY_POPULATE,
   });
   return list.map((d) => mapStrapiGalleryItemToGalleryItem(d)).filter(Boolean) as GalleryItem[];
+}
+
+export async function getGalleryItemBySlug(slug: string): Promise<GalleryItem | null> {
+  const list = await getCollection('gallery-items', {
+    publicationState: 'live',
+    filters: { slug: { $eq: slug } },
+    populate: GALLERY_POPULATE,
+    pagination: { pageSize: 1 },
+  });
+  if (!list.length) return null;
+  return mapStrapiGalleryItemToGalleryItem(list[0]) ?? null;
 }
 
 export async function getLatestGalleryItems(limit: number, featuredOnly = false): Promise<GalleryItem[]> {

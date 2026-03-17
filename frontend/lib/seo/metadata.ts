@@ -440,5 +440,30 @@ export async function generateSitemapEntries(): Promise<SitemapEntry[]> {
     });
   });
 
+  // Add dynamic entries for videos
+  const { getAllVideos } = await import('@/lib/data/data-source');
+  const videos = await getAllVideos();
+  videos.forEach((video) => {
+    if (!video.slug) return;
+    entries.push({
+      url: `/videos/${video.slug}`,
+      lastModified: video.publishedAt,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    });
+  });
+
+  // Add dynamic entries for gallery items
+  const { getAllGalleryItems } = await import('@/lib/data/data-source');
+  const galleryItems = await getAllGalleryItems();
+  galleryItems.forEach((item) => {
+    const slug = item.slug || item.id;
+    entries.push({
+      url: `/gallery/${slug}`,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    });
+  });
+
   return entries;
 }

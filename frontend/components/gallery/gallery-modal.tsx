@@ -193,14 +193,24 @@ export function GalleryModal({
               )}
             </div>
 
-            {!isGalleryRoute && (
-              <Button asChild variant="outline" size="sm">
-                <Link href="/gallery">
-                  <ExternalLink className="h-4 w-4 mr-2" />
-                  Open the Gallery
-                </Link>
-              </Button>
-            )}
+            <div className="flex flex-wrap gap-3">
+              {item.slug && (
+                <Button asChild variant="outline" size="sm">
+                  <Link href={`/gallery/${item.slug}`}>
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    View Full Page
+                  </Link>
+                </Button>
+              )}
+              {!isGalleryRoute && (
+                <Button asChild variant="outline" size="sm">
+                  <Link href="/gallery">
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Open the Gallery
+                  </Link>
+                </Button>
+              )}
+            </div>
 
             <Separator />
             <CommentSection
