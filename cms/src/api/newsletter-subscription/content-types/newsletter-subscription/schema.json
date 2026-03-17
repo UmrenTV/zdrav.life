@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "newsletter_subscriptions",
+  "info": {
+    "singularName": "newsletter-subscription",
+    "pluralName": "newsletter-subscriptions",
+    "displayName": "Newsletter Subscription"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "formSource": {
+      "type": "string",
+      "required": true,
+      "description": "Which form was used, e.g. 'Homepage Newsletter' or 'Footer Form'"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["active", "unsubscribed"],
+      "default": "active"
+    },
+    "subscribedAt": {
+      "type": "datetime"
+    },
+    "ipAddress": {
+      "type": "string",
+      "description": "IP of the subscriber for spam prevention"
+    }
+  }
+}

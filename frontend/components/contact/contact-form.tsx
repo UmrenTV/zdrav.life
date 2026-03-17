@@ -1,20 +1,68 @@
 'use client';
 
 import { useState } from 'react';
+import { Check, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 export function ContactForm({ contactEmail }: { contactEmail?: string }) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus('sending');
-    // Placeholder: wire to API later
-    await new Promise((r) => setTimeout(r, 800));
-    setStatus('sent');
+    setErrorMsg('');
+
+    const fd = new FormData(e.currentTarget);
+    const name = (fd.get('name') as string)?.trim();
+    const email = (fd.get('email') as string)?.trim();
+    const subject = (fd.get('subject') as string)?.trim() || undefined;
+    const message = (fd.get('message') as string)?.trim();
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg(data.error || 'Something went wrong. Please try again.');
+        setStatus('error');
+        return;
+      }
+
+      setStatus('sent');
+    } catch {
+      setErrorMsg('Network error. Please try again.');
+      setStatus('error');
+    }
   };
+
+  if (status === 'sent') {
+    return (
+      <div className="flex flex-col items-center justify-center py-12 text-center border rounded-xl bg-muted/30">
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-green-100 dark:bg-green-900/30 mb-4">
+          <Check className="h-7 w-7 text-green-600 dark:text-green-400" />
+        </div>
+        <h3 className="font-heading font-semibold text-xl mb-2">Message sent!</h3>
+        <p className="text-sm text-muted-foreground max-w-xs">
+          Thanks for reaching out. I&apos;ll get back to you within 48 hours.
+        </p>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="mt-4"
+          onClick={() => setStatus('idle')}
+        >
+          Send another message
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -49,18 +97,17 @@ export function ContactForm({ contactEmail }: { contactEmail?: string }) {
           className="resize-none"
         />
       </div>
-      {status === 'sent' && (
-        <p className="text-sm text-green-600 dark:text-green-400">
-          Thanks! Your message has been sent. I&apos;ll get back to you soon.
-        </p>
-      )}
       {status === 'error' && (
         <p className="text-sm text-destructive">
-          Something went wrong. Please try again or email {contactEmail ?? 'hello@zdrav.life'} directly.
+          {errorMsg || `Something went wrong. Please try again or email ${contactEmail ?? 'hello@zdrav.life'} directly.`}
         </p>
       )}
       <Button type="submit" disabled={status === 'sending'}>
-        {status === 'sending' ? 'Sending...' : 'Send message'}
+        {status === 'sending' ? (
+          <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</>
+        ) : (
+          'Send message'
+        )}
       </Button>
     </form>
   );

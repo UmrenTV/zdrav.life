@@ -1,13 +1,15 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { GalleryModal } from '@/components/gallery/gallery-modal';
 import type { GalleryItem } from '@/types';
+
+const GalleryModal = dynamic(() => import('@/components/gallery/gallery-modal').then(m => m.GalleryModal), { ssr: false });
 
 interface GalleryStripSectionClientProps {
   items: GalleryItem[];
@@ -154,12 +156,14 @@ export function GalleryStripSectionClient({ items, section }: GalleryStripSectio
         </Button>
       </div>
 
-      <GalleryModal
-        item={selectedItem}
-        open={selectedIndex !== null}
-        onOpenChange={(open) => !open && setSelectedIndex(null)}
-        isGalleryRoute={false}
-      />
+      {selectedIndex !== null && (
+        <GalleryModal
+          item={selectedItem}
+          open={selectedIndex !== null}
+          onOpenChange={(open) => !open && setSelectedIndex(null)}
+          isGalleryRoute={false}
+        />
+      )}
     </section>
   );
 }

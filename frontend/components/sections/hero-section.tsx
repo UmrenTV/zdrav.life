@@ -155,11 +155,8 @@ export function HeroSection({ home }: { home?: HomePageData }) {
           </div>
 
           {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="grid grid-cols-3 gap-8 max-w-lg mx-auto"
+          <div
+            className={`grid grid-cols-3 gap-8 max-w-lg mx-auto ${HERO_ANIM} [animation-delay:400ms]`}
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
@@ -171,7 +168,7 @@ export function HeroSection({ home }: { home?: HomePageData }) {
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
 

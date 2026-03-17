@@ -1,17 +1,19 @@
 import { Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/sections/hero-section';
 import { FeaturedContentSection } from '@/components/sections/featured-content-section';
-import { PillarsSection } from '@/components/sections/pillars-section';
-import { AboutPreviewSection } from '@/components/sections/about-preview-section';
 import { LatestVideosSection } from '@/components/sections/latest-videos-section';
 import { GalleryStripSection } from '@/components/sections/gallery-strip-section';
 import { LatestBlogSection } from '@/components/sections/latest-blog-section';
 import { LatestShopSection } from '@/components/sections/latest-shop-section';
 import { TestimonialsSection } from '@/components/sections/testimonials-section';
-import { NewsletterSection } from '@/components/sections/newsletter-section';
-import { CTABannerSection } from '@/components/sections/cta-banner-section';
 import { generateMetadata as genMeta } from '@/lib/seo/metadata';
 import { getSiteConfig, getHomePage } from '@/lib/data/data-source';
+
+const PillarsSection = dynamic(() => import('@/components/sections/pillars-section').then(m => m.PillarsSection), { ssr: true });
+const AboutPreviewSection = dynamic(() => import('@/components/sections/about-preview-section').then(m => m.AboutPreviewSection), { ssr: true });
+const NewsletterSection = dynamic(() => import('@/components/sections/newsletter-section').then(m => m.NewsletterSection), { ssr: false });
+const CTABannerSection = dynamic(() => import('@/components/sections/cta-banner-section').then(m => m.CTABannerSection), { ssr: false });
 
 
 export async function generateMetadata() {

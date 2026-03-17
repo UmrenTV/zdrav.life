@@ -19,7 +19,7 @@ export function NewsletterSection({ form }: { form?: FormData }) {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <NewsletterCard form={form} siteName={siteConfig.name} />
+          <NewsletterCard form={form} siteName={siteConfig.name} formSource={form.name || 'Homepage Newsletter'} />
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -19,12 +20,13 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Pill } from '@/components/ui/pill';
-import { GalleryModal } from '@/components/gallery/gallery-modal';
-import { ProductPreviewModal } from '@/components/shop/product-preview-modal';
-import { VideoPreviewModal } from '@/components/videos/video-preview-modal';
-import { ArticlePreviewModal } from '@/components/blog/article-preview-modal';
 import { formatDate } from '@/lib/utils';
 import type { FeaturedContentItem, GalleryItem, Product, VideoItem, Post, SectionConfig } from '@/types';
+
+const GalleryModal = dynamic(() => import('@/components/gallery/gallery-modal').then(m => m.GalleryModal), { ssr: false });
+const ProductPreviewModal = dynamic(() => import('@/components/shop/product-preview-modal').then(m => m.ProductPreviewModal), { ssr: false });
+const VideoPreviewModal = dynamic(() => import('@/components/videos/video-preview-modal').then(m => m.VideoPreviewModal), { ssr: false });
+const ArticlePreviewModal = dynamic(() => import('@/components/blog/article-preview-modal').then(m => m.ArticlePreviewModal), { ssr: false });
 
 type ClickBehavior = 'modal' | 'link';
 
@@ -296,28 +298,38 @@ export function ContentShowcase({
 
   if (!topPromoted && items.length === 0) return null;
 
+  const heroContent = topPromoted && (
+    clickBehavior === 'link' ? (
+      <Link href={topPromoted.href} className="block h-full w-full text-left group">
+        <ContentCardInner item={topPromoted} variant="hero" insideLink priority={priorityImage} />
+      </Link>
+    ) : (
+      <button
+        type="button"
+        onClick={() => handleItemClick(topPromoted)}
+        className="block h-full w-full text-left group"
+      >
+        <ContentCardInner item={topPromoted} variant="hero" priority={priorityImage} />
+      </button>
+    )
+  );
+
   const heroBlock = topPromoted && (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="min-h-[320px] lg:h-[532px]"
-    >
-      {clickBehavior === 'link' ? (
-        <Link href={topPromoted.href} className="block h-full w-full text-left group">
-          <ContentCardInner item={topPromoted} variant="hero" insideLink priority={priorityImage} />
-        </Link>
-      ) : (
-        <button
-          type="button"
-          onClick={() => handleItemClick(topPromoted)}
-          className="block h-full w-full text-left group"
-        >
-          <ContentCardInner item={topPromoted} variant="hero" priority={priorityImage} />
-        </button>
-      )}
-    </motion.article>
+    priorityImage ? (
+      <article className="min-h-[320px] lg:h-[532px] opacity-0 animate-[fade-in-up_0.5s_ease-out_both]">
+        {heroContent}
+      </article>
+    ) : (
+      <motion.article
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="min-h-[320px] lg:h-[532px]"
+      >
+        {heroContent}
+      </motion.article>
+    )
   );
 
   const listBlock = (
@@ -398,30 +410,38 @@ export function ContentShowcase({
         </div>
       )}
 
-      <GalleryModal
-        item={galleryItem}
-        open={galleryModalOpen}
-        onOpenChange={setGalleryModalOpen}
-        isGalleryRoute={false}
-      />
+      {galleryModalOpen && (
+        <GalleryModal
+          item={galleryItem}
+          open={galleryModalOpen}
+          onOpenChange={setGalleryModalOpen}
+          isGalleryRoute={false}
+        />
+      )}
 
-      <ProductPreviewModal
-        product={product}
-        open={productModalOpen}
-        onOpenChange={setProductModalOpen}
-      />
+      {productModalOpen && (
+        <ProductPreviewModal
+          product={product}
+          open={productModalOpen}
+          onOpenChange={setProductModalOpen}
+        />
+      )}
 
-      <VideoPreviewModal
-        video={video}
-        open={videoModalOpen}
-        onOpenChange={setVideoModalOpen}
-      />
+      {videoModalOpen && (
+        <VideoPreviewModal
+          video={video}
+          open={videoModalOpen}
+          onOpenChange={setVideoModalOpen}
+        />
+      )}
 
-      <ArticlePreviewModal
-        article={article}
-        open={articleModalOpen}
-        onOpenChange={setArticleModalOpen}
-      />
+      {articleModalOpen && (
+        <ArticlePreviewModal
+          article={article}
+          open={articleModalOpen}
+          onOpenChange={setArticleModalOpen}
+        />
+      )}
     </section>
   );
 }
